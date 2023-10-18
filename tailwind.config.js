@@ -23,7 +23,11 @@ export default {
         '97':"26rem",
         '98':"30rem",
         '100':'40.5rem'
-      }
+      },
+
+      // scale:{
+      //   "200":"transform-scale-x: 10 transform-scale-y: 10"
+      // }
     },
   },
   plugins: [],

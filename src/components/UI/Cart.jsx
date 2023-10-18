@@ -2,20 +2,20 @@ import { NavLink } from "react-router-dom"
 import hero from "../../assets/headerImg/hero.jpg"
 import { useDispatch, useSelector } from "react-redux"
 import {cartActions} from "../../Store/CartSlice"
-import { useRef,useEffect } from "react"
+import { useRef,useEffect,useState } from "react"
 
 
 
 export const SmallItems = (props) => {
    const itemRef = useRef(null);
    const dispatch = useDispatch();
-
+   const [hover , setHover] = useState(false)
    // console.log(itemRef)
 
    return (
       <div key={props.key} ref={itemRef}  className={`flex p-2 border-gray-300 gap-4 border-b-2 border-dashed  ${props.className}`}>
-            <NavLink onClick={() => dispatch(cartActions.touchHandler())} to="/products/all" className="w h-12 w-12 rounded-md">
-               <img src={props.src || hero} className="w-full hover:scale-110 transition-all h-full rounded-md" alt={props.alt || "pic"} />
+            <NavLink onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={() => dispatch(cartActions.touchHandler())} to="/products/all" className={`h-12 w-12 rounded-md ${hover && " h-16 w-16 "} transition-all`}>
+               <img src={props.src || hero} className="w-full  h-full rounded-md" alt={props.alt || "pic"} />
             </NavLink>
 
             <div className="flex flex-col bg-red-90 py-1 justify-between">

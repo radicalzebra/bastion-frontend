@@ -6,30 +6,18 @@ import QuickProduct from './QuickProduct'
 
 function TopProducts(props) {
   return (
-    <div className='h-  mt-6  px-8 py-5 pb-8 bg-gradient-to-b  shadow-lg border-2 border-gray-200   mb-20 rounded-lg flex flex-col gap-12'>
+    <div className='h-  mt-6  px-8 py-5 pb-8 bg-gradient-to-b  shadow-md border-2 border-gray-100   mb-20 rounded-lg flex flex-col gap-12'>
 
 
-         <section className='flex items-center justify-between  gap-2'>
+         <section className='flex items-center  gap-8'>
               <h3 className='text-3xl font-semibold tracking-wide text-black'>Top Products</h3>
-            
-             
-             <section className='flex basis-4/6 h-8 gap-4 '>
 
-                  
-                  <section className='flex items-center bg-gray-800 shadow-md px-2  gap-1 rounded-md basis-4/6  '>
-                          <button className=''>
-                              <img src={search} alt="search" />
-                          </button>
-                          <input type="search" placeholder='Search' className='bg-gray-800 outline-0 px-2  rounded-sm basis-full' />
-                  </section>
-                  
-
-                  <select name="time" className='w-30 rounded-md shadow-md border-2 border-gray-200 outline-0 font-medium bg-gray-50 text-black text-lg px-2'>
-                    <option value="week">Week</option>
-                    <option value="month">Month</option>
-                    <option value="year">Year</option>
-                  </select>
-            </section>
+              <select name="time" className='w-30 h-8 rounded-md shadow-sm border-2 hover:border-gray-600 outline-0 font-medium bg-gray-50 text-black text-lg px-2'>
+                  <option value="week">Week</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+              </select>
+           
          </section>
 
           <table className='text-white bg-gray-800 rounded-md '>

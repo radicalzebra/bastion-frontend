@@ -7,13 +7,14 @@ const HeroCarosal = (props) => {
 
    const imgText = useRef(null);
    const img = useRef(null);
+   const [btnHover, setBtnhover] = useState(false);
 
-   useEffect(()=>{
+  //  useEffect(()=>{
 
-      gsap.timeline()
-      .fromTo(img.current,{y:"-100vh",opacity:0},{y:0,opacity:1,ease:"power2",duration:1})
-      .fromTo(imgText.current, {x:"-100vw", opacity:0},{x:0,opacity:1,ease:"power2",duration:1});
-   },[])
+  //     gsap.timeline()
+  //     .fromTo(img.current,{y:"-100vh",opacity:0},{y:0,opacity:1,ease:"power2",duration:1})
+  //     .fromTo(imgText.current, {x:"-100vw", opacity:0},{x:0,opacity:1,ease:"power2",duration:1});
+  //  },[])
 
    return (
       <Card className={props.className}>
@@ -26,7 +27,11 @@ const HeroCarosal = (props) => {
             </div>
 
             <NavLink to="/products/all" className={"bg-red-90 w-fit"}>
-              <button className="px-6 py-4 text-sm font-semibold tracking-wider bg-black rounded-full justify-self-end hover:cursor-pointer hover:bg-black relative z-10">SHOP NOW</button>
+              
+              <button onMouseEnter={()=>setBtnhover(true)} onMouseLeave={()=>setBtnhover(false)} className={`px-6 py-4  text-sm font-semibold tracking-wider bg-black rounded-full justify-self-end hover:cursor-pointer hover:bg-black relative  overflow-hidden`}>
+                  <p className={`h-10 w-10 bg-white absolute z-10 -bottom-5 -left-3 rounded-full  ${btnHover && " h-40  w-60 "} transition-all`}>.</p>
+                  <p className={`${btnHover && "z-20 text-black relative "}`}>SHOP NOW</p>
+              </button>
             </NavLink>
           </section>
    
