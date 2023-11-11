@@ -8,8 +8,6 @@ import { useSelector , useDispatch} from 'react-redux';
 
 
 
-
-
 const PageLayout = (props) => {
 
    const cartShow = useSelector((state)=> state.cart.touched)
@@ -26,6 +24,7 @@ const PageLayout = (props) => {
    return (
 
          <div onClick={onClickHandler}  className="flex flex-col gap-8 pt-2 px-4 relative">
+           
             <header  className='z-20'>
                {/* <OneLineBanner className="font-medium text- tracking-wider" string="Discover your perfect pair & walk with ease 👟"/> */}
                <Nav links={["all","men", "women" , "kids" ,"sale"]} numNotif="3" numCartItems="4"/>
@@ -41,5 +40,12 @@ const PageLayout = (props) => {
       
    )
 };
+
+
+export async function loader() {
+   const response = await fetch('https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products')
+   const resData = await response.json()
+   return resData.data
+}
 
 export default PageLayout;

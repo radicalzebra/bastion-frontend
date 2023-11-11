@@ -1,10 +1,12 @@
 import Card from "../Utilities/Card";
 import hero2 from "../../assets/headerImg/hero2.jpg"
 import { Rating } from "../Utilities/Rating";
+import { useEffect } from "react";
 
 
 
 const ReviewCard = (props) =>  {
+
   return (
     <Card className={`flex w-96   py-3 px-1 gap-4  bg-gray-50 text-black rounded-sm transition-all ${props.className}`}> 
 

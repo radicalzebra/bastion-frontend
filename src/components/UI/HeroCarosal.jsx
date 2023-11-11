@@ -29,8 +29,8 @@ const HeroCarosal = (props) => {
             <NavLink to="/products/all" className={"bg-red-90 w-fit"}>
               
               <button onMouseEnter={()=>setBtnhover(true)} onMouseLeave={()=>setBtnhover(false)} className={`px-6 py-4  text-sm font-semibold tracking-wider bg-black rounded-full justify-self-end hover:cursor-pointer hover:bg-black relative  overflow-hidden`}>
-                  <p className={`h-10 w-10 bg-white absolute z-10 -bottom-5 -left-3 rounded-full  ${btnHover && " h-40  w-60 "} transition-all`}>.</p>
-                  <p className={`${btnHover && "z-20 text-black relative "}`}>SHOP NOW</p>
+                  <p className={`h-10 w-10 bg-white absolute z-10 -bottom-5 -left-3 rounded-full  ${btnHover && " h-40  w-60 "} transition-all`}></p>
+                  <p className={`${btnHover && "z-20 text-black relative scale-110  "}`}>SHOP NOW</p>
               </button>
             </NavLink>
           </section>

@@ -58,12 +58,13 @@ function Carousal(props) {
 
   const mainRef = useRef(null)
   const parentDivRef = useRef(null)
-  const stepDiv = props.stepDivided || 2
+  const stepDiv = props.stepDivided || 3
 
 
   useEffect(()=>{
 
-    const childCount = Array.from(parentDivRef.current.children).reduce((acc, cur) => acc + 1, 0) ;
+   //  const childCount = Array.from(parentDivRef.current.children).reduce((acc, cur) => acc + 1, 0) ;
+    const childCount = Array.from(parentDivRef.current.children).length ;
     const parentWidth = parentDivRef.current.clientWidth
     const stepCount = Math.trunc(childCount/stepDiv) 
     const step = Math.trunc(parentWidth/stepCount)

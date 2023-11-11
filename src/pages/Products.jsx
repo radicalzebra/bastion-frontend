@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Card from '../components/Utilities/Card'
 import ProductCard, {ProdCard} from '../components/UI/ProductCard'
 import ProductForms from '../components/UI/ProductForms'
+import { useRouteLoaderData } from 'react-router-dom'
 
 
 
@@ -10,6 +11,8 @@ const Products = (props) => {
 
   const [touched,setTouched] = useState(false);
   const [clear,setClear] = useState(false);
+
+  const productData = useRouteLoaderData("all-products")
 
 
   return (
@@ -112,24 +115,31 @@ const Products = (props) => {
 
             <Card className="flex gap-6 flex-wrap ">
 
+              {productData.products.map((el,i)=> {
+                  return <ProdCard className="shadow-sm  p-1 " id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
+              })}
                   
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
-                  <ProdCard className="shadow-sm shadow-gray-300  p-1 "/>
                   
+                  {/* <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/>
+                  <ProdCard className="shadow-sm   p-1 "/> */}
 
             </Card>
     </section>

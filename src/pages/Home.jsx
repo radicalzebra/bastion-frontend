@@ -19,15 +19,13 @@ import { NavLink } from 'react-router-dom';
 
 
 
-
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 
 
 
 const Home = (props) => {
+
 
 
    const arrivalsRef = useRef(null);

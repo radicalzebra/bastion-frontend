@@ -22,7 +22,7 @@ function BillingSettings() {
                      </label>
 
                      <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>Expiry</p>
+                        <p className='text-sm text-gray-500 font-semibold'>Valid thru</p>
                         <input type="date" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
                      </label>
                </div>

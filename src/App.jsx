@@ -1,7 +1,7 @@
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 
 
-import PageLayout from './pages/PageLayout';
+import PageLayout,{loader as productsLoader} from './pages/PageLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Product from './pages/Product';
@@ -17,6 +17,8 @@ const router = createBrowserRouter([
   {path:"/",
    element:<PageLayout/>,
    errorElement:<h1 className='text-black'>error hogya bro</h1>,
+   id:"all-products",
+   loader:productsLoader,
    children :[
     {index:true,element:<Home/>},
     {path:"products/:type",element:<Products/>},

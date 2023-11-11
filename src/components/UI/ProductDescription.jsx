@@ -15,7 +15,7 @@ export const Button = (props) => {
 }
 
 
-const ProductDescription = (props) => {
+const ProductDescription = ({data,className}) => {
 
    const buttonRef = useRef(null);
    const reviewRef = useRef(null);
@@ -59,15 +59,15 @@ const ProductDescription = (props) => {
 
 
   return (
-      <div className={`${props.className} flex flex-col gap-10 text-black`}>
+      <div className={`${className} flex flex-col gap-10 text-black`}>
 
 
            <section className='flex flex-col gap-3  '>
-              <h1 className='text-3xl '>{props.productName || "Jordan"}</h1>
-              <p className='text-xl  font-mono text-yellow-600'>{`$ ${props.price || "3456"}`}</p>
+              <h1 className='text-3xl '>{data.name || "Jordan"}</h1>
+              <p className='text-xl  font-mono text-yellow-600'>{`$ ${data.price || "3456"}`}</p>
               <div className='flex gap-2 text-xs'>
-                  <p className='px-2 border-2 border-blue-600 rounded-full bg-blue-200 text-blue-600 '>monsoon</p>
-                  <p className='px-2 border-2 border-black rounded-full bg-black text-white'>adidas</p>
+                  <p className='px-2 border-2 border-blue-600 rounded-full bg-blue-200 text-blue-600 '>{data.season}</p>
+                  <p className='px-2 border-2 border-black rounded-full bg-black text-white'>{data.brand}</p>
               </div>
            </section>
 
@@ -77,7 +77,7 @@ const ProductDescription = (props) => {
            <section className='flex flex-col gap-4'>
                 <h2 className='text-xl'>select size <span className='text-lg text-gray-500 font-mono'>(UK)</span></h2>
                 <div className='flex gap-2 w-96 flex-wrap'>
-                      {props.sizes.map((el , i) => {
+                      {data.sizes.map((el , i) => {
                         return (
                               <Button>{el}</Button>
                            )
@@ -100,7 +100,7 @@ const ProductDescription = (props) => {
                    </div>
                   
                    <main className='w-3/4 text-sm font-normal'>
-                       <p>{props.productDescription || "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including "}</p>
+                       <p>{data.description || "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including "}</p>
                   </main>
             </section>
 
@@ -112,7 +112,7 @@ const ProductDescription = (props) => {
 
                  <section className='text-xl font-medium flex flex-col w-3/4  gap-8'>
                     <div onClick={() => setReviewTouched(state => !state)} className='flex justify-between hover:border-black border-t-2  border-gray-300 py-4 px-2'>
-                           <p>Reviews <span className='text-gray-400 text-xl ml-1 font-sans'>{`(${props.reviews?.length || 99})`}</span></p>
+                           <p>Reviews <span className='text-gray-400 text-xl ml-1 font-sans'>{`(${data.reviews?.length || 99})`}</span></p>
 
                            <figure>
                            
@@ -123,9 +123,9 @@ const ProductDescription = (props) => {
 
                     {reviewTouched && 
                         <main ref={reviewRef} className='flex-col flex mb-12 gap-4'>
-                              {props.numReviews.map((el,i) => {
+                              {data.reviews.map((el,i) => {
                                  return (
-                                    <ReviewCard className="w-full text-sm  hover:border-l-4 hover:shadow-xl border-rose-500 shadow-md shadow-rose-100" />
+                                    <ReviewCard id={el.user._id} className="w-full text-sm  hover:border-l-4 hover:shadow-xl border-rose-500 shadow-md shadow-rose-100" />
                                  )
                               })}
                         </main>
@@ -150,7 +150,7 @@ const ProductDescription = (props) => {
 
                     {infoTouched && 
                         <main className='flex-col flex gap-4 text-black text-md font-normal font-sans text-base mb-12 px-4'>
-                              <p>{props.productInfo || "Declaration of Importer: Direct import by the individual customer"}</p>
+                              <p>{"Declaration of Importer: Direct import by the individual customer"}</p>
                         </main>
                      }
                  </section>
@@ -186,33 +186,6 @@ const ProductDescription = (props) => {
 
 
             </section>
-
-
-             {/* <section>
-
-                 <section className='text-2xl font-medium flex flex-col w-3/4 mt-4 gap-8'>
-                    <div onClick={() => setReviewTouched(state => !state)} className='flex justify-between hover:border-black border-y-2  border-gray-300 py-4 px-2'>
-                           <p>Reviews <span className='text-gray-400 text-xl ml-1 font-sans'>{`(${props.reviews?.length || 99})`}</span></p>
-
-                           <figure>
-                           
-                              <img className={`${reviewTouched ? "rotate-180":" "}`} src={down} alt="down" />
-                           
-                           </figure>
-                    </div>
-
-                    {reviewTouched && 
-                        <main ref={reviewRef} className='flex-col flex gap-4'>
-                              {props.numReviews.map((el,i) => {
-                                 return (
-                                    <ReviewCard className="w-full text-sm  hover:border-l-4 hover:shadow-xl border-rose-500 shadow-md shadow-rose-100" />
-                                 )
-                              })}
-                        </main>
-                     }
-                 </section>
-
-            </section> */}
             
       </div>
   )

@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '../../Utilities/Card'
 
 
+
+
+
+
 function GeneralSettings(props) {
+
+
   return (
     <Card className={`flex flex-col w-6/6  bg-red-90 gap-12 ${props.className}`}>
 

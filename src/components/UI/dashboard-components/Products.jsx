@@ -73,7 +73,7 @@ function Products(props) {
                         <ProductCard productRank="3" className="shrink- scale-90 translate-y-10 -skew-x-6 -skew-y-6"/>
                  </section>
 
-                 <section className='flex flex-col gap-12  text-black my-10 px-8'>
+                 <section className='flex flex-col gap-12  text-black my-10'>
 
                         <section className='flex gap-4 bg-red- justify-center w-full'>
                            
@@ -110,24 +110,22 @@ function Products(props) {
 
                         </section>
 
-                        <section className='flex flex-wrap justify-center gap-12'>
+                        <section className='flex flex-wrap justify-cente gap-6'>
 
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    <ProdCard className="shadow-sm shadow-gray-300 p-1 "/>
-                                    
-                                   
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>
+                                    <ProdCard className="shadow-sm  p-1 "/>                       
 
                         </section>
 
