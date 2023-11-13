@@ -124,8 +124,9 @@ const ProductDescription = ({data,className}) => {
                     {reviewTouched && 
                         <main ref={reviewRef} className='flex-col flex mb-12 gap-4'>
                               {data.reviews.map((el,i) => {
+                                 console.log(el.user)
                                  return (
-                                    <ReviewCard id={el.user._id} className="w-full text-sm  hover:border-l-4 hover:shadow-xl border-rose-500 shadow-md shadow-rose-100" />
+                                    <ReviewCard review={el} key={i+1} className="w-full text-sm  hover:border-l-4 hover:shadow-xl border-rose-500 shadow-md shadow-rose-100" />
                                  )
                               })}
                         </main>

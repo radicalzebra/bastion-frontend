@@ -4,9 +4,10 @@ import ProductCarosal from '../components/UI/ProductCarosal'
 import hero from "../assets/headerImg/hero.jpg"
 import hero2 from "../assets/headerImg/hero2.jpg"
 import ProductDescription from './../components/UI/ProductDescription';
-import ProductCard , {ProdCard} from '../components/UI/productCard'
+import {ProdCard} from '../components/UI/productCard'
 import Carousal from '../components/Utilities/Carousal'
-import { NavLink, useLoaderData, useParams } from 'react-router-dom'
+import { NavLink, useLoaderData, useParams,useRouteLoaderData } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 
 
 
@@ -19,28 +20,29 @@ import { NavLink, useLoaderData, useParams } from 'react-router-dom'
 
 const Product = () => {
 
-  const {id} = useParams();
-  const [productData, setproductData] = useState(null) ;
+const {id} = useParams()
 
-  useEffect(()=> {
-     async function fetchData(id) {
-        const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products/${id}`)
-        const resData = await response.json()
-        setproductData(resData.data.product)   
-     }
-     
-     fetchData(id)
 
-  },[id])
+// const {product : productData} = useLoaderData();
 
-  console.log(productData)
+
+const { data:productData , isPending } = useQuery({
+  queryKey:["product"],
+  queryFn: async () => {
+      const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products/${id}`)
+      const resData = await response.json()
+      return resData.data.product
+  },
+  staleTime:3000
+})
+
+// console.log(data)
+  // console.log(productData)
 
   
-  
-
 
   return (
-    productData && 
+    productData &&
       <Card className="flex flex-col gap-32 mb-8">
         <Card className="flex gap-16  mt-32 mb-8 mx-16">
           <ProductCarosal className="w-1/2" images={[...productData.images]}/>
@@ -76,17 +78,5 @@ const Product = () => {
   )
 
 }
-
-
-// export async function loader() {
-
-//   const { id } = useParams()
-
-//   const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products/${id}`)
-//   const resData = await response.json()
-//   console.log(resData)
-//   return resData.data
-
-// }
 
 export default Product

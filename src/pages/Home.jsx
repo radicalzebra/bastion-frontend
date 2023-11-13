@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/all';
 import HeroCarosal from './../components/UI/HeroCarosal';
 import hero from "../assets/headerImg/hero.jpg"
 import hero2 from "../assets/headerImg/hero2.jpg";
-import ProductCard,{ProdCard} from "../components/UI/ProductCard";
+import { ProdCard } from '../components/UI/productCard';
 import Card from '../components/Utilities/Card';
 import Carousal from '../components/Utilities/Carousal';
 import NewsLetter from '../components/UI/NewsLetter';

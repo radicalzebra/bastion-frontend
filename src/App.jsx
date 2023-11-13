@@ -1,15 +1,13 @@
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
-import PageLayout,{loader as productsLoader} from './pages/PageLayout';
+import PageLayout from './pages/PageLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Product from './pages/Product';
 import Dashboard from './pages/Dashboard';
-
-
-
-
+import Carousal from './components/Utilities/Carousal';
 
 
 
@@ -17,8 +15,6 @@ const router = createBrowserRouter([
   {path:"/",
    element:<PageLayout/>,
    errorElement:<h1 className='text-black'>error hogya bro</h1>,
-   id:"all-products",
-   loader:productsLoader,
    children :[
     {index:true,element:<Home/>},
     {path:"products/:type",element:<Products/>},
@@ -29,8 +25,13 @@ const router = createBrowserRouter([
  {path:"dashboard/:action/:specify?",element:<Dashboard/>}
 ]);
 
+
+const queryClient = new QueryClient();
+
 function App() { 
-  return <RouterProvider router={router}/>
+  return <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router}/>
+        </QueryClientProvider>
 }
 
 export default App

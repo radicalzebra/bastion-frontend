@@ -1,12 +1,12 @@
 import {createContext,useState} from "react";
 
-export const cartShowContext = createContext({
+export const loginContext = createContext({
    touched:false,
    onTouchHandler : () => {}
 })
 
 
-const cartShowProvider = (props) => {
+const loginProvider = (props) => {
 
 
    const [touched,setTouched] = useState(false)
@@ -17,9 +17,9 @@ const cartShowProvider = (props) => {
    }
 
    return (
-      <cartShowContext.Provider value={{touched,onTouchHandler}}>
+      <loginContext.Provider value={{touched,onTouchHandler}}>
         {props.children}
-      </cartShowContext.Provider>
+      </loginContext.Provider>
    )
 }
 
