@@ -1,7 +1,7 @@
 import React, { useEffect, useRef,useState } from 'react'
 import sliderArrow from "../../assets/navlogos/sliderArrow.svg"
 import { gsap,ScrollTrigger } from 'gsap/all'
-import useImgHandler from "../../Hooks/product-carousal"
+import useImgHandler from "../../Hooks/products-carousal"
 
 gsap.registerPlugin(ScrollTrigger)
 
