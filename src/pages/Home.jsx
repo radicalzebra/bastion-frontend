@@ -14,6 +14,8 @@ import Categories from '../components/UI/home/Categories';
 import Reviews from '../components/UI/home/Reviews';
 import Brands from '../components/UI/home/Brands';
 import { NavLink } from 'react-router-dom';
+import Login from '../components/UI/Login';
+
 
 
 
@@ -48,6 +50,8 @@ const Home = (props) => {
 
   return (
     <Card className={`flex flex-col gap-28 overflow-hidden  relative`}>
+
+      <Login/>
 
         <section className='flex flex-col gap-6 '>
            <HeroCarosal src={hero2} className={`h-100 relative rounded-lg z-40`}/>

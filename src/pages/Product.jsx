@@ -23,9 +23,6 @@ const Product = () => {
 const {id} = useParams()
 
 
-// const {product : productData} = useLoaderData();
-
-
 const { data:productData , isPending } = useQuery({
   queryKey:["product"],
   queryFn: async () => {
@@ -35,10 +32,6 @@ const { data:productData , isPending } = useQuery({
   },
   staleTime:3000
 })
-
-// console.log(data)
-  // console.log(productData)
-
   
 
   return (

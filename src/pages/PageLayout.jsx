@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, json } from 'react-router-dom';
 import { OneLineBanner , Nav } from '../components/UI/Navigations';
 import Card from '../components/Utilities/Card';
 
@@ -19,7 +19,6 @@ const PageLayout = (props) => {
       dispatch(cartActions.touchHandler(false))
       dispatch(notifyActions.touchHandler(false))
    }
-
   
    return (
 

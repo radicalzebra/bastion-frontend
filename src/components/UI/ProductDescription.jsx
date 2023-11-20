@@ -3,6 +3,10 @@ import ReviewCard from './ReviewCard';
 import down from "../../assets/navlogos/down.svg"
 import { gsap } from 'gsap';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector,useDispatch} from 'react-redux';
+import { loginUser } from '../../Store/LoginSlice';
+
+
 
 
 
@@ -24,7 +28,14 @@ const ProductDescription = ({data,className}) => {
    const [reviewTouched, setReviewTouched] = useState(false);
    const [infoTouched, setInfoTouched] = useState(false);
    const [deliveryTouched, setDeliveryTouched] = useState(false);
-  
+
+   const logged = useSelector(state => state.login.loggedIn)
+   const user = useSelector(state => state.login.user)
+   const dispatch = useDispatch()
+
+   const onClickBtn = () => {
+      dispatch(loginUser())
+   }
 
 
    
@@ -36,7 +47,7 @@ const ProductDescription = ({data,className}) => {
       setBtnTouched(true)
 
       setTimeout(() => {
-         navigate("/")
+         // navigate("/")
       }, 500);
    }
 
@@ -51,14 +62,13 @@ const ProductDescription = ({data,className}) => {
          gsap.to(reviewRef.current,{ease:"elastic"})
       }
    
-
-
    },[btnTouched, reviewTouched]);
 
    
 
 
   return (
+
       <div className={`${className} flex flex-col gap-10 text-black`}>
 
 
@@ -87,20 +97,18 @@ const ProductDescription = ({data,className}) => {
 
 
 
-
             <section className='flex flex-col  gap-6'>
-                   <div className='flex  gap-10 relative items-center'>
-
-                        <button ref={buttonRef} onClick = {buttonHandler} className={`text-2xl bg-black  text-white rounded-md w-72 p-3`}>BUY</button>
+                  {/* buy */}     
+                  <div className='flex  gap-10 relative items-center'>
+                     <button ref={buttonRef} onClick = {buttonHandler} className={`text-2xl bg-black  text-white rounded-md w-72 p-3`}>BUY</button>
                         
-                          <NavLink className={" rounded-md bg-gray-50 shadow-md w-12 px-2 flex items-center h-full"} to={""}>
-                                 <svg className='hover:brightness-100 brightness-0' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.78571 5H18.2251C19.5903 5 20.5542 6.33739 20.1225 7.63246L18.4558 12.6325C18.1836 13.4491 17.4193 14 16.5585 14H6.07142M4.78571 5L4.74531 4.71716C4.60455 3.73186 3.76071 3 2.76541 3H2M4.78571 5L6.07142 14M6.07142 14L6.25469 15.2828C6.39545 16.2681 7.23929 17 8.23459 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#f20d0d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                          </NavLink>
-
-                   </div>
+                     <NavLink className={" rounded-md bg-gray-50 shadow-md w-12 px-2 flex items-center h-full"} to={""}>
+                        <svg className='hover:brightness-100 brightness-0' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.78571 5H18.2251C19.5903 5 20.5542 6.33739 20.1225 7.63246L18.4558 12.6325C18.1836 13.4491 17.4193 14 16.5585 14H6.07142M4.78571 5L4.74531 4.71716C4.60455 3.73186 3.76071 3 2.76541 3H2M4.78571 5L6.07142 14M6.07142 14L6.25469 15.2828C6.39545 16.2681 7.23929 17 8.23459 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#f20d0d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                     </NavLink>
+                  </div>
                   
-                   <main className='w-3/4 text-sm font-normal'>
-                       <p>{data.description || "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including "}</p>
+                  <main className='w-3/4 text-sm font-normal'>
+                     <p>{data.description || "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including "}</p>
                   </main>
             </section>
 
