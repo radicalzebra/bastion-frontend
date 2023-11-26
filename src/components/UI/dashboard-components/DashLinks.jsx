@@ -1,7 +1,9 @@
 import React, { useReducer } from 'react'
 import { NavLink } from 'react-router-dom'
 import Card from '../../Utilities/Card'
-import defaultUser from "../../../assets/navlogos/defaultUser.svg"
+import defaultUser from "../../../assets/navlogos/defaultUser.jpg"
+import { useSelector  } from 'react-redux'
+
 
 
 
@@ -62,6 +64,8 @@ const touchedReducer = (state,action) => {
 export function DashboardLayout(props) {
 
    const [touched,dispatchFn] = useReducer(touchedReducer,{val:false})
+   const user = useSelector(state => state.login.user)
+   const logged = useSelector(state => state.login.loggedIn)
 
   return (
     <section className='flex flex-col bg-gray-00  w-24 py-8 gap-8 items-center h-screen  rounded-md  '>
@@ -103,8 +107,8 @@ export function DashboardLayout(props) {
 
             <Card className="flex flex-col justify-between items-center h-1/4">
                   {/* User */}
-                  <NavLink to="/dashboard/settings/general" className="bg-gray-100 border-red-500 border-2 p-1 rounded-full">
-                    <img src={props.img || defaultUser} alt="user" />
+                  <NavLink to="/dashboard/settings/general" className="bg-gray-100 border-red-500 border-2 overflow-hidden w-12 rounded-full">
+                    <img src={logged ? user.photo : defaultUser} alt="user" />
                   </NavLink>
                   
                   {/* Notification */}

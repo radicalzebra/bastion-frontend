@@ -9,6 +9,7 @@ import NotificationSettings from './NotificationSettings'
 
 
 import hero from "../../../assets/headerImg/hero.jpg"
+import defaultUser from "../../../assets/navlogos/defaultUser.jpg"
 import { NavLink, useParams } from 'react-router-dom'
 
 
@@ -28,7 +29,7 @@ const touchedReducer = (state , action) => {
 
 
 
-function Settings(props) {
+function Settings({user , logged , className}) {
 
    const {specify} = useParams();
 
@@ -46,7 +47,7 @@ function Settings(props) {
    },[specify])
 
   return (
-    <main className={`flex gap-10    ${props.className}`}>
+    <main className={`flex gap-10  ${className}`}>
            
 
          {/* <DashLinks/> */}
@@ -79,22 +80,22 @@ function Settings(props) {
                      //   <p className='text-black'>general</p>
                      <section className='flex flex-col gap-20 mb-20 px-20'>
                         <figure className=' bg-red-90  self-center cursor-pointer hover:brightness-90 relative'>
-                            <img className='rounded-full w-60 h-60' src={hero} alt="profile" />
+                            <img className='rounded-full w-60 h-60' src={logged ? user.photo : defaultUser} alt="profile" />
                             {/* <p className='text-6xl absolute text-red-400 top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2'>+</p> */}
                         </figure>
                         
-                        <GeneralSettings className=""/>
+                        <GeneralSettings user={user} logged={logged} className=""/>
                         
                      </section>
                        
                    }
 
                    {touched.val === "billings" && 
-                      <BillingSettings/>
+                      <BillingSettings user={user} logged={logged}/>
                    }
                    
                    {touched.val === "notifications" && 
-                       <NotificationSettings/>
+                       <NotificationSettings user={user} logged={logged}/>
                    }
             </main>
                   

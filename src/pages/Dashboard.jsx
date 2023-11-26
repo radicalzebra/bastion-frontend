@@ -6,11 +6,14 @@ import Orders from "../components/UI/dashboard-components/Orders";
 import Settings from "../components/UI/dashboard-components/Settings";
 
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 
 const Dashboard = (props) => {
 
+  const user = useSelector(state => state.login.user)
+  const logged = useSelector(state => state.login.loggedIn)
 
   let orderArr = [
     {id:"#7021",customer:"John Doe" , order:"Jordan-007", amount:"123.4" , paymentMethod:"UPI", deliveryDate:"12.02.23", status:"completed"},
@@ -44,7 +47,7 @@ const Dashboard = (props) => {
   if(action === "overview") {
 
      return (
-       <Overview/>
+       <Overview user={user} logged={logged}/>
    )
  }
 
@@ -52,21 +55,21 @@ const Dashboard = (props) => {
  if(action === "products") {
 
      return (
-        <Products/>
+        <Products user={user} logged={logged}/>
    )
  }
 
  if(action === "orders") {
 
      return (
-        <Orders orders={orderArr}/>
+        <Orders user={user} logged={logged} orders={orderArr}/>
    )
   }
 
   if(action === "settings") {
 
      return (
-        <Settings/>
+        <Settings user={user} logged={logged}/>
    )
  }
 }

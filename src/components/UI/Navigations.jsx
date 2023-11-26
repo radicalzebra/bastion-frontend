@@ -3,7 +3,7 @@ import Card from '../Utilities/Card';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Icons from '../Utilities/Icons';
 import Bastion from "../../assets/navlogos/Bastion.svg";
-import defaultUser from "../../assets/navlogos/defaultUser.svg"
+import defaultUser from "../../assets/navlogos/defaultUser.jpg"
 import {NumCartItems} from './Cart';
 import { NotifyItems } from './Notify';
 import {useSelector,useDispatch} from "react-redux"
@@ -35,6 +35,8 @@ export const Nav = (props) => {
 
    const cartShow = useSelector(state => state.cart.touched)
    const notifyShow = useSelector(state => state.notify.touched)
+   const user = useSelector(state => state.login.user)
+   const logged = useSelector(state => state.login.loggedIn)
    const dispatch = useDispatch();
 
    const cartHandler = (e) => {
@@ -107,7 +109,7 @@ export const Nav = (props) => {
                            </div>
 
                            <NavLink to="/dashboard/settings/general">
-                                 <Icons src={defaultUser} alt="user" imgClasses="w-full scale-100" className="  overflow-hidden shadow-inner shadow-gray-400  w-12 h-12 rounded-full  p-2"/>
+                                 <Icons src={`${logged ? user.photo : defaultUser}`} alt="user" imgClasses="w-full scale-100" className="  overflow-hidden shadow-inner shadow-gray-400  w-12 h-12 rounded-full "/>
                            </NavLink>
 
                   </div>

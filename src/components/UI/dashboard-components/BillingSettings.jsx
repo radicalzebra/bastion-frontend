@@ -3,7 +3,10 @@ import Card from '../../Utilities/Card'
 import { Legend } from 'recharts';
 
 
-function BillingSettings() {
+function BillingSettings({user, logged}) {
+
+ const expiry = `${new Date(user.cardExpiry).getFullYear()}-${new Date(user.cardExpiry).getMonth()}-${new Date(user.cardExpiry).getDate()}`
+
   return (
     <section className='text-black flex flex-col gap-8 mb-20'>
 
@@ -18,24 +21,24 @@ function BillingSettings() {
                <div className='flex gap-3'>
                     <label className='flex flex-col gap-1'>
                         <p className='text-sm text-gray-500 font-semibold'>Name on card</p>
-                        <input type="text" className='bg-gray-50 text-lg font-medium shadow-md border-2 border-gray-300 hover:border-gray-800 rounded-md px-2 outline-none h-10 w-60' place />
+                        <input defaultValue={user.cardName || null} type="text" className='bg-gray-50 text-lg font-medium shadow-md border-2 border-gray-300 hover:border-gray-800 rounded-md px-2 outline-none h-10 w-60' place />
                      </label>
 
                      <label className='flex flex-col gap-1'>
                         <p className='text-sm text-gray-500 font-semibold'>Valid thru</p>
-                        <input type="date" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
+                        <input defaultValue={expiry || null} type="date" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
                      </label>
                </div>
 
                <div className='flex gap-3'>
                     <label className='flex flex-col gap-1'>
                         <p className='text-sm text-gray-500 font-semibold'>Card number</p>
-                        <input type="text" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 outline-none h-10 w-60' place />
+                        <input defaultValue={user.cardNumber || null} type="text" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 outline-none h-10 w-60' place />
                      </label>
 
                      <label className='flex flex-col gap-1'>
                         <p className='text-sm text-gray-500 font-semibold'>CVV</p>
-                        <input type="password" className='bg-gray-50 text-2xl shadow-md border-2 font-medium border-gray-300 hover:border-gray-800 rounded-md px-2 h-10 w-28 outline-none' />
+                        <input defaultValue={user.Cvv || null} type="password" className='bg-gray-50 text-2xl shadow-md border-2 font-medium border-gray-300 hover:border-gray-800 rounded-md px-2 h-10 w-28 outline-none' />
                      </label>
                </div>
 
@@ -51,7 +54,7 @@ function BillingSettings() {
           <p className='text-Legend font-semibold w-2/6 text-gray-600'>Street Address</p>
 
           <form className='w-4/6  bg-blue-80'>
-                <input type="text" className='bg-gray-50 text-lg w-4/6 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10' place />
+                <input defaultValue={user.streetAddress || null} type="text" className='bg-gray-50 text-lg w-4/6 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10' place />
           </form>
 
       </Card>
@@ -63,7 +66,7 @@ function BillingSettings() {
           <p className='text-Legend font-semibold w-2/6 text-gray-600'>City</p>
 
           <form className='w-4/6  bg-blue-80'>
-                <input type="text" className='bg-gray-50 text-lg w-2/6 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10' place />
+                <input defaultValue={user.city || null} type="text" className='bg-gray-50 text-lg w-2/6 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10' place />
           </form>
 
       </Card>
@@ -80,12 +83,12 @@ function BillingSettings() {
                 <div className='flex gap-3'>
                     <label className='flex flex-col gap-1'>
                         <p className='text-sm text-gray-500 font-semibold'>State</p>
-                        <input type="text" className='bg-gray-50 text-lg font-medium shadow-md border-2 border-gray-300 hover:border-gray-800 rounded-md px-2 outline-none h-10 w-60' place />
+                        <input defaultValue={user.state || null} type="text" className='bg-gray-50 text-lg font-medium shadow-md border-2 border-gray-300 hover:border-gray-800 rounded-md px-2 outline-none h-10 w-60' place />
                      </label>
 
                      <label className='flex flex-col gap-1'>
                         <p className='text-sm text-gray-500 font-semibold'>Pincode</p>
-                        <input type="text" className='bg-gray-50 text-lg shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
+                        <input defaultValue={user.pincode || null} type="text" className='bg-gray-50 text-lg shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
                      </label>
                </div>
           </form>
@@ -100,7 +103,7 @@ function BillingSettings() {
           <p className='text-Legend font-semibold w-2/6 text-gray-600'>Landmark</p>
 
           <form className='w-4/6  bg-blue-80'>
-                <input type="text" className='bg-gray-50 text-lg w-2/4 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10'  />
+                <input defaultValue={user.landmark || null} type="text" className='bg-gray-50 text-lg w-2/4 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10'  />
           </form>
 
       </Card>

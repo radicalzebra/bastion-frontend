@@ -29,14 +29,14 @@ const Login = createSlice({
 
 
 
-export const loginUser = () => {
+export const loginUser = ({email,password}) => {
 
 
    return async (dispatch) => {
 
       const body = {
-         email:"johndoe@gmail.com",
-         password:"user123"
+         email,
+         password
       }
 
       const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/users/login`, {
@@ -49,6 +49,7 @@ export const loginUser = () => {
 
       const resData = await response.json()
       const data = await resData.data.user
+
 
       dispatch(Login.actions.login(true))
       dispatch(Login.actions.user(data))
