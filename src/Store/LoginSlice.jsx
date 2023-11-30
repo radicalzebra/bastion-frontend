@@ -1,8 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useMutation } from "@tanstack/react-query";
-
-
-
 
 
 const Login = createSlice({
@@ -61,4 +57,4 @@ export const loginUser = ({email,password}) => {
 
 
 
-export const {reducer:loginReducer , actions:loginActions} = Login
+export const {reducer:loginReducer , actions:loginActions } = Login
