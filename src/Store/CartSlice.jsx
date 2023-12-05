@@ -5,7 +5,7 @@ const Cart = createSlice({
    initialState: {touched : false},
    reducers:{
       touchHandler : (state,action) => {
-         console.log("redux-cartSlice",state.touched)
+         // console.log("redux-cartSlice",state.touched)
          state.touched = action.payload ?? !state.touched  //very important implementatiom broooo
       }
    }

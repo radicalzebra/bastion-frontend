@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const Login = createSlice({
    name:"login",
-   initialState:{loggedIn:false, user:{} , showForm:false},
+   initialState:{loggedIn:false, user:{} , showForm:false , errMsg: false , errCode: 500},
    reducers:{
       login(state,action) {
          state.loggedIn = action.payload;
@@ -15,9 +15,14 @@ const Login = createSlice({
          console.log(state.user,"lll")
       },
 
+      error(state,action) {
+        state.errMsg = action.payload.message || "An Error Occured while logging in"
+        state. errCode = action.payload.code || 500
+        console.log(state.errMsg,state.errCode,action)
+      },
 
-      showLogin(state) {
-         state.showForm = true
+      showLogin(state,action) {
+         state.showForm = action.payload
       }
    }
 })
@@ -44,11 +49,20 @@ export const loginUser = ({email,password}) => {
       })
 
       const resData = await response.json()
+      console.log(response)
+
+
+      if(!response.ok | resData.status === "fail") {
+         console.log(resData)
+         return  dispatch(Login.actions.error({message:"Error",code:404}))
+      }
+
       const data = await resData.data.user
 
 
       dispatch(Login.actions.login(true))
       dispatch(Login.actions.user(data))
+      dispatch(Login.actions.showLogin(false))
       
 
    }

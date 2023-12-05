@@ -1,8 +1,14 @@
 import Card from '../Utilities/Card'
 import cross from "../../assets/navlogos/cross.svg"
 import useLoginHook from '../../Hooks/loginForm-hook';
+import { useDispatch, useSelector } from "react-redux";
+import { loginActions } from "../../Store/LoginSlice";
+
+
 
 function LoginForm({className}) {
+
+  const dispatch =  useDispatch()
 
   const {
     email,
@@ -17,8 +23,8 @@ function LoginForm({className}) {
 
 
   return (
-    <Card className={`text-black rounded-lg flex flex-col  gap-12  ${className}`}>
-       <div className='p-1 bg-gray-700 rounded-full  top-1 right-1 hover:cursor-pointer w-max absolute'>  
+    <Card className={`text-black rounded-lg flex flex-col transition-all  gap-12 ${className}`}>
+       <div onClick={()=> dispatch(loginActions.showLogin(false))} className='p-1 bg-gray-900 rounded-full  top-2 right-2 hover:cursor-pointer w-max absolute'>  
          <img className='w-2 h-2' src={cross}  />
        </div>
 
@@ -29,7 +35,7 @@ function LoginForm({className}) {
 
        <form className='flex flex-col  gap-12 '>
          <label className='flex flex-col gap-1'>
-            <input value={email} onChange={(e)=>setEmail(e.target.value)} className={`h-10 px-1 outline-none bg-white  border-black border-b-2  ${email.length !== 0 && " border-green-500"} `} type="email" placeholder='Email' />
+            <input  value={email} onChange={(e)=>setEmail(e.target.value)} className={`h-10 px-1 outline-none bg-white  border-black border-b-2  ${email.length !== 0 && " border-green-500"} `} type="email" placeholder='Email' />
          </label>
 
          <label className='flex flex-col gap-1 relative'>

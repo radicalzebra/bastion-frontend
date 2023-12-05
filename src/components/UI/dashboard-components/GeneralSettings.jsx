@@ -8,8 +8,10 @@ import Card from '../../Utilities/Card'
 
 function GeneralSettings({user , logged , className}) {
 
-   const expiry = `${new Date(user.birthday).getFullYear()}-${new Date(user.birthday).getMonth()}-${new Date(user.birthday).getDate()}`
-   console.log(new Date(user.birthday).getMonth() + 1, user.birthday)
+  const month =  Number(new Date(user.birthday).getMonth()) + 1
+  const date  =  Number(new Date(user.birthday).getDate())
+  const expiry = `${new Date(user.birthday).getFullYear()}-${month < 10 ? `0${month}`: month}-${date < 9 ? `0${date}` : date}`
+  console.log(expiry)
   return (
     <Card className={`flex flex-col w-6/6  bg-red-90 gap-12 ${className}`}>
 

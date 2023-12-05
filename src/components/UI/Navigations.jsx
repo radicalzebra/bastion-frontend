@@ -9,9 +9,7 @@ import { NotifyItems } from './Notify';
 import {useSelector,useDispatch} from "react-redux"
 import {cartActions} from '../../Store/CartSlice';
 import {notifyActions} from '../../Store/NotifySlice';
-
-
-
+import { loginActions } from '../../Store/LoginSlice';
 
 import { useEffect, useState, useRef } from 'react';
 
@@ -31,6 +29,7 @@ export const OneLineBanner = (props) => {
 
 
 export const Nav = (props) => {
+
    const [inputTouched,setInputTouched] = useState(false);
 
    const cartShow = useSelector(state => state.cart.touched)
@@ -44,6 +43,7 @@ export const Nav = (props) => {
       console.log(e.stopPropagation()) //stop event bubbling 
       dispatch(cartActions.touchHandler())
       dispatch(notifyActions.touchHandler(false))
+      dispatch(loginActions.showLogin(logged ? false : true))
    }
 
    const notifyHandler = (e) => {
@@ -51,9 +51,10 @@ export const Nav = (props) => {
       console.log(e.stopPropagation()) //stop event bubbling 
       dispatch(notifyActions.touchHandler())
       dispatch(cartActions.touchHandler(false))
+      dispatch(loginActions.showLogin(logged ? false : true))
    }
   
-
+   const currentUrl = window.location.href;
    const navigate = useNavigate();
 
    return (
@@ -75,40 +76,38 @@ export const Nav = (props) => {
                            <input onClick={()=>setInputTouched(true)}  onMouseLeave={()=>setInputTouched(false)} type="search"  className='h-full text-xs font-medium caret-red-400 w-full bg-gray-100  outline-none text-black' placeholder='Search all categories' />
                   </label>
    
-                  <div  className='flex items-center bg-blue-90 justify-between w-1/6 '>
-
-                         
+                  <div onClick={() => dispatch(loginActions.showLogin(logged ? false : true))} className='flex items-center bg-blue-90 justify-between w-1/6 '>
 
                            <div className='flex gap-5 items-center'>
 
                               {/* cart  "/dashboard/cart" */}
                               <figure onClick={cartHandler} className={`relative hover:cursor-pointer `}>
-                                 { props.numCartItems && <div className="absolute text-xs text-white text-center scale-75 bg-red-600 rounded-full w-4 h-4 brightness-100 -top-1 left-4 ">{props.numCartItems}</div>}
+                                 {props.numCartItems && <div className="absolute text-xs text-white text-center scale-75 bg-red-600 rounded-full w-4 h-4 brightness-100 -top-1 left-4 " >{props.numCartItems}</div> }
                                  <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.78571 5H18.2251C19.5903 5 20.5542 6.33739 20.1225 7.63246L18.4558 12.6325C18.1836 13.4491 17.4193 14 16.5585 14H6.07142M4.78571 5L4.74531 4.71716C4.60455 3.73186 3.76071 3 2.76541 3H2M4.78571 5L6.07142 14M6.07142 14L6.25469 15.2828C6.39545 16.2681 7.23929 17 8.23459 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                               </figure>
 
 
                               {/* grid */}
-                              <NavLink to="/dashboard/overview" className={"brightness-0"}>
+                              <NavLink to={logged ? `/dashboard/overview`: currentUrl} className={"brightness-0"}>
                                  <svg  width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 8.976C3 4.05476 4.05476 3 8.976 3H15.024C19.9452 3 21 4.05476 21 8.976V15.024C21 19.9452 19.9452 21 15.024 21H8.976C4.05476 21 3 19.9452 3 15.024V8.976Z" stroke="red" stroke-width="1.5"></path> <path d="M21 9L3 9" stroke="red" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 21L9 9" stroke="red" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>                             
                               </NavLink>
 
 
                               {/* create */}
-                              <NavLink to="/dashboard/create" className={"brightness-0"}>
+                              <NavLink to={logged ? `/dashboard/create` : currentUrl} className={"brightness-0"}>
                                  <svg width="23" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#ed0c0c" class="bi bi-plus-circle"><g id="SVGRepo_bgCarrier" stroke-width="1.5"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path> </g></svg>
                               </NavLink>
 
 
                               {/* notifications */}
                               <figure onClick={notifyHandler}  className={" relative hover:cursor-pointer"}>
-                                 {props.numNotif  && <div className="absolute text-xs text-white text-center scale-75 bg-red-600 rounded-full w-4 h-4 brightness-100 -top-1 left-3 ">{props.numNotif}</div>}
+                                 {props.numNotif  && <div className="absolute text-xs text-white text-center scale-75 bg-red-600 rounded-full w-4 h-4 brightness-100 -top-1 left-3 ">{props.numNotif}</div> }
                                  <svg   width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="1"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Communication / Bell"> <path id="Vector" d="M15 17V18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18V17M15 17H9M15 17H18.5905C18.973 17 19.1652 17 19.3201 16.9478C19.616 16.848 19.8475 16.6156 19.9473 16.3198C19.9997 16.1643 19.9997 15.9715 19.9997 15.5859C19.9997 15.4172 19.9995 15.3329 19.9863 15.2524C19.9614 15.1004 19.9024 14.9563 19.8126 14.8312C19.7651 14.7651 19.7048 14.7048 19.5858 14.5858L19.1963 14.1963C19.0706 14.0706 19 13.9001 19 13.7224V10C19 6.134 15.866 2.99999 12 3C8.13401 3.00001 5 6.13401 5 10V13.7224C5 13.9002 4.92924 14.0706 4.80357 14.1963L4.41406 14.5858C4.29476 14.7051 4.23504 14.765 4.1875 14.8312C4.09766 14.9564 4.03815 15.1004 4.0132 15.2524C4 15.3329 4 15.4172 4 15.586C4 15.9715 4 16.1642 4.05245 16.3197C4.15225 16.6156 4.3848 16.848 4.68066 16.9478C4.83556 17 5.02701 17 5.40956 17H9" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
                               </figure>
 
                            </div>
 
-                           <NavLink to="/dashboard/settings/general">
+                           <NavLink to={logged ? `/dashboard/settings/general` : currentUrl}>
                                  <Icons src={`${logged ? user.photo : defaultUser}`} alt="user" imgClasses="w-full scale-100" className="  overflow-hidden shadow-inner shadow-gray-400  w-12 h-12 rounded-full "/>
                            </NavLink>
 
@@ -118,15 +117,14 @@ export const Nav = (props) => {
 
            <section  className="flex gap-6 bg-blue-90  items-center relative ">
 
-              {cartShow && <NumCartItems items={[1,2,3,4,5,6,7]}/> }
-              {notifyShow && <NotifyItems items={[1,2,3,4,5,6,7]}/>}
+              {logged ?  cartShow && props.cartItems > 0 && <NumCartItems items={props.cartItems}/> : undefined }
+              {logged ? notifyShow && <NotifyItems items={[1,2,3]}/> : undefined}
             
                
               
-              {/* <div className='items-center flex bg-red-900 gap-20'> */}
-                  {props.links.map((el,i)=>{
+               {props.links.map((el,i)=>{
                      return <NavLink  to={`products/${el}`} className={({isActive})=> isActive ? "shadow-inner text-sm shadow-gray-300  capitalize font-medium rounded-full px-4 bg-gray-50 text-black": "  capitalize font-medium  rounded-full px-3 bg-black text-white text-sm" }  key={i}>{el}</NavLink>
-                  })}
+               })}
               
 
            </section>

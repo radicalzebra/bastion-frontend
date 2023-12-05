@@ -4,7 +4,7 @@ import down from "../../assets/navlogos/down.svg"
 import { gsap } from 'gsap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch} from 'react-redux';
-import { loginUser } from '../../Store/LoginSlice';
+import { loginActions, loginUser } from '../../Store/LoginSlice';
 
 
 
@@ -45,7 +45,7 @@ const ProductDescription = ({data,className}) => {
 
    const buttonHandler = (e) => {
       setBtnTouched(true)
-
+      dispatch(loginActions.showLogin(logged ? false : true))
       setTimeout(() => {
          // navigate("/")
       }, 500);

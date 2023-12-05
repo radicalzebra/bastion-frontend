@@ -5,7 +5,10 @@ import { Legend } from 'recharts';
 
 function BillingSettings({user, logged}) {
 
- const expiry = `${new Date(user.cardExpiry).getFullYear()}-${new Date(user.cardExpiry).getMonth()}-${new Date(user.cardExpiry).getDate()}`
+  const month =  Number(new Date(user.cardExpiry).getMonth()) + 1
+  const date  =  Number(new Date(user.cardExpiry).getDate())
+  const expiry = `${new Date(user.cardExpiry).getFullYear()}-${month < 10 ? `0${month}`: month}-${date < 10 ? `0${date}` : date}`
+  console.log(expiry)
 
   return (
     <section className='text-black flex flex-col gap-8 mb-20'>
