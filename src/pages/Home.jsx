@@ -65,7 +65,7 @@ const Home = (props) => {
          <Card className="text-black my-12 px-28 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 ">
              <div ref={arrivalsRef} className="self-start flex w-full justify-between items-center">
                <p className='text-3xl font-extrabold uppercase'>bestsellers</p>
-               <NavLink to="/products/brands" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
+               <NavLink to="/products/all" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
             </div>
              <Carousal>
                   <ProdCard/>
@@ -93,7 +93,7 @@ const Home = (props) => {
          <Card className="text-black px-28 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 my-12 ">
              <div ref={arrivalsRef} className="self-start flex w-full justify-between items-center">
                <p className='text-3xl font-extrabold uppercase'>chosen for you</p>
-               <NavLink to="/products/brands" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
+               <NavLink to="/products/all" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
             </div>
              <Carousal>
                   <ProdCard/>

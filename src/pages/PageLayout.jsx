@@ -5,7 +5,7 @@ import Card from '../components/Utilities/Card';
 import {cartActions} from '../Store/CartSlice';
 import {notifyActions} from '../Store/NotifySlice';
 import { useSelector , useDispatch} from 'react-redux';
-import Login from '../components/UI/Login';
+import {Login} from '../components/UI/AuthModal';
 
 
 

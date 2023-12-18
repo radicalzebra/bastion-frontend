@@ -10,15 +10,6 @@ import { loginActions, loginUser } from '../../Store/LoginSlice';
 
 
 
-export const Button = (props) => {
-   const [sizeTouched, setSizeTouched] = useState(false);
-
-   return (
-      <button onClick={() => setSizeTouched(state => !state)} className={`bg-whie w-16 text-lg font-medium border-2  hover:border-black h-10 rounded-md shadow-sm text-black transition-all ${sizeTouched && "  bg-black text-white"}`}>{props.children}</button>
-   )
-}
-
-
 const ProductDescription = ({data,className}) => {
 
    const buttonRef = useRef(null);
@@ -28,6 +19,7 @@ const ProductDescription = ({data,className}) => {
    const [reviewTouched, setReviewTouched] = useState(false);
    const [infoTouched, setInfoTouched] = useState(false);
    const [deliveryTouched, setDeliveryTouched] = useState(false);
+
 
    const logged = useSelector(state => state.login.loggedIn)
    const user = useSelector(state => state.login.user)
@@ -89,7 +81,7 @@ const ProductDescription = ({data,className}) => {
                 <div className='flex gap-2 w-96 flex-wrap'>
                       {data.sizes.map((el , i) => {
                         return (
-                              <Button>{el}</Button>
+                              <button  className={`bg-white w-16 text-lg font-medium border-2  hover:border-rose-500 h-10 rounded-md shadow-sm text-black transition-all `}>{el}</button>
                            )
                       })}
                 </div>

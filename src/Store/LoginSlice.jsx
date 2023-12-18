@@ -16,7 +16,7 @@ const Login = createSlice({
       },
 
       error(state,action) {
-        state.errMsg = action.payload.message || "An Error Occured while logging in"
+        state.errMsg = action.payload.message || "An Error Occured while logging in, check your email & password"
         state. errCode = action.payload.code || 500
         console.log(state.errMsg,state.errCode,action)
       },
@@ -52,9 +52,9 @@ export const loginUser = ({email,password}) => {
       console.log(response)
 
 
-      if(!response.ok | resData.status === "fail") {
+      if(!response.ok || resData.status === "fail") {
          console.log(resData)
-         return  dispatch(Login.actions.error({message:"Error",code:404}))
+         return  dispatch(Login.actions.error({message:resData.err,code:resData.errCode}))
       }
 
       const data = await resData.data.user

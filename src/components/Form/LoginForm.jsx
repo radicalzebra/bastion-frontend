@@ -9,6 +9,9 @@ import { loginActions } from "../../Store/LoginSlice";
 function LoginForm({className}) {
 
   const dispatch =  useDispatch()
+  const errorMessage = useSelector(state => state.login.errMsg)
+  const errorCode = useSelector(state => state.login.errCode)
+
 
   const {
     email,
@@ -31,9 +34,10 @@ function LoginForm({className}) {
        <header className='text-3xl flex flex-col gap-1'>
          <h1 className='font-showcase'>Log In</h1>
          <p className='text-xs font-secondary text-gray-700'>Enter your email & password to login to our website</p>
+         {errorMessage && <span className='text-xs font-secondary text-red-700 mt-2'>!{errorMessage}</span>}
        </header>
 
-       <form className='flex flex-col  gap-12 '>
+       <form className='flex flex-col gap-12 '>
          <label className='flex flex-col gap-1'>
             <input  value={email} onChange={(e)=>setEmail(e.target.value)} className={`h-10 px-1 outline-none bg-white  border-black border-b-2  ${email.length !== 0 && " border-green-500"} `} type="email" placeholder='Email' />
          </label>
