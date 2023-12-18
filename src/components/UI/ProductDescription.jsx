@@ -12,8 +12,11 @@ import { loginActions, loginUser } from '../../Store/LoginSlice';
 
 const ProductDescription = ({data,className}) => {
 
+
    const buttonRef = useRef(null);
+   const sizesRef = useRef(null);
    const reviewRef = useRef(null);
+
 
    const [btnTouched, setBtnTouched] = useState(false)
    const [reviewTouched, setReviewTouched] = useState(false);
@@ -30,7 +33,20 @@ const ProductDescription = ({data,className}) => {
    }
 
 
-   
+   const onClickSizes = (e) => {
+      console.log(e)
+      console.log(sizesRef.current.children)
+      for(let i = 0;i<sizesRef.current.children.length;i++){
+         if(e.target===sizesRef.current.children[i]){
+            console.log(true)
+            gsap.to(sizesRef.current.children[i],{color:"red",ease:"bounce",backgroundColor:"black",color:"white",ease:"elastic"})
+         } else {
+             gsap.to(sizesRef.current.children[i],{backgroundColor:"#e6e8e6",color:"black"})
+         }
+      }
+      
+      // gsap.to(e.target,{color:"red",ease:"bounce"})
+   }
 
 
    const navigate = useNavigate();
@@ -66,7 +82,7 @@ const ProductDescription = ({data,className}) => {
 
            <section className='flex flex-col gap-3  '>
               <h1 className='text-3xl '>{data.name || "Jordan"}</h1>
-              <p className='text-xl  font-mono text-yellow-600'>{`$ ${data.price || "3456"}`}</p>
+              <p className='text-xl  font-mono text-yellow-600 '>{`$ ${data.price || "3456"}`}</p>
               <div className='flex gap-2 text-xs'>
                   <p className='px-2 border-2 border-blue-600 rounded-full bg-blue-200 text-blue-600 '>{data.season}</p>
                   <p className='px-2 border-2 border-black rounded-full bg-black text-white'>{data.brand}</p>
@@ -78,10 +94,10 @@ const ProductDescription = ({data,className}) => {
 
            <section className='flex flex-col gap-4'>
                 <h2 className='text-xl'>select size <span className='text-lg text-gray-500 font-mono'>(UK)</span></h2>
-                <div className='flex gap-2 w-96 flex-wrap'>
+                <div ref={sizesRef} onClick={onClickSizes} className='flex gap-2 w-96 flex-wrap'>
                       {data.sizes.map((el , i) => {
                         return (
-                              <button  className={`bg-white w-16 text-lg font-medium border-2  hover:border-rose-500 h-10 rounded-md shadow-sm text-black transition-all `}>{el}</button>
+                              <button  className={`bg-white  w-16 text-lg font-medium border-2  hover:brightness-95 h-10 rounded-md shadow-sm text-black transition-all `}>{el}</button>
                            )
                       })}
                 </div>
@@ -123,6 +139,7 @@ const ProductDescription = ({data,className}) => {
 
                     {reviewTouched && 
                         <main ref={reviewRef} className='flex-col flex mb-12 gap-4'>
+                           <button className='bg-rose-600 rounded-full text-white text-sm py-2 hover:brightness-90 mb-9'>comment +</button>
                               {data.reviews.map((el,i) => {
                                  console.log(el.user)
                                  return (
