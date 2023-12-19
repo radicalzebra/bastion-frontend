@@ -139,11 +139,11 @@ const ProductDescription = ({data,className}) => {
 
                     {reviewTouched && 
                         <main ref={reviewRef} className='flex-col flex mb-12 gap-4'>
-                           <button className='bg-rose-600 rounded-full text-white text-sm py-2 hover:brightness-90 mb-9'>comment +</button>
+                           <button className='bg-rose-600 rounded-full scale-95 text-white text-sm py-2 hover:brightness-90 mb-9'>comment +</button>
                               {data.reviews.map((el,i) => {
                                  console.log(el.user)
                                  return (
-                                    <ReviewCard review={el} key={i+1} className="w-full text-sm  hover:border-l-4 hover:shadow-xl border-rose-500 shadow-md shadow-rose-100" />
+                                    <ReviewCard review={el} key={i+1} className="w-full text-sm border-b-2 border-gray-200 " />
                                  )
                               })}
                         </main>
