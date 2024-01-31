@@ -4,6 +4,7 @@ import Card from '../components/Utilities/Card';
 
 import {cartActions} from '../Store/CartSlice';
 import {notifyActions} from '../Store/NotifySlice';
+
 import { useSelector , useDispatch} from 'react-redux';
 import {Login} from '../components/UI/AuthModal';
 
@@ -18,15 +19,16 @@ const PageLayout = (props) => {
 
    const dispatch = useDispatch();
    
-   const onClickHandler = () => {
+   const onClickHandler = (e) => {
       dispatch(cartActions.touchHandler(false))
       dispatch(notifyActions.touchHandler(false))
+
    }
   
    return (
 
       
-         <div onClick={onClickHandler}  className="flex flex-col gap-8 pt-2 px-4 relative">
+         <div onClick={(e) => onClickHandler(e)}  className="flex flex-col gap-8 pt-2 px-4 relative">
            
             <header  className='z-20'>
                {/* <OneLineBanner className="font-medium text- tracking-wider" string="Discover your perfect pair & walk with ease 👟"/> */}

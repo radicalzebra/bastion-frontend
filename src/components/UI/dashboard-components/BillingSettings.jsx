@@ -1,120 +1,78 @@
-import React from 'react'
-import Card from '../../Utilities/Card'
-import { Legend } from 'recharts';
+import React, { useState } from 'react'
+import BillingInputSection from '../BillingInputSection';
+import BillingInput from '../BillingInput';
+import dateFormat from '../../Utilities/DateFomat';
+
 
 
 function BillingSettings({user, logged}) {
 
-  const month =  Number(new Date(user.cardExpiry).getMonth()) + 1
-  const date  =  Number(new Date(user.cardExpiry).getDate())
-  const expiry = `${new Date(user.cardExpiry).getFullYear()}-${month < 10 ? `0${month}`: month}-${date < 10 ? `0${date}` : date}`
-  console.log(expiry)
+ const [changed,setChanged] =useState(false)
+ const [btnClick,setBtnClick] = useState("Save")
+
+ const onSubmitHandler = (e) => {
+    e.preventDefault()
+    setBtnClick("Saved")
+    setTimeout(()=>{
+        setChanged(false)
+        setBtnClick("Save")
+    },2000)
+ }
+
+
+ const onChangeHandler = (e) => {
+    //  if(e.target.value.trim().length !== e.target.value.length) setChanged(false)
+    // else setChanged(true)
+    setChanged(true)
+ }
+
+
 
   return (
-    <section className='text-black flex flex-col gap-8 mb-20'>
+    <form onSubmit={onSubmitHandler} onChange={onChangeHandler} className='text-black flex flex-col gap-8 mb-20'>
+
+        <BillingInputSection label={"Card Details"}>
+            <div className='flex gap-3 '>
+                <BillingInput data={user.cardName || ""} label={"Name on card"} type={"text"} className={" w-1/2"}/>
+                <BillingInput type="date" data={dateFormat(user.cardExpiry) || ""} label={"Valid thru"} className={" w-1/4"} />
+            </div>
+
+            <div className='flex gap-3'>
+                <BillingInput data={user.cardNumber || ""} label={"Card number"} type={"text"} className={" w-1/2"} maxLen={16} />
+                <BillingInput type="password" data={user.Cvv || ""} label={"CVV"} className={" w-1/4"} maxLen={3} />
+            </div>
+        </BillingInputSection>
 
 
-      {/* Card Details */}
-      <Card className="flex gap-4 bg-red-90   border-b-2 border-gray-300 py-10">
+      
+        <BillingInputSection label={"Street Address"}>
+            <BillingInput data={user.streetAddress || ""}  type={"text"} className={" w-2/3"} />
+        </BillingInputSection>
+      
 
-          <p className='text-Legend font-semibold w-2/6 text-gray-600'>Card Details</p>
 
-          <form className='w-4/6 flex flex-col gap-6 bg-blue-80'>
-
-               <div className='flex gap-3'>
-                    <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>Name on card</p>
-                        <input defaultValue={user.cardName || null} type="text" className='bg-gray-50 text-lg font-medium shadow-md border-2 border-gray-300 hover:border-gray-800 rounded-md px-2 outline-none h-10 w-60' place />
-                     </label>
-
-                     <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>Valid thru</p>
-                        <input defaultValue={expiry || null} type="date" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
-                     </label>
-               </div>
-
-               <div className='flex gap-3'>
-                    <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>Card number</p>
-                        <input defaultValue={user.cardNumber || null} type="text" className='bg-gray-50 shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 outline-none h-10 w-60' place />
-                     </label>
-
-                     <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>CVV</p>
-                        <input defaultValue={user.Cvv || null} type="password" className='bg-gray-50 text-2xl shadow-md border-2 font-medium border-gray-300 hover:border-gray-800 rounded-md px-2 h-10 w-28 outline-none' />
-                     </label>
-               </div>
-
-          </form>
-
-      </Card>
+        <BillingInputSection label={"City"}>
+            <BillingInput data={user.city|| ""}  type={"text"} className={" w-1/3"} />
+        </BillingInputSection>
 
 
 
-      {/* Street Address */}
-      <Card className="flex gap-4 bg-red-90  border-b-2 border-gray-300 py-10">
-
-          <p className='text-Legend font-semibold w-2/6 text-gray-600'>Street Address</p>
-
-          <form className='w-4/6  bg-blue-80'>
-                <input defaultValue={user.streetAddress || null} type="text" className='bg-gray-50 text-lg w-4/6 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10' place />
-          </form>
-
-      </Card>
+        <BillingInputSection label={"State & Pincode"}>
+            <div className='flex gap-3 '>
+                <BillingInput data={user.state || ""} label={"State"} type={"text"} className={" w-1/2"}/>
+                <BillingInput type="text" data={user.pincode || ""} label={"Pincode"} className={" w-1/4"} />
+            </div>
+        </BillingInputSection>
 
 
-      {/* City */}
-      <Card className="flex gap-4 bg-red-90  border-b-2 border-gray-300 py-10">
+        <BillingInputSection label={"Landmark"}>
+            <BillingInput data={user.landmark|| ""}  type={"text"} className={" w-1/2"}/>
+        </BillingInputSection>
 
-          <p className='text-Legend font-semibold w-2/6 text-gray-600'>City</p>
+        <button disabled={!changed} className={`w-full bg-black h-12 text-white  rounded-md font-semibold ${!changed && "bg-gray-700"} ${btnClick==="Saved" && " bg-rose-700"} `}>{btnClick}</button>
+     
 
-          <form className='w-4/6  bg-blue-80'>
-                <input defaultValue={user.city || null} type="text" className='bg-gray-50 text-lg w-2/6 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10' place />
-          </form>
-
-      </Card>
-
-
-
-
-      {/* State & Pin */}
-      <Card className="flex gap-4 bg-red-90  border-b-2 border-gray-300 py-10">
-
-          <p className='text-Legend font-semibold w-2/6 text-gray-600'>State & Pincode</p>
-
-          <form className='w-4/6 flex gap-2  bg-blue-80'>
-                <div className='flex gap-3'>
-                    <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>State</p>
-                        <input defaultValue={user.state || null} type="text" className='bg-gray-50 text-lg font-medium shadow-md border-2 border-gray-300 hover:border-gray-800 rounded-md px-2 outline-none h-10 w-60' place />
-                     </label>
-
-                     <label className='flex flex-col gap-1'>
-                        <p className='text-sm text-gray-500 font-semibold'>Pincode</p>
-                        <input defaultValue={user.pincode || null} type="text" className='bg-gray-50 text-lg shadow-md border-2 font-medium border-gray-300 rounded-md hover:border-gray-800 px-2 h-10 w-28 outline-none' />
-                     </label>
-               </div>
-          </form>
-
-      </Card>
-
-
-
-      {/* Landmark */}
-      <Card className="flex gap-4 bg-red-90 py-10">
-
-          <p className='text-Legend font-semibold w-2/6 text-gray-600'>Landmark</p>
-
-          <form className='w-4/6  bg-blue-80'>
-                <input defaultValue={user.landmark || null} type="text" className='bg-gray-50 text-lg w-2/4 font-medium shadow-md border-2 hover:border-gray-800 border-gray-300 rounded-md px-2 outline-none h-10'  />
-          </form>
-
-      </Card>
-
-
-
-
-    </section>
+    </form>
   )
 }
 

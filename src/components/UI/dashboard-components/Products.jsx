@@ -1,16 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import ReactDOM from 'react-dom';
 import Card from '../../Utilities/Card'
-import ProductCard ,{ProdCard} from '../ProductCard'
-import ProductsRect from './ProductsRect'
-import hero from "../../../assets/headerImg/hero.jpg"
-import {DashLinks, DashboardLayout} from './DashLinks'
-
-
-
-
-
-import { NavLink } from 'react-router-dom';
+import {ProdCard} from '../ProductCard'
 import { gsap } from 'gsap/all'
 
 
@@ -30,11 +20,15 @@ function Products(props) {
 
     useEffect(()=>{
       console.log(sectionRef.current.children[1])
-      gsap.timeline({duration:1,repeat:-1,repeatDelay:2,yoyo:true})
-      .fromTo(sectionRef.current.children[1],{y:-10},{y:20, ease:"circ"})
-      .fromTo(sectionRef.current.children[0],{y:-10},{y:20, ease:"sine"})
-      .fromTo(sectionRef.current.children[2],{y:-10},{y:20, ease:"sine"},"<")
-      
+      gsap.timeline({transition:"all"})
+      //     .fromTo(sectionRef.current,{x:"50vw"},{x:0,ease:"power2",duration:1})
+          .fromTo(sectionRef.current.children[0],{position:"absolute"},{x:"25rem" ,rotate:15, ease:"power2",duration:2.5})
+          .fromTo(sectionRef.current.children[2],{position:"absolute"},{x:"-25rem",rotate:-15 , ease:"power2",duration:2},"<")
+          .to(sectionRef.current.children[1],{y:10, scale:1.1, ease:"power2"},"<")
+          .fromTo(sectionRef.current.children[0],{y:10},{y:-10,yoyo:true,repeat:-1,duration:4})
+          .fromTo(sectionRef.current.children[2],{y:10},{y:-10,yoyo:true,repeat:-1,duration:4},"<")
+          .fromTo(sectionRef.current.children[1],{y:10},{y:-10,yoyo:true,repeat:-1,duration:4},)
+
       ;
     },[])
 
@@ -46,31 +40,21 @@ function Products(props) {
   return (
       
         
-       <main className={`flex gap-10 ${props.className}`}>
-         {/* <DashLinks/> */}
-         <DashboardLayout/>
-
-
-           <Card className="flex flex-col gap-28 w-5/6 relative ">
+       <main className={`flex gap-10 ${props.className} overflow-x-hidden`}>
+      
+           <Card className="flex flex-col gap-28 w-full pr-8 relative ">
 
                   
 
                   <div className='flex flex-col gap-4 mb-20 py-6'>
-                        <div className='flex gap-4'>
-                          <NavLink to={"/"} className=' text-xs tracking-wider rounded-md p-1 px-3 shadow-md mb-2 w-fit hover:shadow-inner hover:shadow-gray-300 font-semibold text-gray-400'>🏠 Home</NavLink>
-                          <NavLink to={"/"} className=' text-xs tracking-wider rounded-md p-1 px-3  mb-2 w-fit hover:shadow-inner hover:shadow-gray-300 font-bold text-gray-400 flex items-center'>
-                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8V11H16C16.5523 11 17 11.4477 17 12C17 12.5523 16.5523 13 16 13H13V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V13H8C7.44771 13 7 12.5523 7 12C7 11.4477 7.44772 11 8 11H11V8Z" fill="#db1414"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM3.00683 12C3.00683 16.9668 7.03321 20.9932 12 20.9932C16.9668 20.9932 20.9932 16.9668 20.9932 12C20.9932 7.03321 16.9668 3.00683 12 3.00683C7.03321 3.00683 3.00683 7.03321 3.00683 12Z" fill="#db1414"></path> </g></svg>
-                             
-                           </NavLink>
-                        </div>
                         <h1 className='text-3xl font-semibold text-black'>Products 📦</h1>
                         <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to the Products Page, your dedicated platform for managing and showcasing your range of offerings. This page is designed to empower you as a seller by providing you with a comprehensive toolkit to present your products effectively, track their performance, and engage with potential buyers. </p>
                   </div>
 
-                 <section ref={sectionRef} className='flex justify-center relative gap-8'> 
-                        <ProductCard productRank="2" className="shrink- scale-90 translate-y-10 skew-x-6 skew-y-6"/>
-                        <ProductCard productRank="1" className="shrink- "/>
-                        <ProductCard productRank="3" className="shrink- scale-90 translate-y-10 -skew-x-6 -skew-y-6"/>
+                 <section ref={sectionRef} className='flex justify-center  gap-8 relative'> 
+                         <ProdCard  className="shadow-sm before:content-[''] before:text-red p-1 absolute" ranking={true}/>
+                         <ProdCard  className="shadow-sm before:content-['👑'] before:text-5xl before:-translate-x-10 before:bg-red-90 before:w-fit before:-rotate-45 before:z-10 before:translate-y-6  p-1 " ranking={true}/>
+                         <ProdCard  className="shadow-sm before:content-['']  p-1 absolute" ranking={true}/>
                  </section>
 
                  <section className='flex flex-col gap-12  text-black my-10'>

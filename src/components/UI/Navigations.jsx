@@ -1,6 +1,6 @@
 
 import Card from '../Utilities/Card';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Icons from '../Utilities/Icons';
 import Bastion from "../../assets/navlogos/Bastion.svg";
 import defaultUser from "../../assets/navlogos/defaultUser.jpg"
@@ -10,8 +10,12 @@ import {useSelector,useDispatch} from "react-redux"
 import {cartActions} from '../../Store/CartSlice';
 import {notifyActions} from '../../Store/NotifySlice';
 import { loginActions } from '../../Store/LoginSlice';
+import { searchActions } from '../../Store/SearchSlice';
+
+import { useQuery } from '@tanstack/react-query';
 
 import { useEffect, useState, useRef } from 'react';
+
 
 
 
@@ -28,19 +32,61 @@ export const OneLineBanner = (props) => {
 };
 
 
+const SearchLinks = ({el,index:i, setSearch}) => {
+
+   const [hoverItem,setHoverItem] = useState(false)
+
+   return (
+      <li onClick={()=> setSearch(el.name)} onMouseEnter={()=> setHoverItem(true)}  onMouseLeave={()=> setHoverItem(false)} id="search-item" className='  px-4 py-2 flex gap-4 items-center '>
+                                      
+          <Link to={`http://127.0.0.1:5173/product/${el._id}`} className={`rounded-full ${hoverItem && "scale-125"}  cursor-pointer transition-all`}>
+              <svg width="12" height="12" viewBox="0 0 37 39" className='rotate-270 ' fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.78504 11.3216C5.5186 4.75767 11.9234 0.474582 19.0337 0.45559C26.6969 0.415236 33.5109 5.32378 35.8997 12.6053C38.2884 19.8868 35.7064 27.8778 29.5085 32.3847C23.3106 36.8917 14.9127 36.885 8.72207 32.3681L3.20207 37.8881C2.64083 38.4486 1.73164 38.4486 1.1704 37.8881C0.609866 37.3269 0.609866 36.4177 1.1704 35.8564L6.5179 30.5089C1.52288 25.4486 0.0514825 17.8854 2.78504 11.3216ZM5.34791 23.7794C7.64307 29.3103 13.0456 32.9125 19.0337 32.9048V32.8281C27.161 32.8177 33.7586 26.2543 33.8112 18.1273C33.819 12.1391 30.2167 6.73659 24.6859 4.44143C19.155 2.14628 12.786 3.411 8.55176 7.64528C4.31748 11.8796 3.05275 18.2485 5.34791 23.7794Z" fill="red"/>
+               </svg>
+
+           </Link>
+
+            <Link  key={i} className={`text-md font-secondary font-medium ${hoverItem && "text-gray-500"} `} to={`http://127.0.0.1:5173/product/${el._id}`}>{el.name}</Link>
+      </li>
+   )
+}
+
 export const Nav = (props) => {
 
    const [inputTouched,setInputTouched] = useState(false);
+   const [search,setSearch] = useState("")
+  
 
    const cartShow = useSelector(state => state.cart.touched)
    const notifyShow = useSelector(state => state.notify.touched)
+
    const user = useSelector(state => state.login.user)
    const logged = useSelector(state => state.login.loggedIn)
+
    const dispatch = useDispatch();
+
+   const navigate = useNavigate();
+   const currentUrl = window.location.href;
+
+   const {data} = useQuery({
+      queryKey:["search"],
+      queryFn:async ()=> {
+         const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products`)
+         const resData = await response.json()
+
+         return resData.data.products
+      }
+   })
+
+   let prodData = data
+   // console.log(data)
+   let filteredData = prodData?.filter((e)=> e.name.toLowerCase().trim().includes(search.toLowerCase().trim()))
+   // console.log(filteredData,"filter")
+
 
    const cartHandler = (e) => {
 
-      console.log(e.stopPropagation()) //stop event bubbling 
+      e.stopPropagation() //stop event bubbling 
       dispatch(cartActions.touchHandler())
       dispatch(notifyActions.touchHandler(false))
       dispatch(loginActions.showLogin(logged ? false : true))
@@ -48,14 +94,26 @@ export const Nav = (props) => {
 
    const notifyHandler = (e) => {
 
-      console.log(e.stopPropagation()) //stop event bubbling 
+      e.stopPropagation() //stop event bubbling 
       dispatch(notifyActions.touchHandler())
       dispatch(cartActions.touchHandler(false))
       dispatch(loginActions.showLogin(logged ? false : true))
    }
+
+
+
+   const onBlurHandler = () => {
+      setTimeout(()=> {
+         setInputTouched(false)
+      },250)
+      
+   }
   
-   const currentUrl = window.location.href;
-   const navigate = useNavigate();
+
+  const onSearchChange = (e) => {
+    setInputTouched(e.target.value !== "")
+    setSearch(e.target.value)
+  } 
 
    return (
       <section  className={`bg-gray-5 flex flex-col sticky  text-black gap-1 pl-8`}> 
@@ -73,7 +131,14 @@ export const Nav = (props) => {
                            <svg width="17" height="17" viewBox="0 0 37 39" className='rotate-270' fill="none" xmlns="http://www.w3.org/2000/svg">
                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2.78504 11.3216C5.5186 4.75767 11.9234 0.474582 19.0337 0.45559C26.6969 0.415236 33.5109 5.32378 35.8997 12.6053C38.2884 19.8868 35.7064 27.8778 29.5085 32.3847C23.3106 36.8917 14.9127 36.885 8.72207 32.3681L3.20207 37.8881C2.64083 38.4486 1.73164 38.4486 1.1704 37.8881C0.609866 37.3269 0.609866 36.4177 1.1704 35.8564L6.5179 30.5089C1.52288 25.4486 0.0514825 17.8854 2.78504 11.3216ZM5.34791 23.7794C7.64307 29.3103 13.0456 32.9125 19.0337 32.9048V32.8281C27.161 32.8177 33.7586 26.2543 33.8112 18.1273C33.819 12.1391 30.2167 6.73659 24.6859 4.44143C19.155 2.14628 12.786 3.411 8.55176 7.64528C4.31748 11.8796 3.05275 18.2485 5.34791 23.7794Z" fill="black"/>
                            </svg>
-                           <input onClick={()=>setInputTouched(true)}  onMouseLeave={()=>setInputTouched(false)} type="search"  className='h-full text-xs font-medium caret-red-400 w-full bg-gray-100  outline-none text-black' placeholder='Search all categories' />
+                           <input value={search} onChange={onSearchChange} onBlur={onBlurHandler} type="search"  className='h-full text-xs font-medium caret-red-400 w-full bg-gray-100  outline-none text-black' placeholder='Search all categories' />
+                           {inputTouched && filteredData && 
+                            <ul className="bg-white shadow-sm shadow-gray-500 backdrop-blur-sm w-4/6  rounded-md absolute top-1/2 -translate-x-4 mt-3 z-10 flex flex-col ">
+                                 {filteredData.map((el,i)=>{
+                                    return <SearchLinks el={el} setSearch={setSearch} index={i}/>
+                                 })}
+                              </ul>
+                           }
                   </label>
    
                   <div onClick={() => dispatch(loginActions.showLogin(logged ? false : true))} className='flex items-center bg-blue-90 justify-between w-1/6 '>

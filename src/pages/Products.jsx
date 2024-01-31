@@ -28,18 +28,6 @@ const Products = (props) => {
               <ProductTypeForm setFormObj = {setFormObj} />
               <SeasonForm setFormObj = {setFormObj}/>
               <PriceForm setFormObj = {setFormObj} /> 
-
-                 {/* <select name="size" className='p-1 px-2 rounded-lg bg-gray-50 border-2 hover:border-black shadow-m text-black outline-none'>
-                    <option hidden selected>size</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                 </select> */}
-            
      
            </form>
 

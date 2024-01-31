@@ -23,8 +23,9 @@ const Product = () => {
 const {id} = useParams()
 
 
+
 const { data:productData , isPending } = useQuery({
-  queryKey:["product"],
+  queryKey:["product",id],
   queryFn: async () => {
       const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products/${id}`)
       const resData = await response.json()
@@ -39,7 +40,7 @@ const { data:productData , isPending } = useQuery({
       <Card className="flex flex-col gap-32 mb-8">
         <Card className="flex gap-16  mt-32 mb-8 mx-16">
           <ProductCarosal className="w-1/2" images={[...productData.images]}/>
-          <ProductDescription className="w-1/2 justify-self-center" data={...productData}/>
+          <ProductDescription className="w-1/2 justify-self-center" data={productData}/>
         </Card>
 
         <Card className="text-black my-12 px-24 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 ">

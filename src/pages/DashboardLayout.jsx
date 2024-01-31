@@ -1,52 +1,15 @@
 import React, { useReducer } from 'react'
-import { NavLink } from 'react-router-dom'
-import Card from '../../Utilities/Card'
-import defaultUser from "../../../assets/navlogos/defaultUser.jpg"
+import { NavLink, Outlet, useParams } from 'react-router-dom'
 import { useSelector  } from 'react-redux'
+import defaultUser from "../assets/navlogos/defaultUser.jpg"
+import Card from '../components/Utilities/Card'
+
 
 
 
 
 
 //Note: Remember the brightness trick for svg state  with Navlink without using state management 👇
-
- export function DashLinks(props) {
-  return (
-    <Card className="w-1/6  shadow-md  p-6 uppercase flex flex-col text-md gap-2 rounded-md pl-4  text-black h-screen justify-between">
-              
-                 <div className='flex flex-col gap-3'>
-
-                        <NavLink className={({isActive}) => isActive ? "text-red-500 font-semibold flex  gap-2 underline": " flex  gap-2 "} end to={"/dashboard/overview"}>
-                           <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.32 11.9999C20.92 11.9999 22 10.9999 21.04 7.71994C20.39 5.50994 18.49 3.60994 16.28 2.95994C13 1.99994 12 3.07994 12 5.67994V8.55994C12 10.9999 13 11.9999 15 11.9999H18.32Z" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M19.9999 14.7C19.0699 19.33 14.6299 22.69 9.57993 21.87C5.78993 21.26 2.73993 18.21 2.11993 14.42C1.30993 9.39001 4.64993 4.95001 9.25993 4.01001" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                           <p>Overview</p>
-                        </NavLink>
-
-                        <NavLink className={({isActive}) => isActive ? "text-red-500 font-semibold flex  gap-2 underline": " flex  gap-2"} end to={"/dashboard/products"}>
-                              <svg width="20" viewBox="0 0 24 24" id="meteor-icon-kit__regular-products" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="1"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 9C9.44771 9 9 9.44771 9 10V21C9 21.5523 9.44771 22 10 22H21C21.5523 22 22 21.5523 22 21V10C22 9.44771 21.5523 9 21 9H10ZM15 7V3C15 2.44772 14.5523 2 14 2H3C2.44772 2 2 2.44772 2 3V14C2 14.5523 2.44772 15 3 15H7V10C7 8.34315 8.34315 7 10 7H15ZM17 7H21C22.6569 7 24 8.34315 24 10V21C24 22.6569 22.6569 24 21 24H10C8.34315 24 7 22.6569 7 21V17H3C1.34315 17 0 15.6569 0 14V3C0 1.34315 1.34315 0 3 0H14C15.6569 0 17 1.34315 17 3V7Z" fill="#212121"></path></g></svg>
-                              <p>Products</p>
-                        </NavLink>
-
-                        <NavLink className={({isActive}) => isActive ? "text-red-500 font-semibold flex  gap-2 underline": " flex  gap-2"} end to={"/dashboard/orders"}>
-                           <svg  width="20" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="9.216"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path d="M53.6 1023.2c-6.4 0-12.8-2.4-17.6-8-4.8-4.8-7.2-11.2-6.4-18.4L80 222.4c0.8-12.8 11.2-22.4 24-22.4h211.2v-3.2c0-52.8 20.8-101.6 57.6-139.2C410.4 21.6 459.2 0.8 512 0.8c108 0 196.8 88 196.8 196.8 0 0.8-0.8 1.6-0.8 2.4v0.8H920c12.8 0 23.2 9.6 24 22.4l49.6 768.8c0.8 2.4 0.8 4 0.8 6.4-0.8 13.6-11.2 24.8-24.8 24.8H53.6z m25.6-48H944l-46.4-726.4H708v57.6h0.8c12.8 8.8 20 21.6 20 36 0 24.8-20 44.8-44.8 44.8s-44.8-20-44.8-44.8c0-14.4 7.2-27.2 20-36h0.8v-57.6H363.2v57.6h0.8c12.8 8.8 20 21.6 20 36 0 24.8-20 44.8-44.8 44.8-24.8 0-44.8-20-44.8-44.8 0-14.4 7.2-27.2 20-36h0.8v-57.6H125.6l-46.4 726.4zM512 49.6c-81.6 0-148.8 66.4-148.8 148.8v3.2h298.4l-0.8-1.6v-1.6c0-82.4-67.2-148.8-148.8-148.8z" fill=""></path></g></svg>
-                           <p>Orders</p>
-                        </NavLink>
-
-                        {/* <NavLink className={""}>Checkout</NavLink>  */}
-                        <NavLink className={({isActive}) => isActive ? "text-red-500 font-semibold flex  gap-2 underline": " flex  gap-2"} end to={"/dashboard/settings"}>
-                           <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="1"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="3" stroke="#1C274C" stroke-width="2"></circle> <path d="M3.66122 10.6392C4.13377 10.9361 4.43782 11.4419 4.43782 11.9999C4.43781 12.558 4.13376 13.0638 3.66122 13.3607C3.33966 13.5627 3.13248 13.7242 2.98508 13.9163C2.66217 14.3372 2.51966 14.869 2.5889 15.3949C2.64082 15.7893 2.87379 16.1928 3.33973 16.9999C3.80568 17.8069 4.03865 18.2104 4.35426 18.4526C4.77508 18.7755 5.30694 18.918 5.83284 18.8488C6.07287 18.8172 6.31628 18.7185 6.65196 18.5411C7.14544 18.2803 7.73558 18.2699 8.21895 18.549C8.70227 18.8281 8.98827 19.3443 9.00912 19.902C9.02332 20.2815 9.05958 20.5417 9.15224 20.7654C9.35523 21.2554 9.74458 21.6448 10.2346 21.8478C10.6022 22 11.0681 22 12 22C12.9319 22 13.3978 22 13.7654 21.8478C14.2554 21.6448 14.6448 21.2554 14.8478 20.7654C14.9404 20.5417 14.9767 20.2815 14.9909 19.9021C15.0117 19.3443 15.2977 18.8281 15.7811 18.549C16.2644 18.27 16.8545 18.2804 17.3479 18.5412C17.6837 18.7186 17.9271 18.8173 18.1671 18.8489C18.693 18.9182 19.2249 18.7756 19.6457 18.4527C19.9613 18.2106 20.1943 17.807 20.6603 17C20.8677 16.6407 21.029 16.3614 21.1486 16.1272M20.3387 13.3608C19.8662 13.0639 19.5622 12.5581 19.5621 12.0001C19.5621 11.442 19.8662 10.9361 20.3387 10.6392C20.6603 10.4372 20.8674 10.2757 21.0148 10.0836C21.3377 9.66278 21.4802 9.13092 21.411 8.60502C21.3591 8.2106 21.1261 7.80708 20.6601 7.00005C20.1942 6.19301 19.9612 5.7895 19.6456 5.54732C19.2248 5.22441 18.6929 5.0819 18.167 5.15113C17.927 5.18274 17.6836 5.2814 17.3479 5.45883C16.8544 5.71964 16.2643 5.73004 15.781 5.45096C15.2977 5.1719 15.0117 4.6557 14.9909 4.09803C14.9767 3.71852 14.9404 3.45835 14.8478 3.23463C14.6448 2.74458 14.2554 2.35523 13.7654 2.15224C13.3978 2 12.9319 2 12 2C11.0681 2 10.6022 2 10.2346 2.15224C9.74458 2.35523 9.35523 2.74458 9.15224 3.23463C9.05958 3.45833 9.02332 3.71848 9.00912 4.09794C8.98826 4.65566 8.70225 5.17191 8.21891 5.45096C7.73557 5.73002 7.14548 5.71959 6.65205 5.4588C6.31633 5.28136 6.0729 5.18269 5.83285 5.15108C5.30695 5.08185 4.77509 5.22436 4.35427 5.54727C4.03866 5.78945 3.80569 6.19297 3.33974 7C3.13231 7.35929 2.97105 7.63859 2.85138 7.87273" stroke="#1C274C" stroke-width="2" stroke-linecap="round"></path> </g></svg>
-                           <p>Settings</p>
-                        </NavLink>
-                 </div>
-                  <NavLink className={"flex gap-2 items-center hover:font-medium "} end to={"/dashboard/overview"}>
-                    <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H15M8 8L4 12M4 12L8 16M4 12L16 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                    <p>Logout</p>
-                  </NavLink>
-
-     </Card>
-  )
-}
-
-
 const touchedReducer = (state,action) => {
     if(action==="overview") return {val:action}
     if(action==="products") return {val:action}
@@ -66,12 +29,15 @@ export function DashboardLayout(props) {
    const [touched,dispatchFn] = useReducer(touchedReducer,{val:false})
    const user = useSelector(state => state.login.user)
    const logged = useSelector(state => state.login.loggedIn)
+   const {action} = useParams()
 
   return (
-    <section className='flex flex-col bg-gray-00  w-24 py-8 gap-8 items-center h-screen  rounded-md  '>
 
-         
-            <Card className="flex flex-col gap-8 bg-blue-90 h-2/3">
+    <div className='flex gap-12 relative'>
+
+          <section className='flex flex-col bg-gray-00  w-24 py-8 gap-8 items-center h-screen  rounded-md sticky top-0 '>
+
+            <Card className="flex flex-col gap-8 bg-blue-90 h-2/3 ">
 
                 {/* Overview */}
                <NavLink className={({isActive}) => isActive ? ` brightness-100`: "brightness-0 hover:brightness-100"} to={"/dashboard/overview"}>
@@ -122,8 +88,18 @@ export function DashboardLayout(props) {
                   </NavLink>
             </Card>
 
-         
+          </section>
 
-    </section>
+          <section className='w-full bg-red-90 flex-col'>
+            <div className='flex gap-4 mt-4'>
+                  <NavLink to={"/"} className=' text-xs tracking-wider rounded-md p-1 px-3 shadow-md mb-2 w-fit hover:shadow-inner hover:shadow-gray-300 font-semibold text-gray-400 text-center'>🏠 Home</NavLink>
+                  {action !=="create" && <NavLink to={"/dashboard/create"} className=' text-xs tracking-wider rounded-md p-1 px-3  mb-2 w-fit hover:shadow-inner hover:shadow-gray-300 font-bold text-gray-400 flex items-center'>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8V11H16C16.5523 11 17 11.4477 17 12C17 12.5523 16.5523 13 16 13H13V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V13H8C7.44771 13 7 12.5523 7 12C7 11.4477 7.44772 11 8 11H11V8Z" fill="#db1414"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM3.00683 12C3.00683 16.9668 7.03321 20.9932 12 20.9932C16.9668 20.9932 20.9932 16.9668 20.9932 12C20.9932 7.03321 16.9668 3.00683 12 3.00683C7.03321 3.00683 3.00683 7.03321 3.00683 12Z" fill="#db1414"></path> </g></svg>   
+                  </NavLink>}
+            </div>
+            <Outlet/>
+          </section>
+
+    </div>
   )
 }

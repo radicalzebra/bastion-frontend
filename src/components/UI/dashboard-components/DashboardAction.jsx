@@ -1,21 +1,23 @@
-import Card from "../components/Utilities/Card";
-
-import Overview from "../components/UI/dashboard-components/Overview";
-import Products from "../components/UI/dashboard-components/Products";
-import Orders from "../components/UI/dashboard-components/Orders";
-import Settings from "../components/UI/dashboard-components/Settings";
-
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import Overview from './Overview'
+import Products from './Products'
+import Orders from './Orders'
+import Settings from './Settings'
+import CreateProduct from './CreateProduct'
 
 
-const Dashboard = (props) => {
 
+
+
+export default function DashboardAction() {
+   
+  const  {action} =  useParams()
   const user = useSelector(state => state.login.user)
   const logged = useSelector(state => state.login.loggedIn)
 
-  let orderArr = [
+   let orderArr = [
     {id:"#7021",customer:"John Doe" , order:"Jordan-007", amount:"123.4" , paymentMethod:"UPI", deliveryDate:"12.02.23", status:"completed"},
     {id:"#8721",customer:"Victor Solomon" , order:"Adidas X-Neo", amount:"22.40" , paymentMethod:"Credit Card", deliveryDate:"10.03.23", status:"pending"},
     {id:"#1102",customer:"Mark Roster" , order:"Nike Jordan", amount:"42.21" , paymentMethod:"Debit Card", deliveryDate:"03.11.23", status:"canceled"},
@@ -32,46 +34,19 @@ const Dashboard = (props) => {
     {id:"#2301",customer:"Jack Hugh" , order:"Puma heat", amount:"129.06" , paymentMethod:"Cash", deliveryDate:"19.06.23", status:"refunded"},
 
     {id:"#7021",customer:"John Doe" , order:"Jordan-007", amount:"123.4" , paymentMethod:"UPI", deliveryDate:"12.02.23", status:"completed"},
-   
-   
-
-
-
-    
-  ]
-
-   const  {action} =  useParams()
    
   
+  ]
+   
 
-  if(action === "overview") {
+  if(action === "overview") return <Overview user={user} logged={logged}/>
+   
+  if(action === "products") return <Products user={user} logged={logged}/>
+  
+  if(action === "orders") return <Orders user={user} logged={logged} orders={orderArr}/>
 
-     return (
-       <Overview user={user} logged={logged}/>
-   )
- }
+  if(action === "settings") return <Settings user={user} logged={logged}/>
 
+  if(action === "create") return <CreateProduct/>
 
- if(action === "products") {
-
-     return (
-        <Products user={user} logged={logged}/>
-   )
- }
-
- if(action === "orders") {
-
-     return (
-        <Orders user={user} logged={logged} orders={orderArr}/>
-   )
-  }
-
-  if(action === "settings") {
-
-     return (
-        <Settings user={user} logged={logged}/>
-   )
- }
 }
-
-export default Dashboard;

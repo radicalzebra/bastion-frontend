@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 const useProductsFetch = () => {
 
   const {type} = useParams()
+  console.log(useParams())
 
   const [searchQuery , setSearchQuery] = useState("")
   const [formObj , setFormObj] = useState( {

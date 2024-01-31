@@ -6,8 +6,10 @@ import PageLayout from './pages/PageLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Product from './pages/Product';
-import Dashboard from './pages/Dashboard';
-import Carousal from './components/Utilities/Carousal';
+import { DashboardLayout } from './pages/DashboardLayout';
+import Overview from './components/UI/dashboard-components/Overview';
+import DashboardAction from './components/UI/dashboard-components/DashboardAction';
+
 
 
 
@@ -22,7 +24,16 @@ const router = createBrowserRouter([
   ]
  },
  
- {path:"dashboard/:action/:specify?",element:<Dashboard/>}
+
+ {path:"/dashboard",
+  element:<DashboardLayout/>,
+  children: [
+    {index:true,element:<Overview/>},
+    {path:":action/:specify?",element:<DashboardAction/>},
+   ]
+  }
+
+
 ]);
 
 
@@ -48,7 +59,7 @@ export default App
 //       css:{
 //           borderRadius:"60%",
 //           x:100,
-//       },
+//       },ن
 //      scrollTrigger:{
 //       trigger:box.current,
 //       start:"top 30%",
