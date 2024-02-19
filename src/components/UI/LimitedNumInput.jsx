@@ -9,7 +9,7 @@ function LimitedNumInput({className,max,placeholder}) {
    }
 
    return (
-     <input onChange={onChangeHandler} value={maxVal} className={`${className}`} type="number" max={max} placeholder={placeholder} />
+     <input onChange={onChangeHandler}  value={maxVal} className={`${className}`} type="number" max={max} placeholder={placeholder} />
    )
 }
 

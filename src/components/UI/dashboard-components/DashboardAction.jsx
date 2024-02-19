@@ -6,6 +6,7 @@ import Products from './Products'
 import Orders from './Orders'
 import Settings from './Settings'
 import CreateProduct from './CreateProduct'
+import CartBoxLayout from './CartBoxLayout'
 
 
 
@@ -48,5 +49,7 @@ export default function DashboardAction() {
   if(action === "settings") return <Settings user={user} logged={logged}/>
 
   if(action === "create") return <CreateProduct/>
+
+  if(action === "cart") return <CartBoxLayout/>
 
 }
