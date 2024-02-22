@@ -27,7 +27,7 @@ const {id} = useParams()
 const { data:productData , isPending } = useQuery({
   queryKey:["product",id],
   queryFn: async () => {
-      const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products/${id}`)
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products/${id}`)
       const resData = await response.json()
       return resData.data.product
   },

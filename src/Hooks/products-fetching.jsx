@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const useProductsFetch = () => {
 
   const {type} = useParams()
-  console.log(useParams())
+  // console.log(useParams())
 
   const [searchQuery , setSearchQuery] = useState("")
   const [formObj , setFormObj] = useState( {
@@ -27,7 +27,7 @@ const useProductsFetch = () => {
   const {data:products ,isPending,isError,error, isFetching} = useQuery({
     queryKey:["products", searchQuery , consumer , formObj],
     queryFn: async () => {
-      const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products?${searchQuery + consumer}`)
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products?${searchQuery + consumer}`)
       const resData = await response.json()
 
       return resData.data.products

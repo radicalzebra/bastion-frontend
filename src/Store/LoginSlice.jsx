@@ -40,12 +40,13 @@ export const loginUser = ({email,password}) => {
          password
       }
 
-      const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/users/login`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/users/login`, {
          method:"POST",
          body: JSON.stringify(body),
          headers:{
             'Content-Type':"application/json"
-         }
+         },
+         credentials: true
       })
 
       const resData = await response.json()
