@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Card from '../components/Utilities/Card'
-import { ProdCard } from '../components/UI/productCard'
+import { ProdCard } from '../components/UI/ProductCard'
 import { json, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import {SortForm, RatingForm , BrandForm, ProductTypeForm , SeasonForm , PriceForm} from "../components/Form/ProductsForm"
