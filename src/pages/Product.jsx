@@ -4,7 +4,7 @@ import ProductCarosal from '../components/UI/ProductCarosal'
 import hero from "../assets/headerImg/hero.jpg"
 import hero2 from "../assets/headerImg/hero2.jpg"
 import ProductDescription from './../components/UI/ProductDescription';
-import {ProdCard} from '../components/UI/productCard'
+import {ProdCard} from '../components/UI/ProductCard'
 import Carousal from '../components/Utilities/Carousal'
 import { NavLink, useLoaderData, useParams,useRouteLoaderData } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
