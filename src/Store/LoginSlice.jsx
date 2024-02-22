@@ -45,8 +45,7 @@ export const loginUser = ({email,password}) => {
          body: JSON.stringify(body),
          headers:{
             'Content-Type':"application/json"
-         },
-         credentials: true
+         }
       })
 
       const resData = await response.json()
