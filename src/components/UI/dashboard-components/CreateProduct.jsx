@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import GeneralHeading from '../GeneralHeading'
 import CreateProductInfo from './CreateProductInfo'
-import CreateProductImages from './createProductImages'
+import CreateProductImages from './CreateProductImages'
 
 
 
