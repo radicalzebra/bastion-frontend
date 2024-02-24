@@ -49,7 +49,8 @@ export const loginUser = ({email,password}) => {
       })
 
       const resData = await response.json()
-      console.log(response)
+      console.log(resData)
+      document.cookie = `jwt=${resData.token}`;
 
 
       if(!response.ok || resData.status === "fail") {
@@ -58,7 +59,7 @@ export const loginUser = ({email,password}) => {
       }
 
       const data = await resData.data.user
-
+      console.log(data)
 
       dispatch(Login.actions.login(true))
       dispatch(Login.actions.user(data))

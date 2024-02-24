@@ -71,7 +71,7 @@ export const Nav = (props) => {
    const {data} = useQuery({
       queryKey:["search"],
       queryFn:async ()=> {
-         const response = await fetch(`https://bastion-backend-dev-nxhk.3.us-1.fl0.io/bastion/api/products`)
+         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products`)
          const resData = await response.json()
 
          return resData.data.products

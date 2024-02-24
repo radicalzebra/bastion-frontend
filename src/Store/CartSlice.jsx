@@ -47,17 +47,21 @@ export const updateCart = (item,userCart,action) => {
 
       if(action === "add") dispatch(Cart.actions.addToCart({cart,item}))
       if(action === "remove") dispatch(Cart.actions.removeFromCart({cart,item}))
+
       
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/users/updateCart`,{
          method:"PUT",
          body: JSON.stringify(cart),
          headers:{
             'Content-Type':"application/json"
-         }
+         },
+         credentials: 'include'
       })
       
+      console.log(document.cookie)
       const data = await response.json()
       console.log(data)
+      
    }
 }
 
