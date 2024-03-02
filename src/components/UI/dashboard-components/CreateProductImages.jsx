@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import GeneralHeading from '../GeneralHeading'
 
 
 
-const InputImage = ({className}) => {
+const InputImage = forwardRef(({className} , ref) => {
 
  const [image,setImage]  = useState(false)
 
@@ -25,6 +25,13 @@ const InputImage = ({className}) => {
   }
 
 
+  useEffect(()=> {
+      if(image) {
+         ref.current.images = [...ref.current.images, image]
+      }
+  },[image])
+
+
    return (
       <div className={className}>
          {!image && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -36,7 +43,7 @@ const InputImage = ({className}) => {
          <input onChange={onChangeHandler} className='bg-white border-2 w-28 h-28 opacity-0 outline-none absolute ' type="file"/>
       </div>
    )
-}
+})
 
 
 
@@ -44,20 +51,20 @@ const InputImage = ({className}) => {
 
 
 
-function CreateProductImages({className}) {
+function CreateProductImages({className}, ref) {
   return (
    <section className={className}>
           <GeneralHeading heading={"Product Images"} additionalInfo={"(only upload jpegs/jpgs)"}>
              <div className='bg-red-90 flex gap-4 flex-wrap h-1/2 bg-red-90 justify-between '>
-               <InputImage className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>  
+               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
+               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
+               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
+               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
+               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>  
             </div>
          </GeneralHeading>
 
-         <GeneralHeading heading="Description" className={"h-2/3"} >
+         <GeneralHeading ref={ref} name="description" heading="Description" className={"h-2/3"} >
             <textarea className='resize-none bg-white border-2 rounded-md h-full w-full text-start p-2 text-sm outline-none'></textarea>
          </GeneralHeading>
 
@@ -66,4 +73,4 @@ function CreateProductImages({className}) {
   )
 }
 
-export default CreateProductImages
+export default forwardRef(CreateProductImages)

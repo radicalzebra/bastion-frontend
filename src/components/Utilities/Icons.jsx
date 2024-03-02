@@ -8,7 +8,7 @@ const Icons = (props) => {
    const iconRef = useRef(null);
 
    const clickHandler = (e) =>{
-     setClicked(state => !state);
+     setClicked(prevState => !prevState);
    }
 
 
@@ -27,8 +27,8 @@ const Icons = (props) => {
 
 
    return (
-      <div ref={iconRef} onClick={clickHandler} className={`${props.className}`}>
-         <img src={clicked===true && props.animate===true ? props.filledSrc : props.src} onClick={() => setClicked(!state)} className={props.imgClasses + " " + `hover:cursor-pointer `} alt={props.alt || "logo"} />
+      <div  ref={iconRef} onClick={clickHandler} className={`${props.className}`}>
+         <img  src={clicked===true && props.animate===true ? props.filledSrc : props.src} onClick={() => setClicked(!state)} className={props.imgClasses + " " + `hover:cursor-pointer `} alt={props.alt || "logo"} />
       </div>
    )
 };

@@ -73,8 +73,8 @@ export function DashboardLayout(props) {
 
             <Card className="flex flex-col justify-between items-center h-1/4">
                   {/* User */}
-                  <NavLink to="/dashboard/settings/general" className="bg-gray-100 border-red-500 border-2 overflow-hidden w-12 rounded-full">
-                    <img src={logged ? user.photo : defaultUser} alt="user" />
+                  <NavLink to="/dashboard/settings/general" className="bg-gray-100 border-red-500 border-2 overflow-hidden w-12 h-12 rounded-full">
+                    <img src={logged ? user.photo : defaultUser} alt="user"  className='w-full h-full'/>
                   </NavLink>
                   
                   {/* Notification */}

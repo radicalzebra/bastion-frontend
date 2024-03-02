@@ -1,67 +1,79 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {loginReducer } from "./LoginSlice";
+import api from "../components/Utilities/Api";
 
 
 
 
-
-
-const initialState = {touched : false }
+const initialState = {touched : false , cart: [], cartTotal: 0 , detailedUpdatedCart:[]}
 
 const Cart = createSlice({
    name:"cart",
    initialState: initialState,
    reducers:{
       touchHandler(state,action) {
-         // console.log("redux-cartSlice",state.touched)
          state.touched = action.payload ?? !state.touched  //very important implementatiom bro
       },
 
       addToCart(state,action) {
-         // state.cart.unshift(action.payload)
-         // console.log(state.cart,"added")
-         let cart = action.payload.cart
-         cart.unshift(action.payload.item)
-         console.log(cart,"added")
+         state.cart.unshift(action.payload.item)
       },
 
-      removeFromCart(state,action) {
-         // state.cart =  state.cart.filter((el,i) => el !== action.payload)  
-         // console.log(state.cart,"removed")
-         let cart = action.payload.cart
-         cart =  cart.filter((el,i) => el !== action.payload.item)  
-         console.log(cart,"removed")
+      removeFromCart(state,action) { 
+         state.cart =  state.cart.filter((el,i) => el !== action.payload.item)  
+      },
 
+      setCart(state,action) {
+         state.cart = [...action.payload]
+      },
+
+      setDetailedUpdatedCart(state,action) {
+        state.detailedUpdatedCart = action.payload?.length !== undefined  ? [...action.payload] : []
+      },
+
+
+      mutateCartTotal(state,action){
+         state.cartTotal = Number(action.payload).toFixed(2)
+      },
+
+      SubtractCartTotal(state,action) {
+         const total = Number(state.cartTotal) - Number(action.payload)
+         state.cartTotal = total.toFixed(2)
       }
    }
 })
 
 
 
-export const updateCart = (item,userCart,action) => {
- 
+export const updateCart = (item,action) => {
 
-   return async (dispatch) => {
+   return async (dispatch,getState) => {
 
-      let cart = [...userCart]
-
-
-      if(action === "add") dispatch(Cart.actions.addToCart({cart,item}))
-      if(action === "remove") dispatch(Cart.actions.removeFromCart({cart,item}))
-
+      if(action === "add") dispatch(Cart.actions.addToCart({item}))
+      if(action === "delete") dispatch(Cart.actions.removeFromCart({item}))
       
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/users/updateCart`,{
-         method:"PUT",
-         body: JSON.stringify(cart),
-         headers:{
-            'Content-Type':"application/json"
-         },
-         credentials: 'include'
-      })
       
-      console.log(document.cookie)
-      const data = await response.json()
-      console.log(data)
       
+      // these  states should be below the add and delete actions so as to get the latest cart
+      const state = getState()
+      const userToken = state.login.token
+      const cart = state.cart.cart
+      
+
+      const updateCartResponse  = await api("/bastion/api/users/updateCart","PUT",{cart:cart},userToken )
+      // console.log(updateCartResponse)
+
+      const getUserUpdatedCart = await api("/bastion/api/users/me","GET",undefined,userToken)
+      // console.log(getUserUpdatedCart,"ppp")
+
+
+      const {cart:detailedCart} = getUserUpdatedCart.data.user
+      console.log(detailedCart)
+      const cartTotal = detailedCart?.reduce((acc,el)=> acc  + Number(el.price) ,0) || 0
+
+      dispatch(cartActions.mutateCartTotal(cartTotal))
+      dispatch(cartActions.setDetailedUpdatedCart(detailedCart))
+
    }
 }
 

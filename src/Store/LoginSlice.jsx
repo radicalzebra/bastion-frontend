@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { cartActions } from "./CartSlice";
+import api from "../components/Utilities/Api";
+
 
 
 const Login = createSlice({
    name:"login",
-   initialState:{loggedIn:false, user:{} , showForm:false , errMsg: false , errCode: 500},
+   initialState:{loggedIn:false, user:{} , showForm:false , errMsg: false , errCode: 500, token:""},
    reducers:{
       login(state,action) {
          state.loggedIn = action.payload;
@@ -15,6 +18,10 @@ const Login = createSlice({
          console.log(state.user,"lll")
       },
 
+      setUpdatedUser(state,action) {
+         state.user = action.payload
+      },
+
       error(state,action) {
         state.errMsg = action.payload.message || "An Error Occured while logging in, check your email & password"
         state. errCode = action.payload.code || 500
@@ -23,7 +30,11 @@ const Login = createSlice({
 
       showLogin(state,action) {
          state.showForm = action.payload
-      }
+      }, 
+
+      setToken(state,action) {
+         state.token = action.payload
+      },
    }
 })
 
@@ -40,34 +51,37 @@ export const loginUser = ({email,password}) => {
          password
       }
 
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/users/login`, {
-         method:"POST",
-         body: JSON.stringify(body),
-         headers:{
-            'Content-Type':"application/json"
-         }
-      })
-
-      const resData = await response.json()
-      console.log(resData)
-      document.cookie = `jwt=${resData.token}`;
+      const LoginUserResponse = await api("/bastion/api/users/login","POST",body,undefined)
+      console.log(LoginUserResponse)
 
 
-      if(!response.ok || resData.status === "fail") {
-         console.log(resData)
-         return  dispatch(Login.actions.error({message:resData.err,code:resData.errCode}))
+
+      if(LoginUserResponse.status === "fail") {
+         console.log(LoginUserResponse)
+         return  dispatch(Login.actions.error({message:LoginUserResponse.err,code:LoginUserResponse.errCode}))
       }
 
-      const data = await resData.data.user
-      console.log(data)
+
+      const user = await LoginUserResponse.data.user
+      const {cart} = user
+      const token = await LoginUserResponse.token
+      const cartWithId = user.cart?.map((el,i)=> el.id) || []
+      const cartTotal = user.cart?.reduce((acc,el) => acc + Number(el.price), 0)
+
+
 
       dispatch(Login.actions.login(true))
-      dispatch(Login.actions.user(data))
+      dispatch(Login.actions.user(user))
+      dispatch(Login.actions.setToken(token))
+      dispatch(cartActions.setCart(cartWithId))
+      dispatch(cartActions.setDetailedUpdatedCart(cart))
+      dispatch(cartActions.mutateCartTotal(cartTotal))
       dispatch(Login.actions.showLogin(false))
       
 
    }
 }
+
 
 
 
