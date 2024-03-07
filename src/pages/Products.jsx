@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Card from '../components/Utilities/Card'
 import { ProdCard } from '../components/UI/ProductCard'
-import { json, useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 import {SortForm, RatingForm , BrandForm, ProductTypeForm , SeasonForm , PriceForm} from "../components/Form/ProductsForm"
 import useProductsFetch from '../Hooks/products-fetching'
-
+import loadingUi from "../assets/navlogos/loading2.gif"
 
 
 
@@ -32,15 +30,14 @@ const Products = (props) => {
            </form>
 
 
-            <Card className="flex gap-6 flex-wrap ">
+            <Card className="flex gap-6 flex-wrap relative min-h-screen ">
+
+              {isFetching && <img className='h-14 w-14 absolute top-1/3 right-1/2 translate-x-1/2' src={loadingUi}/>}
 
               {!isFetching && products.map((el,i)=> {
-                   console
-                  return <ProdCard className="shadow-sm  p-1 " seller={el.seller.id} id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
+                return <ProdCard className="shadow-sm  p-1 " seller={el.seller.id} id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
               })}
-
-              {/* {isError && <h1 className='scale-150 text-black bg-red-700'>{error.message}</h1>} */}
-
+            
             </Card>
     </section>
   )
