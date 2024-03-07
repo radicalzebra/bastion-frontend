@@ -22,7 +22,7 @@ export const SmallItems = (props) => {
             <div className="flex flex-col bg-red-90 py-1 justify-between">
                <NavLink onClick={() => dispatch(cartActions.touchHandler())} to={`/product/${props.id}`} className="text-sm hover:text-gray-400">{props.name || "Men Air MAX SOLO Sneakers"}</NavLink>
                <div className='flex gap-2'>
-                  <p className=" text-xs px-1 text-black font-semibold bg-yellow-200 w-fit rounded-lg">{props.price || "$500"}</p>
+                  <p className=" text-xs px-1 text-black font-semibold bg-yellow-200 w-fit rounded-lg">{`$${props.price}` || "$500"}</p>
                   {/* <span className=' text-xs px-1 text-black font-medium'>{props.quantity || "x60"}</span> */}
                   <p className="text-xs px-1 ml-3 text-black font-semibold  w-fit rounded-lg hover:underline cursor-pointer hover:text-red-500">clear</p>
                </div>

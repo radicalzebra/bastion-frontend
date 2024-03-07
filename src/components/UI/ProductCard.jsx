@@ -1,8 +1,9 @@
 import Card from '../Utilities/Card'
 import hero from "../../assets/headerImg/hero.jpg"
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {ProductCardRating} from '../Utilities/Rating';
 import useMutateCart from '../../Hooks/mutate-cart';
+import { useSelector } from 'react-redux';
 
 
 
@@ -10,6 +11,19 @@ export const ProdCard = (props) =>{
   const navigate = useNavigate();
 
   const {cartTouched,onCartBtnClick} = useMutateCart(props.id)
+  const user = useSelector(state => state.login.user)
+
+  const cartJsx = <div onClick={onCartBtnClick} className='bg-white absolute -bottom-2 -right-2 p-3 rounded-full '>
+                       <div  className={`p-2 ${cartTouched ? "bg-red-600" : "bg-gray-950" }  rounded-full hover:cursor-pointer hover:scale-125 transition-all `}>
+                         <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.78571 5H18.2251C19.5903 5 20.5542 6.33739 20.1225 7.63246L18.4558 12.6325C18.1836 13.4491 17.4193 14 16.5585 14H6.07142M4.78571 5L4.74531 4.71716C4.60455 3.73186 3.76071 3 2.76541 3H2M4.78571 5L6.07142 14M6.07142 14L6.25469 15.2828C6.39545 16.2681 7.23929 17 8.23459 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                       </div>
+                   </div>
+
+  const editjsx = <NavLink to={`/dashboard/create/${props.id}`} className='bg-white absolute -bottom-2 -right-2 p-3 rounded-full w-1/4'>
+                      <div className='rounded-full hover:cursor-pointer hover:scale-125 transition-all '>
+                        <svg viewBox="0 0 24 24" className='w-27 h-27 ' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="none"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M13 9C13 8.44772 12.5523 8 12 8C11.4477 8 11 8.44772 11 9V11H9C8.44772 11 8 11.4477 8 12C8 12.5523 8.44772 13 9 13H11V15C11 15.5523 11.4477 16 12 16C12.5523 16 13 15.5523 13 15V13H15C15.5523 13 16 12.5523 16 12C16 11.4477 15.5523 11 15 11H13V9ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z" fill="red"></path> </g></svg>
+                      </div>
+                  </NavLink>
 
   return (
       <Card className = {`flex flex-col gap-2 h-98 bg-red-90 rounded-lg text-black  ${props.className}`}>
@@ -17,11 +31,7 @@ export const ProdCard = (props) =>{
         <figure className="relative w-72 h-3/4 rounded-lg overflow-hidde ">
            <img src={props.coverImage || hero} onClick={()=> navigate(`/product/${props.id}`)} className='w-full h-full rounded-lg hover:cursor-pointer hover:brightness-90' alt="" />
       
-           {!props.ranking && <div onClick={onCartBtnClick} className='bg-white absolute -bottom-2 -right-2 p-3 rounded-full '>
-               <div  className={`p-2 ${cartTouched ? "bg-red-600" : "bg-gray-950" }  rounded-full hover:cursor-pointer hover:scale-125 transition-all `}>
-                    <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.78571 5H18.2251C19.5903 5 20.5542 6.33739 20.1225 7.63246L18.4558 12.6325C18.1836 13.4491 17.4193 14 16.5585 14H6.07142M4.78571 5L4.74531 4.71716C4.60455 3.73186 3.76071 3 2.76541 3H2M4.78571 5L6.07142 14M6.07142 14L6.25469 15.2828C6.39545 16.2681 7.23929 17 8.23459 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-              </div>
-           </div>}
+           {!props.ranking && props.seller !== user.id ? cartJsx : editjsx }
         </figure>
 
 

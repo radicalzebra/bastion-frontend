@@ -5,7 +5,7 @@ import dateFormat from '../components/Utilities/DateFomat'
 import { loginActions } from '../Store/LoginSlice'
 
 
-export default function useUpdateGeneralSettings(user) {
+export default function useUpdateGeneralSettings(user,billings=false) {
  
   
   const [changed,setChanged] = useState(false)
@@ -14,7 +14,7 @@ export default function useUpdateGeneralSettings(user) {
   const dispatch = useDispatch()
   
   
-  const Data = useRef({
+  const generalData = useRef({
     email:user.email,
     gender:user.gender ,
     username:user.username,
@@ -25,13 +25,35 @@ export default function useUpdateGeneralSettings(user) {
   })
 
 
-  async function updateGeneral(data=Data) {
-     const body = Data.current
-     delete body.photoModified
+  const billingData = useRef({
+    cardName : user.cardName,
+    cardExpiry :  user.cardExpiry ,
+    cardNumber : user.cardNumber,
+    Cvv : user.Cvv,
+    streetAddress : user.streetAddress,
+    city : user.city,
+    landmark : user.landmark,
+    state : user.state ,
+    pincode : user.pincode
+
+  })
+
+
+  async function updateGeneral() {
+
+     const body = billings ? billingData.current : generalData.current
+     !billings && delete body.photoModified
+
+    //  console.log(body)
+
+     setBtnClick("Saving...")
+
      const res = await api("/bastion/api/users/updateMe","PATCH",body,token)
+     console.log(res)
      if(res.status === "success") {
       dispatch(loginActions.setUpdatedUser(res.data.user))
      }
+
   } 
   
 
@@ -39,7 +61,7 @@ export default function useUpdateGeneralSettings(user) {
   return {
      changed,
      btnClick,
-     Data,
+     DataRef: billings ? billingData : generalData,
      setBtnClick,
      setChanged,
      updateGeneral

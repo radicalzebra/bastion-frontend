@@ -35,7 +35,8 @@ const Products = (props) => {
             <Card className="flex gap-6 flex-wrap ">
 
               {!isFetching && products.map((el,i)=> {
-                  return <ProdCard className="shadow-sm  p-1 " id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
+                   console
+                  return <ProdCard className="shadow-sm  p-1 " seller={el.seller.id} id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
               })}
 
               {/* {isError && <h1 className='scale-150 text-black bg-red-700'>{error.message}</h1>} */}
