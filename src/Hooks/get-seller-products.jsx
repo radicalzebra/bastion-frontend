@@ -8,13 +8,14 @@ export default function useGetSellerProducts() {
   const [filteredProducts,setFilteredProducts] = useState([])
   const [filter,setFilter] = useState("rating")
   const [search,setSearch] = useState("")
+  const [isAscend,setIsAscend] = useState(false)
   const [loading,setLoading] = useState(false)
   const productsRef = useRef([])
 
   useEffect(()=> {
        const getSellerProducts = async () => {
             setLoading(true) 
-            const res = await api(`/bastion/api/products?seller=${user.id}&sort=${filter}`)
+            const res = await api(`/bastion/api/products?seller=${user.id}&sort=${isAscend ? "-" : ""}${filter}`)
             productsRef.current.value = res.data.products
             setFilteredProducts(res.data.products)
             setLoading(false)
@@ -22,7 +23,7 @@ export default function useGetSellerProducts() {
 
        getSellerProducts()
 
-   },[filter])
+   },[filter,isAscend])
 
 
 
@@ -44,7 +45,8 @@ export default function useGetSellerProducts() {
       products:filteredProducts,
       loading,
       setFilter,
-      setSearch
+      setSearch,
+      setIsAscend
    }
 
 

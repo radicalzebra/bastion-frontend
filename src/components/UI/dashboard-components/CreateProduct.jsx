@@ -3,7 +3,7 @@ import GeneralHeading from '../GeneralHeading'
 import CreateProductInfo from './CreateProductInfo'
 import CreateProductImages from './CreateProductImages'
 import useCreateProduct from '../../../Hooks/create-product'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 
@@ -14,23 +14,48 @@ export default function CreateProduct() {
   const navigate = useNavigate()
   const [btnClick, setBtnClick] = useState(false)
   const [productOkay,setProductOkay] = useState(false)
-  const {createProduct,created} = useCreateProduct()
+  const {createProduct,created,specificProduct} = useCreateProduct()
   const [onFormClick, setOnFormClick] = useState(false)
 
 
+  console.log(specificProduct,"lll")
 
   const productRef = useRef({
-    name : "",
-    price:0,
-    productType:"sneakers",
-    brand:"nike",
-    consumer:"men",
-    season:"rainy",
-    sizes:[],
-    images:[],
-    coverImage:"",
-    description:""
+            name : "",
+            price:0,
+            productType:"sneakers",
+            brand:"nike",
+            consumer:"men",
+            season:"rainy",
+            sizes:[],
+            images:[],
+            coverImage:"",
+            description:""
   })
+
+  useEffect(()=>{
+
+    if(!specificProduct) {
+
+       productRef.current.value = {
+            name : specificProduct.name,
+            price:specificProduct.price,
+            productType:specificProduct.productType,
+            brand:specificProduct.band,
+            consumer:specificProduct.consumer,
+            season:specificProduct.season,
+            sizes:specificProduct.sizes,
+            images:specificProduct.images,
+            coverImage:specificProduct.coverImage,
+            description:specificProduct.description
+      } 
+
+
+    }
+
+
+
+  },[specificProduct])
 
 
   useEffect(()=> {
