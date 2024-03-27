@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState,forwardRef } from 'react'
 
-function LimitedNumInput({className,max,placeholder}) {
+function LimitedNumInput({className,max,placeholder},ref) {
 
    const [maxVal,setMaxVal] = useState("")
    
@@ -13,8 +13,8 @@ function LimitedNumInput({className,max,placeholder}) {
    }
 
    return (
-     <input onKeyDown={blockInvalidChar} onChange={onChangeHandler}  value={maxVal} className={`${className}`} type="number" max={max} placeholder={placeholder} />
+     <input ref={ref} onKeyDown={blockInvalidChar} onChange={onChangeHandler}  value={maxVal} className={`${className}`} type="number" max={max} placeholder={placeholder} />
    )
 }
 
-export default LimitedNumInput
+export default forwardRef(LimitedNumInput)

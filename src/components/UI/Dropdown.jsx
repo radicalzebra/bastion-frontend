@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-export default function Dropdown({list,setFilter}) {
+export default function Dropdown({list,heading, setFilter}) {
 
    const [bool,setBool] = useState(false)
-   const [filterHeading,setFilterHeading] = useState("rating")
+   const [filterHeading,setFilterHeading] = useState(heading)
 
    const onOptionClick = (e)  => {
       setFilter(e.target.innerText)

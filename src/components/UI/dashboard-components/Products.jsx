@@ -50,7 +50,7 @@ function Products(props) {
                              </div>
 
                              <div className='flex gap-4'>
-                                 <Dropdown list={["rating","name","sold","price"]} setFilter={setFilter} />
+                                 <Dropdown list={["rating","name","sold","price"]}  heading={"rating"} setFilter={setFilter} />
                                  <Reverse setIsAscend={setIsAscend}/>
                              </div>
 

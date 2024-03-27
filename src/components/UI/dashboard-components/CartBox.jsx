@@ -1,9 +1,7 @@
-import React, { useState, memo } from 'react'
-import hero from "../../../assets/headerImg/hero.jpg"
-import LimitedNumInput from '../LimitedNumInput'
+import React, { useState, memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { cartActions, updateCart } from '../../../Store/CartSlice'
-import Counter from '../Counter'
+import { Checkbox } from '@mui/material'
 
 
 function CartBox({className, name , src , price, id , key}) {
@@ -20,10 +18,10 @@ function CartBox({className, name , src , price, id , key}) {
 
 
   return (
-    <section key={key} className={`grid  grid-cols-5 bg-gray-80 h-50 border-b border-dashed border-black pb-4 ${className} relative select-none ${binClick && " hidden"}`}>
+    <section  className={`grid grid-cols-5 bg-gray-80  border-b border-dashed border-black pb-3 ${className} relative select-none ${binClick && " hidden"}`}>
 
-       <div className='bg-red-90 h-40 flex rounded-md'>
-         <figure className='bg-blue-90 max-w-full w-40 min-w-min h-full'>
+       <div className='bg-red-90 h-28 flex rounded-md'>
+         <figure className='bg-blue-90 max-w-full w-28 min-w-min h-full'>
             <img className='w-full h-full rounded-md' src={src}/>
          </figure>
        </div>

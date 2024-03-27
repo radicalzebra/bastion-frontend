@@ -9,6 +9,7 @@ const useLoginHook = () =>  {
   const [pass , setPass] = useState("")
   const [lookpwd , setLookPwd] = useState(false)
   const [isDisabled , setIsDisabled] = useState(false)
+
  
 
   const dispatch = useDispatch()
@@ -37,7 +38,7 @@ const useLoginHook = () =>  {
     isDisabled,
     setIsDisabled,
     onBtnClick,
-    onPassChange
+    onPassChange,
   }
 }
 

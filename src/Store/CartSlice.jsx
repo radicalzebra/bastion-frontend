@@ -5,7 +5,7 @@ import api from "../components/Utilities/Api";
 
 
 
-const initialState = {touched : false , cart: [], cartTotal: 0 , detailedUpdatedCart:[]}
+const initialState = {touched : false , cart: [], cartTotal: 0 , pseudoCartTotal:0, pseudoUpdatedCArt:[], detailedUpdatedCart:[]}
 
 const Cart = createSlice({
    name:"cart",
@@ -31,8 +31,16 @@ const Cart = createSlice({
         state.detailedUpdatedCart = action.payload?.length !== undefined  ? [...action.payload] : []
       },
 
+      setPseudoDetailedUpdatedCart(state,action) {
+        state.detailedUpdatedCart = action.payload?.length !== undefined  ? [...action.payload] : []
+      },
+
 
       mutateCartTotal(state,action){
+         state.cartTotal = Number(action.payload).toFixed(2)
+      },
+
+      mutatePseudoCartTotal(state,action){
          state.cartTotal = Number(action.payload).toFixed(2)
       },
 
@@ -68,8 +76,11 @@ export const updateCart = (item,action) => {
 
 
       const {cart:detailedCart} = getUserUpdatedCart.data.user
-      console.log(detailedCart)
+      console.log(detailedCart,"llllll")
       const cartTotal = detailedCart?.reduce((acc,el)=> acc  + Number(el.price) ,0) || 0
+
+      // dispatch(cartActions.mutatePseudoCartTotal(cartTotal))
+      // dispatch(cartActions.setPseudoDetailedUpdatedCart(detailedCart))
 
       dispatch(cartActions.mutateCartTotal(cartTotal))
       dispatch(cartActions.setDetailedUpdatedCart(detailedCart))

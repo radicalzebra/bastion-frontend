@@ -15,7 +15,7 @@ function CartTotal() {
 
 
   return (
-    <form onSubmit={onClickHandler} className='p-5 text-black flex flex-col gap-8 bg-gray-200 rounded-md sticky top-4 select-none'>
+    <form onSubmit={onClickHandler} className='p-5 text-black flex flex-col gap-8 bg-gray-100 rounded-md sticky top-4 select-none'>
         <div className='flex justify-between'>
            <p className=''>Subtotal</p>
            <p className='font-semibold'>{"$" + cartTotal}</p>

@@ -8,6 +8,7 @@ import {ProdCard} from '../components/UI/ProductCard'
 import Carousal from '../components/Utilities/Carousal'
 import { NavLink, useLoaderData, useParams,useRouteLoaderData } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useSelector } from 'react-redux'
 
 
 
@@ -24,6 +25,7 @@ const {id} = useParams()
 
 
 
+
 const { data:productData , isPending } = useQuery({
   queryKey:["product",id],
   queryFn: async () => {
@@ -33,6 +35,9 @@ const { data:productData , isPending } = useQuery({
   },
   staleTime:3000
 })
+
+
+
   
 
   return (
