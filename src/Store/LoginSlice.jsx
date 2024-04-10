@@ -6,7 +6,7 @@ import api from "../components/Utilities/Api";
 
 const Login = createSlice({
    name:"login",
-   initialState:{loggedIn:false, user:{} , showForm:false , errMsg: false , errCode: 500, token:""},
+   initialState:{loggedIn:false, user:{} , purchased:{} , showForm:false , errMsg: false , errCode: 500, token:""},
    reducers:{
       login(state,action) {
          state.loggedIn = action.payload;
@@ -35,6 +35,12 @@ const Login = createSlice({
       setToken(state,action) {
          state.token = action.payload
       },
+
+      setUserPurchases(state,action) {
+         state.purchased = action.payload 
+         console.log(action.payload)
+
+      }
    }
 })
 
@@ -61,12 +67,14 @@ export const loginUser = ({email,password}) => {
          return  dispatch(Login.actions.error({message:LoginUserResponse.err,code:LoginUserResponse.errCode}))
       }
 
-
+      
       const user = await LoginUserResponse.data.user
       const {cart} = user
       const token = await LoginUserResponse.token
       const cartWithId = user.cart?.map((el,i)=> el.id) || []
       const cartTotal = user.cart?.reduce((acc,el) => acc + Number(el.price), 0)
+      const purchased = user.purchases
+
 
 
 
@@ -77,6 +85,7 @@ export const loginUser = ({email,password}) => {
       dispatch(cartActions.setDetailedUpdatedCart(cart))
       dispatch(cartActions.mutateCartTotal(cartTotal))
       dispatch(Login.actions.showLogin(false))
+      dispatch(Login.actions.setUserPurchases(purchased))
       
 
    }
