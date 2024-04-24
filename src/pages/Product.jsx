@@ -1,46 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Utilities/Card'
 import ProductCarosal from '../components/UI/ProductCarosal'
-import hero from "../assets/headerImg/hero.jpg"
-import hero2 from "../assets/headerImg/hero2.jpg"
 import ProductDescription from './../components/UI/ProductDescription';
 import {ProdCard} from '../components/UI/ProductCard'
 import Carousal from '../components/Utilities/Carousal'
 import { NavLink, useLoaderData, useParams,useRouteLoaderData } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { useSelector } from 'react-redux'
-
-
-
-
-
- 
-
+import useHomeProducts from '../Hooks/home-products'
 
 
 
 const Product = () => {
 
 const {id} = useParams()
-
+const {products} = useHomeProducts()
 
 
 
 const { data:productData , isPending } = useQuery({
   queryKey:["product",id],
   queryFn: async () => {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products/${id}`)
-      const resData = await response.json()
-      return resData.data.product
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products/${id}`)
+    const resData = await response.json()
+    return resData.data.product
   },
   staleTime:3000
 })
-
-
-
   
 
-  return (
+return (
     productData &&
       <Card className="flex flex-col gap-32 mb-8">
         <Card className="flex gap-16  mt-32 mb-8 mx-16">
@@ -57,19 +45,10 @@ const { data:productData , isPending } = useQuery({
 
 
              <Carousal className="">
-                  <ProdCard/>
-                  <ProdCard/>
-                  <ProdCard/>
-                  <ProdCard/>
-                  <ProdCard/>
-                  <ProdCard/>
-                  <ProdCard/>   
-                  <ProdCard/>   
-                  <ProdCard/>   
-                  <ProdCard/>   
-                  <ProdCard/>   
-                  <ProdCard/>   
-                  <ProdCard/>   
+                  {products?.filter((el,i) => el.brand === productData.brand)
+                            .map((el,i)=> {
+                               return <ProdCard className="shadow-sm  p-1 " key={i+1} seller={el.seller.id} id={el._id} coverImage={el.coverImage} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/> 
+                  })}   
              </Carousal>
         </Card>
 

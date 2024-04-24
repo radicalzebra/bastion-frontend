@@ -31,7 +31,7 @@ function CartTotal() {
            <p className='font-semibold'>{"$" + ultimatePrice.toFixed(2)}</p>
         </div>
 
-        <button className={`bg-black p-4 text-white rounded-md transform-all ${click && " opacity-90"} `}>Proceed to checkout</button>
+        {/* <button className={`bg-black p-4 text-white rounded-md transform-all ${click && " opacity-90"} `}>Proceed to checkout</button> */}
     </form>
   )
 }

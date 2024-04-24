@@ -8,7 +8,6 @@ import { loginActions, loginUser } from '../../Store/LoginSlice';
 import useMutateCart from '../../Hooks/mutate-cart';
 import Comment from './Comment';
 import useBuyProduct from '../../Hooks/buy-product';
-import useStripeCheckout from '../../Hooks/stripe-checkout';
 
 
 
@@ -149,7 +148,6 @@ const ProductDescription = ({data,className}) => {
                         <main ref={reviewRef} className='flex-col flex mb-12 gap-4'>
                            {logged && <Comment setPseudoReview={setPseudoreviews} userId={user.id}  user={user} productSellerId={data.seller.id} productId={data.id}/>}
                               {pseudoReviews.map((el,i) => {
-                                 console.log(el.user)
                                  return (
                                     <ReviewCard review={el} key={i+1} className="w-full text-sm border-b-2 border-gray-200 " />
                                  )

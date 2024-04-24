@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cartActions } from "./CartSlice";
+import { getSoldProducts } from "./DashboardOverview";
 import api from "../components/Utilities/Api";
 
 
 
 const Login = createSlice({
    name:"login",
-   initialState:{loggedIn:false, user:{} , purchased:{} , showForm:false , errMsg: false , errCode: 500, token:""},
+   initialState:{loggedIn:false, user:{} , purchased:{} , soldProductsInfo:{} , showForm:false , errMsg: false , errCode: 500, token:""},
    reducers:{
       login(state,action) {
          state.loggedIn = action.payload;
@@ -40,6 +41,11 @@ const Login = createSlice({
          state.purchased = action.payload 
          console.log(action.payload)
 
+      },
+
+      setSoldProducts(state,action) {
+         state.soldProductsInfo = action.payload
+         console.log(state.soldProductsInfo)
       }
    }
 })
@@ -75,9 +81,6 @@ export const loginUser = ({email,password}) => {
       const cartTotal = user.cart?.reduce((acc,el) => acc + Number(el.price), 0)
       const purchased = user.purchases
 
-
-
-
       dispatch(Login.actions.login(true))
       dispatch(Login.actions.user(user))
       dispatch(Login.actions.setToken(token))
@@ -86,7 +89,7 @@ export const loginUser = ({email,password}) => {
       dispatch(cartActions.mutateCartTotal(cartTotal))
       dispatch(Login.actions.showLogin(false))
       dispatch(Login.actions.setUserPurchases(purchased))
-      
+      dispatch(getSoldProducts())
 
    }
 }
