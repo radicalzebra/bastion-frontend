@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../Store/LoginSlice';
 
 
@@ -9,6 +9,8 @@ const useLoginHook = () =>  {
   const [pass , setPass] = useState("")
   const [lookpwd , setLookPwd] = useState(false)
   const [isDisabled , setIsDisabled] = useState(false)
+  const [loading,setLoading] = useState(false)
+  const error = useSelector(state => state.login.errMsg)
 
  
 
@@ -16,7 +18,13 @@ const useLoginHook = () =>  {
   
   const onBtnClick = (e) => {
     e.preventDefault()
+    
+    setLoading(false)
     dispatch(loginUser({email:email,password:pass}))
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },3000)
   }
 
   const onPassChange = (e) => {
@@ -39,6 +47,7 @@ const useLoginHook = () =>  {
     setIsDisabled,
     onBtnClick,
     onPassChange,
+    loading
   }
 }
 
