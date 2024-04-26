@@ -182,7 +182,7 @@ export const Nav = (props) => {
            <section  className="flex gap-6 bg-blue-90  items-center relative ">
 
               {logged ?  cartShow && props.cart.length > 0 && <NumCartItems /> : undefined }
-              {logged ? notifyShow && <NotifyItems items={[1,2,3]}/> : undefined}
+              {/* {logged ? notifyShow && <NotifyItems items={[1,2,3]}/> : undefined} */}
             
                
               

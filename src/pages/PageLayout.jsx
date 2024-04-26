@@ -33,7 +33,7 @@ const PageLayout = (props) => {
            
             <header  className='z-20'>
                {/* <OneLineBanner className="font-medium text- tracking-wider" string="Discover your perfect pair & walk with ease 👟"/> */}
-               <Nav links={["all","men", "women" , "kids" ]} numNotif={user?.email && "3"} cart={cart}/>
+               <Nav links={["all","men", "women" , "kids" ]}  cart={cart}/>
             </header>
 
             {showLoginForm && <Login className={""}/>}

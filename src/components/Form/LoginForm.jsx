@@ -9,8 +9,6 @@ import loadingUi from "../../assets/navlogos/loading2.gif"
 function LoginForm({className}) {
 
   const dispatch =  useDispatch()
-  const errorMessage = useSelector(state => state.login.errMsg)
-  const errorCode = useSelector(state => state.login.errCode)
 
 
   const {
@@ -22,7 +20,8 @@ function LoginForm({className}) {
     isDisabled,
     onBtnClick,
     onPassChange,
-    loading
+    loading,
+    errorMessage
    } = useLoginHook()
 
   
@@ -37,7 +36,7 @@ function LoginForm({className}) {
        <header className='text-3xl flex flex-col gap-1'>
          <h1 className='font-showcase'>Log In</h1>
          <p className='text-xs font-secondary text-gray-700'>Enter your email & password to login to our website</p>
-         {errorMessage && !loading && <span className='text-xs font-secondary text-red-700 mt-2'>{`! ${errorMessage} `}</span>}
+         {errorMessage && !loading  && <span className='text-xs font-secondary text-red-700 mt-2'>{`! ${errorMessage} `}</span>}
        </header>
 
        <form className='flex flex-col gap-12 '>

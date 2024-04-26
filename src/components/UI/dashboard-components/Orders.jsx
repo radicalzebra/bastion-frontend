@@ -39,7 +39,7 @@ function Orders(props) {
            <Card className={`py-6  flex flex-col gap-16 w-full pr-8 mb-20 bg-red-9 `}>
 
                <div className='flex flex-col gap-4 mb-20'>
-                  <h1 className='text-3xl font-semibold'>Orders 👜</h1>
+                  <h1 className='text-3xl font-semibold'>Orders 💰</h1>
                   <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to the Orders Page, where the rhythm of your business transactions comes to life. Seamlessly manage the entire lifecycle of orders, from their initial placement to their successful fulfillment. This dynamic hub empowers you to monitor the real-time status of orders, categorize them based on their processing stage, and swiftly access detailed insights for informed decision-making.</p>
                </div>
 

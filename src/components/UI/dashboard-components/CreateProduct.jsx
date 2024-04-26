@@ -17,9 +17,6 @@ export default function CreateProduct() {
   const {createProduct,created,specificProduct} = useCreateProduct()
   const [onFormClick, setOnFormClick] = useState(false)
 
-
-  console.log(specificProduct,"lll")
-
   const productRef = useRef({
             name : "",
             price:0,

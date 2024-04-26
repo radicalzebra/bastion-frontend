@@ -10,7 +10,8 @@ const useLoginHook = () =>  {
   const [lookpwd , setLookPwd] = useState(false)
   const [isDisabled , setIsDisabled] = useState(false)
   const [loading,setLoading] = useState(false)
-  const error = useSelector(state => state.login.errMsg)
+  const errMsg = useSelector(state => state.login.errMsg)
+  const loggedIn = useSelector(state => state.login.loggedIn)
 
  
 
@@ -24,7 +25,8 @@ const useLoginHook = () =>  {
     setLoading(true)
     setTimeout(()=>{
       setLoading(false)
-    },3000)
+    },5000)
+    
   }
 
   const onPassChange = (e) => {
@@ -47,7 +49,8 @@ const useLoginHook = () =>  {
     setIsDisabled,
     onBtnClick,
     onPassChange,
-    loading
+    loading,
+    errorMessage : errMsg
   }
 }
 

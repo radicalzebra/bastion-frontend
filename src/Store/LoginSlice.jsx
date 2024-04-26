@@ -11,12 +11,10 @@ const Login = createSlice({
    reducers:{
       login(state,action) {
          state.loggedIn = action.payload;
-         console.log(state.loggedIn)
       },
 
       user(state,action) {
          state.user = action.payload;
-         console.log(state.user,"lll")
       },
 
       setUpdatedUser(state,action) {
@@ -39,7 +37,6 @@ const Login = createSlice({
 
       setUserPurchases(state,action) {
          state.purchased = action.payload 
-         console.log(action.payload)
 
       },
 
@@ -63,13 +60,11 @@ export const loginUser = ({email,password}) => {
          password
       }
 
+      dispatch(Login.actions.error({message:false}))
+      
       const LoginUserResponse = await api("/bastion/api/users/login","POST",body,undefined)
-      console.log(LoginUserResponse)
-
-
 
       if(LoginUserResponse.status === "fail") {
-         console.log(LoginUserResponse)
          return  dispatch(Login.actions.error({message:LoginUserResponse.err,code:LoginUserResponse.errCode}))
       }
 

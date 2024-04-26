@@ -1,8 +1,7 @@
 import React, { useState, memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { cartActions, updateCart } from '../../../Store/CartSlice'
-import { Checkbox } from '@mui/material'
-
+import { NavLink } from 'react-router-dom'
 
 function CartBox({className, name , src , price, id , key}) {
 
@@ -27,10 +26,10 @@ function CartBox({className, name , src , price, id , key}) {
        </div>
 
        <div className='bg-red-70 flex flex-wrap items-center p-4'>
-         <h className="bg-blue-90 text-sm font-poppins text-black">{name}</h>
+         <NavLink to={`/product/${id}`} className="bg-blue-90 text-sm hover:underline font-poppins text-black">{name}</NavLink>
        </div>
 
-       <div className='bg-red-5 flex flex-wrap items-center text-black pl-12'>1</div>
+       <div className='bg-red-5 flex flex-wrap items-center text-black pl-12'>1x</div>
 
         <div className='bg-red-40 flex flex-wrap items-center '>
             <h className="bg-blue-90 text-sm text-black font-poppins font-semibold select-none">{"$"+price}</h>

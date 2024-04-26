@@ -7,18 +7,15 @@ const Overview = createSlice({
    reducers: {
      setDashInfo(state,action) {
        state.dashInfo = action.payload
-       console.log(action.payload,"oo")
      },
 
      setOrdered(state,action) {
        state.ordered = action.payload
-       console.log(action.payload,"pp")
 
      }, 
 
      setModifiedOrdered(state,action) {
        state.modifiedOrdered = action.payload
-       console.log(action.payload,"xx")
 
      }, 
    }
@@ -35,8 +32,6 @@ export const getSoldProducts = () => {
 
       const response = await api(`/bastion/api/purchases`,"GET", undefined , token)
       const filterOrdered = response.data.purchases.filter((el)=> el.product.seller.id === id)
-
-      console.log(filterOrdered)
 
       const TotalSales = filterOrdered.reduce((acc,el)=> {
         return acc + el.price
@@ -58,7 +53,6 @@ export const getSoldProducts = () => {
       },0)
 
       const TotalVisitors = new Set(filterOrdered.map((el,i)=> {
-         console.log(el.user.email)
          return el.user.email
       })).size 
 
