@@ -1,12 +1,13 @@
 import { Outlet, json } from 'react-router-dom';
-import { OneLineBanner , Nav } from '../components/UI/Navigations';
-import Card from '../components/Utilities/Card';
+import {  Nav } from '../components/UI/Navigations';;
 
 import {cartActions} from '../Store/CartSlice';
 import {notifyActions} from '../Store/NotifySlice';
 
 import { useSelector , useDispatch} from 'react-redux';
 import {Login} from '../components/UI/AuthModal';
+
+import { ScrollRestoration } from "react-router-dom";
 
 
 
@@ -27,9 +28,11 @@ const PageLayout = (props) => {
    }
   
    return (
-
+         
       
          <div onClick={(e) => onClickHandler(e)}  className="flex flex-col gap-8 pt-2 px-4 relative">
+
+            <ScrollRestoration/>
            
             <header  className='z-20'>
                {/* <OneLineBanner className="font-medium text- tracking-wider" string="Discover your perfect pair & walk with ease 👟"/> */}

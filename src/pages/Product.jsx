@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Card from '../components/Utilities/Card'
 import ProductCarosal from '../components/UI/ProductCarosal'
 import ProductDescription from './../components/UI/ProductDescription';
 import {ProdCard} from '../components/UI/ProductCard'
 import Carousal from '../components/Utilities/Carousal'
-import { NavLink, useLoaderData, useParams,useRouteLoaderData } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import useHomeProducts from '../Hooks/home-products'
 import loadingUi from "../assets/navlogos/loading2.gif"

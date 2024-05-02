@@ -3,33 +3,27 @@ import GeneralHeading from '../GeneralHeading'
 
 
 
-const InputImage = forwardRef(({className} , ref) => {
+const InputImage = ({className,obj,onChangeHandler,name,id}) => {
 
- const [image,setImage]  = useState(false)
+  const [image,setImage]  = useState(obj[id])
 
-  const onChangeHandler = (e) => {
+  const onChangeHandle = (e) => {
    let file = e.target.files[0]
 
    if(file.type === "image/jpeg") {
       const reader = new FileReader();
 
       reader.onloadend = () => {
+        const objImagesCopy = [...obj].filter((el)=> el!==undefined)
+        objImagesCopy[id] = reader.result
+        onChangeHandler(e,name,undefined,objImagesCopy)
+
         setImage(reader.result);
       };
 
       reader.readAsDataURL(file);
    }
-
-   // setChanged(true)
-
   }
-
-
-  useEffect(()=> {
-      if(image) {
-         ref.current.images = [...ref.current.images, image]
-      }
-  },[image])
 
 
    return (
@@ -40,10 +34,10 @@ const InputImage = forwardRef(({className} , ref) => {
 
          {image && <img src={image} className='h-full w-full object-fill' />}
 
-         <input onChange={onChangeHandler} className='bg-white border-2 w-28 h-28 opacity-0 outline-none absolute ' type="file"/>
+         <input onChange={onChangeHandle} className='bg-white border-2 w-28 h-28 opacity-0 outline-none absolute ' type="file"/>
       </div>
    )
-})
+}
 
 
 
@@ -51,21 +45,33 @@ const InputImage = forwardRef(({className} , ref) => {
 
 
 
-function CreateProductImages({className}, ref) {
+function CreateProductImages({className,obj,setObj,onChangeHandler}) {
+
+  const images = [...obj.images]
+  
+  if(images.length<5) {
+    for(let i = images.length;i<5;i++) {
+      images.push(undefined)
+    }
+  } 
+
+  useEffect(()=>{
+      onChangeHandler(obj.images[0],"coverImage")
+  },[obj.images])
+
   return (
    <section className={className}>
-          <GeneralHeading heading={"Product Images"} additionalInfo={"(only upload jpegs/jpgs)"}>
-             <div className='bg-red-90 flex gap-4 flex-wrap h-1/2 bg-red-90 justify-between '>
-               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>
-               <InputImage ref={ref} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>  
+          <GeneralHeading heading={"Product Images"} additionalInfo={"(only upload jpegs/jpgs of minimum 1000 * 1000)"}>
+             <div className='bg-red-90 flex  flex-wrap h-1/2 bg-red-90 justify-between '>
+               {images.map((el,i) => {
+                  return <InputImage  obj={obj.images} name={"images"} id={i} key={i+1} setObj={setObj} onChangeHandler={onChangeHandler} className={"bg-gray-200 relative w-28 h-28 rounded-md flex justify-center items-center  cursor-pointer overflow-hidden"}/>   
+               })}
+               {}
             </div>
          </GeneralHeading>
 
-         <GeneralHeading ref={ref} name="description" heading="Description" className={"h-2/3"} >
-            <textarea className='resize-none bg-white border-2 rounded-md h-full w-full text-start p-2 text-sm outline-none'></textarea>
+         <GeneralHeading  name="description" heading="Description" className={"h-2/3"} >
+            <textarea value={obj.description} onChange={(e) => onChangeHandler(e.target.value,"description")} className='resize-none bg-white border-2 rounded-md h-full w-full text-start p-2 text-sm outline-none'></textarea>
          </GeneralHeading>
 
    </section>
@@ -73,4 +79,4 @@ function CreateProductImages({className}, ref) {
   )
 }
 
-export default forwardRef(CreateProductImages)
+export default CreateProductImages

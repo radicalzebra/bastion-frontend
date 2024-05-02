@@ -11,7 +11,6 @@ const useLoginHook = () =>  {
   const [isDisabled , setIsDisabled] = useState(false)
   const [loading,setLoading] = useState(false)
   const errMsg = useSelector(state => state.login.errMsg)
-  const loggedIn = useSelector(state => state.login.loggedIn)
 
  
 

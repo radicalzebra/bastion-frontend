@@ -3,6 +3,7 @@ import { NavLink, Outlet, useParams } from 'react-router-dom'
 import { useSelector  } from 'react-redux'
 import defaultUser from "../assets/navlogos/defaultUser.jpg"
 import Card from '../components/Utilities/Card'
+import { ScrollRestoration } from "react-router-dom";
 
 
 
@@ -34,7 +35,10 @@ export function DashboardLayout(props) {
   return (
 
     <div className='flex gap-12 relative'>
+          
+          <ScrollRestoration/>
 
+           
           <section className='flex flex-col bg-gray-00  w-24 py-8 gap-8 items-center h-screen  rounded-md sticky top-0 '>
 
             <Card className="flex flex-col gap-8 bg-blue-90 h-2/3 ">

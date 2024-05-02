@@ -3,11 +3,8 @@ import React, { forwardRef, useImperativeHandle, useState } from 'react'
 
 function GeneralHeading({heading,children,className,additionalInfo,name},ref) {
 
-
   const onChangeHandler= (e) => {
-    console.log(e.target.value)
-  
-    ref.current[name] = name.trim() === "price" ? Number(e.target.value) : e.target.value
+   console.log()
   }
 
   return (
