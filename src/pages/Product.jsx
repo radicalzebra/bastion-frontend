@@ -2,12 +2,11 @@ import React from 'react'
 import Card from '../components/Utilities/Card'
 import ProductCarosal from '../components/UI/ProductCarosal'
 import ProductDescription from './../components/UI/ProductDescription';
-import {ProdCard} from '../components/UI/ProductCard'
-import Carousal from '../components/Utilities/Carousal'
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import useHomeProducts from '../Hooks/home-products'
 import loadingUi from "../assets/navlogos/loading2.gif"
+import CarousalShow from '../components/UI/CarousalShow';
 
 
 const Product = () => {
@@ -38,21 +37,8 @@ return (
               <ProductDescription className="w-1/2 justify-self-center" data={productData}/>
             </Card>
 
-            <Card className="text-black my-12 px-24 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 ">
-
-                <div  className="self-start flex w-full justify-between items-center">
-                  <p className='text-3xl font-extrabold uppercase'>You might like</p>
-                  <NavLink to="/products/brands" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
-                </div> 
-
-
-                <Carousal className="">
-                      {products?.filter((el,i) => el.brand === productData.brand)
-                                .map((el,i)=> {
-                                  return <ProdCard className="shadow-sm  p-1 " key={i+1} seller={el.seller.id} id={el._id} coverImage={el.coverImage} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/> 
-                      })}   
-                </Carousal>
-            </Card>
+            <CarousalShow heading={"You might like"} linkToMore={`/products/all`} arr={products} />
+          
       </Card>}
   </div>
 )

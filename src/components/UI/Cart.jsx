@@ -58,7 +58,7 @@ export const NumCartItems = () => {
          })}
 
          {detailedCart.length !== 0 && <NavLink onClick={()=> dispatch(cartActions.touchHandler())} to="/dashboard/cart" className={`w-full h-10 flex items-center justify-center text-white rounded-md bg-black font-medium focus:bg-gray-900 `}>
-            <span>more...</span>
+            <span>Go to cart</span>
          </NavLink>}
 
       </div>

@@ -7,7 +7,7 @@ import api from "../components/Utilities/Api";
 
 const Login = createSlice({
    name:"login",
-   initialState:{loggedIn:false, user:{} , purchased:{} , soldProductsInfo:{} , showForm:false , errMsg: false , errCode: 500, token:""},
+   initialState:{loggedIn:false, user:{} , purchased:[] , soldProductsInfo:{} , showForm:false , errMsg: false , errCode: 500, token:""},
    reducers:{
       login(state,action) {
          state.loggedIn = action.payload;

@@ -2,9 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import api from '../components/Utilities/Api';
 
 const Overview = createSlice({
-   name:"overview",
-   initialState : {ordered:null,modifiedOrdered:null , dashInfo:{}},
-   reducers: {
+  name:"overview",
+  initialState : {ordered:[],modifiedOrdered:[] , dashInfo:{
+           sales : 0,
+            orders: 0,
+            visitors: 0,
+            men: 0,
+            women: 0,
+            kids: 0,
+            numProducts:0
+  }},
+
+  reducers: {
      setDashInfo(state,action) {
        state.dashInfo = action.payload
      },

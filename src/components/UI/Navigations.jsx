@@ -5,7 +5,6 @@ import Icons from '../Utilities/Icons';
 import Bastion from "../../assets/navlogos/Bastion.svg";
 import defaultUser from "../../assets/navlogos/defaultUser.jpg"
 import {NumCartItems} from './Cart';
-import { NotifyItems } from './Notify';
 import {useSelector,useDispatch} from "react-redux"
 import {cartActions} from '../../Store/CartSlice';
 import {notifyActions} from '../../Store/NotifySlice';

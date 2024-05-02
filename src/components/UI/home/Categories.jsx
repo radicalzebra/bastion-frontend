@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from '../../Utilities/Card'
-import hero2 from "../../../assets/headerImg/hero2.jpg"
 import sportsShoes from "../../../assets/showcases/sportsShoes.jpg"
 import exploreShoes from "../../../assets/showcases/exploreShoes.jpg"
 import flipflops from "../../../assets/showcases/flipflops.jpg"

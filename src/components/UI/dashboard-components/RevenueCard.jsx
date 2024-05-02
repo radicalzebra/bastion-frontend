@@ -1,9 +1,11 @@
 import React from 'react'
 
 function RevenueCard(props) {
+
+  console.log(props.heading,props.number)
   
-     const num = props.number;
-     let formattedNum = 0;
+    const num = props.number ;
+    let formattedNum = 0;
 
     const options = {                
                 style: "currency",  
@@ -26,11 +28,6 @@ function RevenueCard(props) {
 
              <main className="flex flex-col gap-3">
                 <p className='font-sans text-2xl font-semibold'>{props.heading.toLowerCase().includes("sales") ? formattedNum : props.number}</p>
-
-                {/* <section className="flex gap-2 items-center rounded-md bg-gray-50 shadow-md w-16 h-6 px-1">
-                       <img src={props.arrow} alt={"arrow"} />
-                       <p className={`font-sans  text-sm  ${props.increment ? "text-red-500": "text-green-500"}`}>{props.percentage + "%"}</p>
-                </section> */}
              </main>
      </section>
   )
