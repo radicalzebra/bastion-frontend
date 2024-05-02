@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import CreateProductInfo from './CreateProductInfo'
-import CreateProductImages from './createProductImages'
+import CreateProductImages from './CreateProductImages'
 import useModifyProduct from '../../../Hooks/Modify-product'
 import loadingUi from "../../../assets/navlogos/loading2.gif"
 
