@@ -1,14 +1,49 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { OneLineBanner } from './Navigations';
 import Card from '../Utilities/Card';
+import gsap from 'gsap/all';
 
 
 
 
 function Footer(props) {
+
+  const footerRef =  useRef(null)
+
+  
+  useEffect(()=>{
+
+      const animate = (element,duration=null,ease=null) => {
+
+         const observer = new IntersectionObserver(entries => {
+   
+            if(entries[0].isIntersecting) {
+
+               gsap.to(element,{
+                  x:0,
+                  y:0,
+                  ease:ease ? ease:"elastic",
+                  opacity:1,
+                  duration:duration || 1.5,
+                  scale:1
+               })
+            }
+              
+         },{
+            threshold:0.1
+         })
+
+         observer.observe(element)
+
+      }
+
+      footerRef.current !== null && animate(footerRef.current,2,"power4")
+
+   },[footerRef])
+
   return (
-  <footer className='bg-gray-50 border-2 rounded-lg my-4  border-gray-200 flex flex-col px-8 p-4'>
+  <footer ref={footerRef} className='bg-gray-50 border-2 rounded-lg my-4  border-gray-200 flex translate-y-1/2 flex-col px-8 p-4'>
       
 
       <section className="flex bg-red-90">

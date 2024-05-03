@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import star from "../../../assets/navlogos/star.svg"
 import Carousal from '../../Utilities/Carousal'
 import ReviewBlock from './ReviewBlock'
 import male from "../../../assets/navlogos/male.gif"
 import female from "../../../assets/navlogos/female.gif"
 import defaultUser from "../../../assets/navlogos/defaultUser.gif"
+import gsap from 'gsap/all'
+
 
 function Reviews(props) {
 
-  const reviews = [
+   const reviews = [
     { name: "GourmetGuru87", src:defaultUser , title: "Comfy Kicks", rating: 5, review: "These shoes are like walking on clouds, absolute comfort! They're my go-to for all-day wear." },
     { name: "BookwormBelle", src:female , title: "Stylish Strides", rating: 4.5, review: "Fashion-forward and comfortable, perfect for long walks! Plus, they pair well with any outfit." },
     { name: "ArtAficionado2024", src:female , title: "Sleek Footwear", rating: 4, review: "Minimalist design with maximum comfort, love them! They're a statement piece in my wardrobe." },
@@ -19,11 +21,46 @@ function Reviews(props) {
     // Add more reviews as needed
    ];
 
+   const sectionRef = useRef(null)
+   const carousalRef = useRef(null)
+
+
+   useEffect(()=>{
+
+      const animate = (element,duration=null,ease=null) => {
+
+         const observer = new IntersectionObserver(entries => {
+   
+            if(entries[0].isIntersecting) {
+
+               gsap.to(element,{
+                  x:0,
+                  y:0,
+                  ease:ease ? ease:"elastic",
+                  opacity:1,
+                  duration:duration || 1.5,
+                  scale:1
+               })
+            }
+              
+         },{
+            threshold:0.1
+         })
+
+         observer.observe(element)
+
+      }
+
+      sectionRef.current !== null && animate(sectionRef.current)
+      carousalRef.current !== null && animate(carousalRef.current,2,"power4")
+
+   },[sectionRef,carousalRef])
+
 
   return (
-    <section className={`flex gap-4 text-black bg-gray-100 mx-12 rounded-lg justify-between p-8`}>
+    <section  className={`flex gap-4 text-black bg-gray-100 mx-12 rounded-lg  justify-between p-8`}>
 
-      <section className='flex flex-col justify-between '>
+      <section  ref={sectionRef} className='flex flex-col -translate-x-full opacity-0 justify-between '>
          <div className='flex flex-col gap-6'>
             <p className='uppercase text-5xl font-bold w-72 bg-blue-60'>Reviews with love</p>
             <div className='flex flex-col gap-2 bg-white p-2 rounded-md w-fit'>
@@ -43,7 +80,7 @@ function Reviews(props) {
 
       </section>
 
-      <section className='relative'>
+      <section ref={carousalRef} className='relative translate-x-full opacity-0'>
          <Carousal className="w-100 bg-red-90 h-80">
             {reviews.map((el,i)=> {
                return <ReviewBlock name={el.name} src={el.src} rating={el.rating} title={el.title} review={el.review} />

@@ -53,7 +53,7 @@ const Home = (props) => {
       <CarousalShow  heading={"Most Bought"} linkToMore={`/products/all`} arr={mostBought}/>
 
 
-      <Card className="text-black px-28 my-12 w-fit tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-90 ">
+      <Card className="text-black px-20 my-12 w-fit tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-90 ">
          <div ref={brandsRef} className={`flex w-full translate-x-1/2 opacity-0 justify-between items-center`}>
                <p className='text-3xl font-extrabold uppercase'>Brands</p>
                <NavLink to="/products/all" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
