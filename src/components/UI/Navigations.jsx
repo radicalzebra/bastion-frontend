@@ -30,21 +30,21 @@ export const OneLineBanner = (props) => {
 };
 
 
-const SearchLinks = ({el,index:i, setSearch}) => {
+const SearchLinks = ({el,setSearch}) => {
 
    const [hoverItem,setHoverItem] = useState(false)
 
    return (
       <li onClick={()=> setSearch(el.name)} onMouseEnter={()=> setHoverItem(true)}  onMouseLeave={()=> setHoverItem(false)} id="search-item" className='  px-4 py-2 flex gap-4 items-center '>
                                       
-          <Link to={`http://127.0.0.1:5173/product/${el._id}`} className={`rounded-full ${hoverItem && "scale-125"}  cursor-pointer transition-all`}>
+          <Link to={`/product/${el._id}`} className={`rounded-full ${hoverItem && "scale-125"}  cursor-pointer transition-all`}>
               <svg width="12" height="12" viewBox="0 0 37 39" className='rotate-270 ' fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2.78504 11.3216C5.5186 4.75767 11.9234 0.474582 19.0337 0.45559C26.6969 0.415236 33.5109 5.32378 35.8997 12.6053C38.2884 19.8868 35.7064 27.8778 29.5085 32.3847C23.3106 36.8917 14.9127 36.885 8.72207 32.3681L3.20207 37.8881C2.64083 38.4486 1.73164 38.4486 1.1704 37.8881C0.609866 37.3269 0.609866 36.4177 1.1704 35.8564L6.5179 30.5089C1.52288 25.4486 0.0514825 17.8854 2.78504 11.3216ZM5.34791 23.7794C7.64307 29.3103 13.0456 32.9125 19.0337 32.9048V32.8281C27.161 32.8177 33.7586 26.2543 33.8112 18.1273C33.819 12.1391 30.2167 6.73659 24.6859 4.44143C19.155 2.14628 12.786 3.411 8.55176 7.64528C4.31748 11.8796 3.05275 18.2485 5.34791 23.7794Z" fill="red"/>
                </svg>
 
            </Link>
 
-            <Link  key={i} className={`text-md font-secondary font-medium ${hoverItem && "text-gray-500"} `} to={`http://127.0.0.1:5173/product/${el._id}`}>{el.name}</Link>
+            <Link  className={`text-md font-secondary font-medium ${hoverItem && "text-gray-500"} `} to={`/product/${el._id}`}>{el.name}</Link>
       </li>
    )
 }

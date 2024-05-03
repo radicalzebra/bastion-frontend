@@ -54,7 +54,7 @@ function categories(props) {
      <section className={`text-black h-98 gap-4 grid grid-cols-5 bg-green-90 my-6 mx-12  ${props.className}`}>
        
        {/* Explore */}
-       <NavLink ref={exploreRef} to="/products/all" className="relative h-98 col-start-1 col-end-3 translate-x-full opacity-0  overflow-hidden  rounded-2xl">
+       <NavLink ref={exploreRef} to="/products/all" className="relative h-98 col-start-1 col-end-3 translate-x-1/3 opacity-0  overflow-hidden  rounded-2xl">
           <img src={sneakers} className='h-full rounded-2xl hover:scale-110 transition-all' alt="" />
           <div className='absolute top-3 left-3 w-72 flex flex-col gap-2 bg-red-90'>
              <p className='uppercase text-4xl font-semibold'>it's your first time ?</p>
@@ -93,7 +93,7 @@ function categories(props) {
       </Card>
 
       {/* flip-flops */}
-      <NavLink ref={flopsRef} to="/products/flipflops" className="relative h-98 col-start-5 col-end-6 overflow-hidden -translate-x-full opacity-0  rounded-2xl">
+      <NavLink ref={flopsRef} to="/products/flipflops" className="relative h-98 col-start-5 col-end-6 overflow-hidden -translate-x-1/3 opacity-0  rounded-2xl">
           <img  src={flipflops} className='h-full rounded-2xl hover:scale-110 transition-all' alt="" />
           <NavLink to="/products/flipflops" className='absolute top-3 left-3  hover:scale-110 transition-all  bg-black text-white text-xs py-2 px-4 rounded-full uppercase font-extrabold'>flipflops</NavLink>
        </NavLink>
