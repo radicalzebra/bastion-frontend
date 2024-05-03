@@ -17,7 +17,7 @@ function CarousalShow({heading,linkToMore,arr,animateClass},ref) {
 
   
   return (
-     <Card className="text-black my-12 px-20 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 ">
+     <Card className="text-black my-12 px-20 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 overflow-hidden ">
 
             <div ref={headerRef} className={`flex w-full translate-x-2/3 opacity-0  justify-between items-center`}>
                <p className='text-3xl font-extrabold uppercase'>{heading}</p>

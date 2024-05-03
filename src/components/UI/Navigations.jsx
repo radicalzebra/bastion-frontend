@@ -35,7 +35,7 @@ const SearchLinks = ({el,setSearch}) => {
    const [hoverItem,setHoverItem] = useState(false)
 
    return (
-      <li onClick={()=> setSearch(el.name)} onMouseEnter={()=> setHoverItem(true)}  onMouseLeave={()=> setHoverItem(false)} id="search-item" className='  px-4 py-2 flex gap-4 items-center '>
+      <Link to={`/product/${el._id}`} onClick={()=> setSearch(el.name)} onMouseEnter={()=> setHoverItem(true)}  onMouseLeave={()=> setHoverItem(false)} id="search-item" className='  px-4 py-2 flex gap-4 items-center '>
                                       
           <Link to={`/product/${el._id}`} className={`rounded-full ${hoverItem && "scale-125"}  cursor-pointer transition-all`}>
               <svg width="12" height="12" viewBox="0 0 37 39" className='rotate-270 ' fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@ const SearchLinks = ({el,setSearch}) => {
            </Link>
 
             <Link  className={`text-md font-secondary font-medium ${hoverItem && "text-gray-500"} `} to={`/product/${el._id}`}>{el.name}</Link>
-      </li>
+      </Link>
    )
 }
 
