@@ -24,7 +24,6 @@ const Login = createSlice({
       error(state,action) {
         state.errMsg = action.payload.message || "An Error Occured while logging in, check your email & password"
         state. errCode = action.payload.code || 500
-        console.log(state.errMsg,state.errCode,action)
       },
 
       showLogin(state,action) {

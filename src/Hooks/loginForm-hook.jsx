@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../Store/LoginSlice';
+import disableScroll from 'disable-scroll';
 
 
 const useLoginHook = () =>  {
@@ -12,7 +13,7 @@ const useLoginHook = () =>  {
   const [loading,setLoading] = useState(false)
   const errMsg = useSelector(state => state.login.errMsg)
 
- 
+  
 
   const dispatch = useDispatch()
   

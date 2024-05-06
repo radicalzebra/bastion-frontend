@@ -1,7 +1,6 @@
 import Card from "../Utilities/Card";
 import hero2 from "../../assets/headerImg/hero2.jpg"
 import { Rating } from "../Utilities/Rating";
-import { useEffect } from "react";
 
 
 

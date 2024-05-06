@@ -1,9 +1,9 @@
 import React from 'react'
-import sportsShoes from "../../../assets/showcases/sportsShoes.jpg"
-import exploreShoes from "../../../assets/showcases/exploreShoes.jpg"
-import flipflops from "../../../assets/showcases/flipflops.jpg"
-import casuals from "../../../assets/showcases/casuals.jpg"
-import sneakers from "../../../assets/showcases/sneakers.jpg"
+import sportsShoes from "../../../assets/showcases/sportsShoes.webp"
+import exploreShoes from "../../../assets/showcases/exploreShoes.webp"
+import flipflops from "../../../assets/showcases/flipflops.webp"
+import casuals from "../../../assets/showcases/casuals.webp"
+import sneakers from "../../../assets/showcases/sneakers.webp"
 import { NavLink } from 'react-router-dom'
 
 

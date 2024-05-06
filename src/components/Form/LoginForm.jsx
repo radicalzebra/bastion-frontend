@@ -3,7 +3,7 @@ import cross from "../../assets/navlogos/cross.svg"
 import useLoginHook from '../../Hooks/loginForm-hook';
 import { useDispatch, useSelector } from "react-redux";
 import { loginActions } from "../../Store/LoginSlice";
-import loadingUi from "../../assets/navlogos/loading2.gif"
+
 
 
 function LoginForm({className}) {
@@ -52,7 +52,7 @@ function LoginForm({className}) {
 
          <label className='w-full flex flex-col gap-2'>
             <button disabled={isDisabled} onClick={onBtnClick} className={`  w-full rounded-md h-12 font-poppins  font-semibold text-white ${isDisabled ? "cursor-not-allowed bg-gray-500" :" hover:scale-105 hover:bg-black  cursor-pointer bg-rose-700" }  transition-all `}>{loading ? "Logging in..." : "Login"}</button>
-            <span className='text-xs font-medium   font-secondary tracking-wider'>Don't have an account? <a className='text-fuchsia-600 hover:underline hover:cursor-pointer'>Register</a></span>
+            {/* <span className='text-xs font-medium   font-secondary tracking-wider'>Don't have an account? <a className='text-fuchsia-600 hover:underline hover:cursor-pointer'>Register</a></span> */}
          </label>
 
        </form>

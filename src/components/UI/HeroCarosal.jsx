@@ -10,11 +10,14 @@ const HeroCarosal = (props) => {
    const [btnHover, setBtnhover] = useState(false);
 
    useEffect(()=>{
+    
+     if(props.fetched) {
+       gsap.timeline()
+       .fromTo(img.current,{y:"-100vh",opacity:0},{y:0,opacity:1,ease:"power2",duration:1})
+       .fromTo(imgText.current, {x:"-100vw", opacity:0},{x:0,opacity:1,ease:"power2",duration:1});
+      }
 
-      gsap.timeline()
-      .fromTo(img.current,{y:"-100vh",opacity:0},{y:0,opacity:1,ease:"power2",duration:1})
-      .fromTo(imgText.current, {x:"-100vw", opacity:0},{x:0,opacity:1,ease:"power2",duration:1});
-   },[])
+   },[props.fetched])
 
    return (
       <Card className={props.className}>

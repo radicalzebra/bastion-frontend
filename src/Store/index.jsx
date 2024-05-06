@@ -4,6 +4,7 @@ import { notifyReducer } from "./NotifySlice";
 import { loginReducer } from "./LoginSlice";
 import { searchReducer } from "./SearchSlice";
 import { overviewReducer } from "./DashboardOverview";
+import { homeReducer } from "./HomeSlice";
 
 const store = configureStore({
    reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
       notify:notifyReducer,
       login:loginReducer,
       search:searchReducer,
-      overview:overviewReducer
+      overview:overviewReducer,
+      home:homeReducer
    }
 })
 

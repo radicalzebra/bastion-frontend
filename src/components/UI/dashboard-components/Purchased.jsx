@@ -7,8 +7,6 @@ import dateFormat from '../../Utilities/DateFomat'
 
 function Purchased(props) {
   const purchased = useSelector(state => state.login.purchased)
- 
-  console.log(purchased)
 
   return (
      <main className={`flex   gap-10 ${props.className} overflow-x-hidden`}>

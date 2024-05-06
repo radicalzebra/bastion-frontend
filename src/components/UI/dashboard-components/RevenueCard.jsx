@@ -1,9 +1,6 @@
 import React from 'react'
 
-function RevenueCard(props) {
-
-  console.log(props.heading,props.number)
-  
+function RevenueCard(props) {  
     const num = props.number ;
     let formattedNum = 0;
 

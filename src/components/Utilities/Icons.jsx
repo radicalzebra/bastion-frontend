@@ -1,4 +1,3 @@
-import Card from './Card';
 import {useRef,useEffect,useState} from "react";;
 import { gsap } from "gsap/all";
 

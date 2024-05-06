@@ -9,18 +9,16 @@ import Categories from '../components/UI/home/Categories';
 import Reviews from '../components/UI/home/Reviews';
 import Brands from '../components/UI/home/Brands';
 import { NavLink } from 'react-router-dom';
-import useHomeProducts from '../Hooks/home-products';
 import CarousalShow from '../components/UI/CarousalShow';
 import ScrollDownAnimation from '../components/Utilities/ScrollDownAnimation';
-
-
-
-gsap.registerPlugin(ScrollTrigger);
+import { useSelector } from 'react-redux';
 
 
 const Home = (props) => {
    
-   const {mostRated,mostBought} = useHomeProducts()
+   const mostBought = useSelector(state => state.home.mostBought)
+   const mostRated = useSelector(state => state.home.mostRated)
+   const fetched = useSelector(state => state.home.fetched)
    const brandsRef = useRef(null);
 
   useEffect(()=>{
@@ -30,8 +28,9 @@ const Home = (props) => {
   return (
     <Card className={`flex flex-col gap-28 overflow-hidden  relative`}>
 
+      
       <section className='flex flex-col gap-6 '>
-         <HeroCarosal src={hero2} className={`h-100 relative rounded-lg z-40`}/>
+         <HeroCarosal fetched={fetched}  src={hero2} className={`h-100 relative rounded-lg z-40`}/>
          <section className='flex pl-10 gap-10 text-black'>
             <Card className="font-semibold text-sm"><span className='text-2xl'>🚚 </span> Short supply chain</Card>
             <Card className="font-semibold text-sm"><span className='text-2xl'>⚖️ </span> Fair prices</Card>
@@ -46,14 +45,17 @@ const Home = (props) => {
 
       <CarousalShow  heading={"Bestsellers"} linkToMore={`/products/all`} arr={mostRated} />
 
+
       <Categories/>
       
+
       <Reviews/>
+
 
       <CarousalShow  heading={"Most Bought"} linkToMore={`/products/all`} arr={mostBought}/>
 
 
-      <Card className="text-black px-20 my-12 w-fit tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-90 ">
+      <Card className="text-black px-20 my-5 w-fit tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-90 ">
          <div ref={brandsRef} className={`flex w-full translate-x-1/2 opacity-0 justify-between items-center`}>
                <p className='text-3xl font-extrabold uppercase'>Brands</p>
                <NavLink to="/products/all" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
@@ -62,7 +64,10 @@ const Home = (props) => {
          <Brands/>
       </Card>
 
-         <Footer/>
+      
+      <Footer/>
+
+
     </Card>
   )
 }

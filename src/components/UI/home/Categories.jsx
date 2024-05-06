@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import Card from '../../Utilities/Card'
-import sportsShoes from "../../../assets/showcases/sportsShoes.jpg"
-import exploreShoes from "../../../assets/showcases/exploreShoes.jpg"
-import flipflops from "../../../assets/showcases/flipflops.jpg"
-import casuals from "../../../assets/showcases/casuals.jpg"
-import sneakers from "../../../assets/showcases/sneakers.jpg"
+import sportsShoes from "../../../assets/showcases/sportsShoes.webp"
+import exploreShoes from "../../../assets/showcases/exploreShoes.webp"
+import flipflops from "../../../assets/showcases/flipflops.webp"
+import casuals from "../../../assets/showcases/casuals.webp"
+import sneakers from "../../../assets/showcases/sneakers.webp"
 import { NavLink } from 'react-router-dom'
 import gsap from 'gsap/all'
 
@@ -35,11 +35,10 @@ function categories(props) {
             }
               
          },{
-            threshold:0.1
+            threshold:0.3
          })
 
          observer.observe(element)
-
       }
 
       exploreRef.current !== null && animate(exploreRef.current)
@@ -66,9 +65,9 @@ function categories(props) {
 
       <Card className="h-98 flex flex-col col-start-3 col-end-5 gap-2">
 
-         {/* sneakers */}
          <section className="h-1/2 flex gap-2">
 
+         {/* sneakers */}
             <NavLink ref={sneakersRef} to="/products/sneakers" className='flex gap-2 relative overflow-hidden translate-y-1/3 opacity-0  rounded-2xl'>
                <img src={exploreShoes} className='h-full rounded-2xl hover:scale-110 transition-all' alt="" />
                <NavLink to="/products/sneakers" className='absolute bottom-3 left-3  hover:scale-110 transition-all  bg-black text-white text-xs py-2 px-4 rounded-full uppercase font-extrabold'>Sneakers</NavLink>
@@ -83,7 +82,7 @@ function categories(props) {
          </section>
 
          {/* sportshoes */}
-         <NavLink ref={sportRef} to="/products/sportshoes" className="h-1/2 w-full flex relative overflow-hidden -translate-y-1/3 opacity-0   rounded-2xl">
+         <NavLink ref={sportRef} to="/products/sportshoes" className="h-1/2 w-full flex relative overflow-hidden -translate-y-1/3 opacity-0  rounded-2xl">
             <div className='flex gap-2 w-full'>
                <img src={sportsShoes} className='rounded-2xl w-full h-100 hover:scale-110 transition-all' alt="" />  
                <NavLink to="/products/sportshoes" className='absolute bottom-3 left-3  hover:scale-110 transition-all  bg-black text-white text-xs py-2 px-4 rounded-full uppercase font-extrabold'>Sportshoes</NavLink>
