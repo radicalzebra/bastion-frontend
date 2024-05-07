@@ -23,7 +23,7 @@ export default function HomeLoading() {
 
        setTimeout(()=> {
          setLoading("Something went wrong!, please refresh the site")
-       },20000)  
+       },200000)  
     }
   },[fetched]) 
 
