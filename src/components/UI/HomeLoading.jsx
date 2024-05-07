@@ -18,8 +18,12 @@ export default function HomeLoading() {
        dispatch(fetchProducts())
        disableScroll.on()
        setTimeout(()=> {
-         setLoading("Preparing, be patient for 5 min! 😊")
+         setLoading("Preparing, be patient for 2-3 min! 😊")
        },7777)     
+
+       setTimeout(()=> {
+         setLoading("Something went wrong!, please refresh the site")
+       },20000)  
     }
   },[fetched]) 
 

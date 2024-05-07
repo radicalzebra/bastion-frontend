@@ -1,18 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react'
 import CartBox from './CartBox'
 import { useSelector } from 'react-redux'
 import CartTotal from './CartTotal'
 import emptyCart from "../../../assets/dashboard/emptyCart.png"
-
+import React, { useEffect, useRef } from 'react'
+import PageTransition from '../../Utilities/PageTransition';
 
 
 export default function CartBoxLayout() {
 
   const detailedCart = useSelector(state => state.cart.detailedUpdatedCart)
 
+  const parentRef = useRef(null)
+
+  useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+  },[parentRef])
+  
+
 
   return (
-   <main className='flex gap-8 bg-red-60 p-4 relative my-8'>
+   <main  ref={parentRef}  className='flex gap-8 bg-red-60 p-4 relative my-8'>
 
     <section  className='flex flex-col gap-8 min-h-screen bg-red-90 basis-4/6'>
       {detailedCart.map((el,i)=> {

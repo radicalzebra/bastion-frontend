@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import Card from '../../Utilities/Card'
 import { NavLink } from 'react-router-dom'
 import dateFormat from '../../Utilities/DateFomat'
 import { useSelector } from 'react-redux';
-
-
+import PageTransition from '../../Utilities/PageTransition';
 
 
 
@@ -15,7 +14,7 @@ function Orders(props) {
   const [modifiedOrdered,setModifiedOrdered] = useState(ordered)
 
 
-  const searchHandler = (e) => {
+   const searchHandler = (e) => {
 
      if(e.target.value !== "") {
 
@@ -33,14 +32,21 @@ function Orders(props) {
    }
 
 
+   const parentRef = useRef(null)
+
+   useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+   },[parentRef])
+
+
   return (
-    <main className={`flex gap-10  text-black ${props.className}`}>
+    <main ref={parentRef} className={`flex gap-10  text-black ${props.className}`}>
 
            <Card className={`py-6  flex flex-col gap-16 w-full pr-8 mb-20 bg-red-9 `}>
 
                <div className='flex flex-col gap-4 mb-20'>
                   <h1 className='text-3xl font-semibold'>Orders 💰</h1>
-                  <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to the Orders Page, where the rhythm of your business transactions comes to life. Seamlessly manage the entire lifecycle of orders, from their initial placement to their successful fulfillment. This dynamic hub empowers you to monitor the real-time status of orders, categorize them based on their processing stage, and swiftly access detailed insights for informed decision-making.</p>
+                  <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to the Orders Page, where the rhythm of your business transactions comes to life. Seamlessly manage the entire lifecycle of orders, from their initial placement to their successful fulfillment. </p>
                </div>
 
                <section className='flex  gap-4 justify-center bg-red-90 relative'>

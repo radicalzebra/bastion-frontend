@@ -5,8 +5,7 @@ import useGetSellerProducts from '../../../Hooks/get-seller-products'
 import loadingUi from "../../../assets/navlogos/loading2.gif"
 import Dropdown from '../Dropdown'
 import Reverse from '../Reverse'
-
-
+import PageTransition from '../../Utilities/PageTransition';
 
 
 
@@ -19,12 +18,18 @@ function Products(props) {
     const [touched, setTouched] = useState(false)
     const {products,loading,setFilter,setSearch,setIsAscend} = useGetSellerProducts()
 
+    
 
+   const parentRef = useRef(null)
+
+   useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+   },[parentRef])
 
   return (
       
         
-       <main className={`flex gap-10 ${props.className} overflow-x-hidden`}>
+       <main ref={parentRef}  className={`flex gap-10 ${props.className} overflow-x-hidden`}>
       
            <Card className={`flex flex-col  gap-5 w-full pr-8 relative `}>
 

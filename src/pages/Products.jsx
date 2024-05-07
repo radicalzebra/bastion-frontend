@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import Card from '../components/Utilities/Card'
 import { ProdCard } from '../components/UI/ProductCard'
 import {SortForm, RatingForm , BrandForm, ProductTypeForm , SeasonForm , PriceForm} from "../components/Form/ProductsForm"
@@ -10,9 +10,10 @@ import loadingUi from "../assets/navlogos/loading2.gif"
 
 
 
+
 const Products = (props) => {
 
-  const [setFormObj,products,isPending,isError,error,isFetching] = useProductsFetch()
+  const [setFormObj,products,isFetching] = useProductsFetch()
 
   return (
     <section className="flex flex-col my-20 gap-3 px-16 bg-red-90">

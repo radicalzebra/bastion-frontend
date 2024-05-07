@@ -1,15 +1,21 @@
 import { Card } from '@mui/material'
-import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import PurchasedProduct from './PurchasedProduct'
 import dateFormat from '../../Utilities/DateFomat'
-
+import React, { useEffect, useRef } from 'react'
+import PageTransition from '../../Utilities/PageTransition';
 
 function Purchased(props) {
   const purchased = useSelector(state => state.login.purchased)
 
+  const parentRef = useRef(null)
+
+  useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+  },[parentRef])
+
   return (
-     <main className={`flex   gap-10 ${props.className} overflow-x-hidden`}>
+     <main ref={parentRef}  className={`flex   gap-10 ${props.className} overflow-x-hidden`}>
       
            <Card className={`flex flex-col  gap-10 w-full pr-8 relative `}>
                   <div className='flex flex-col gap-4 mb-20  py-6'>

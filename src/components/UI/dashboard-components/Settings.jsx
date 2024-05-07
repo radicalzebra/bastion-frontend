@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer, useRef } from 'react'
 import GeneralSettings from './GeneralSettings'
 import BillingSettings from './BillingSettings'
 import NotificationSettings from './NotificationSettings'
 import { NavLink, useParams } from 'react-router-dom'
-
-
+import PageTransition from '../../Utilities/PageTransition';
 
 
 const touchedReducer = (state , action) => {
@@ -38,8 +37,14 @@ function Settings({user , logged , className}) {
          
    },[specify])
 
+   const parentRef = useRef(null)
+
+  useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+  },[parentRef])
+
   return (
-    <main className={`flex gap-10  ${className}`}>
+    <main ref={parentRef}  className={`flex gap-10  ${className}`}>
 
          <section className={` py-6 flex flex-col gap-16 pr-8`}>
 

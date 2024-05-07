@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import CreateProductInfo from './CreateProductInfo'
 import CreateProductImages from './CreateProductImages'
 import useModifyProduct from '../../../Hooks/Modify-product'
 import loadingUi from "../../../assets/navlogos/loading2.gif"
-
-
+import PageTransition from '../../Utilities/PageTransition';
 
 
 
@@ -13,10 +12,16 @@ export default function CreateProduct() {
 
   const {obj,loading,setObj,onChangeHandler,specify,onFormSubmit,buttonStatus,onDeleteHandler,deleteClick} = useModifyProduct()
 
+  const parentRef = useRef(null)
+
+  useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+  },[parentRef])
+
 
   return (
 
-   <form onSubmit={onFormSubmit} className='flex flex-col gap-8 pr-8 h-full relative'>
+   <form ref={parentRef}  onSubmit={onFormSubmit} className='flex flex-col gap-8 pr-8 h-full relative'>
       {buttonStatus === "Invalid" && <p className='bg-red-500 p-3 rounded-md font-semibold mx-14 absolute -top-8 right-1/2 translate-x-1/2  transition-all'>Please fill all the details carefully</p>}
       {buttonStatus === "Done" && <p className='bg-green-500 p-5 rounded-md font-semibold mx-14 absolute -top-8 right-1/2 translate-x-1/2 transition-all'> Product Successfully Created ✌🏻</p>} 
  

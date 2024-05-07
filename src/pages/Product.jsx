@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from '../components/Utilities/Card'
 import ProductCarosal from '../components/UI/ProductCarosal'
 import ProductDescription from './../components/UI/ProductDescription';
@@ -9,12 +8,11 @@ import loadingUi from "../assets/navlogos/loading2.gif"
 import CarousalShow from '../components/UI/CarousalShow';
 
 
+
 const Product = () => {
 
 const {id} = useParams()
 const {products} = useHomeProducts()
-
-
 
 const { data:productData , isFetching } = useQuery({
   queryKey:["product",id],

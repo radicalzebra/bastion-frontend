@@ -1,7 +1,7 @@
 import Card from '../Utilities/Card'
 import cross from "../../assets/navlogos/cross.svg"
 import useLoginHook from '../../Hooks/loginForm-hook';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginActions } from "../../Store/LoginSlice";
 
 
@@ -9,7 +9,6 @@ import { loginActions } from "../../Store/LoginSlice";
 function LoginForm({className}) {
 
   const dispatch =  useDispatch()
-
 
   const {
     email,
@@ -28,7 +27,7 @@ function LoginForm({className}) {
 
 
   return (
-    <Card className={`text-black rounded-lg flex flex-col transition-all  gap-12 ${className}`}>
+    <Card className={`text-black rounded-lg flex flex-col  transition-all gap-12 ${className}`}>
        <div onClick={()=> dispatch(loginActions.showLogin(false))} className='p-1 bg-gray-900 rounded-full  top-2 right-2 hover:cursor-pointer w-max absolute'>  
          <img className='w-2 h-2' src={cross}  />
        </div>

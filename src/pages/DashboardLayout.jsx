@@ -34,7 +34,7 @@ export function DashboardLayout(props) {
 
   return (
 
-    <div className='flex gap-12 relative'>
+    <div className='flex gap-12 relative overflow-hidden'>
           
           <ScrollRestoration/>
 

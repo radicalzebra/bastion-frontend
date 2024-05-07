@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+import PageTransition from '../../Utilities/PageTransition';
+
 import Linechart from "./Linechart";
 import TopProducts from "./TopProducts";
 import Piechart from "./Piechart";
@@ -12,7 +14,6 @@ import users from "../../../assets/dashboard/users.svg"
 import product from "../../../assets/dashboard/product.svg"
 import getLineData from '../../Utilities/GetLineData';
 import { useSelector } from 'react-redux';
-
 
 
 
@@ -42,10 +43,16 @@ function Overview (props) {
       }
    ]
 
+  const parentRef = useRef(null)
+
+  useEffect(()=> {
+    if(parentRef.current !== null) PageTransition(parentRef.current)
+  },[parentRef])
+
 
 
   return (
-        <main className={`flex gap-10 ${props.className}`}>
+        <main ref={parentRef} className={`flex gap-10 ${props.className}`}>
 
            <Card className={`py-6  flex flex-col gap-8 w-full pr-8 `}>
                   
