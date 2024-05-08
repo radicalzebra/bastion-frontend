@@ -31,8 +31,7 @@ const useProductsFetch = () => {
       const resData = await response.json()
 
       return resData.data.products
-    },
-    gcTime: 500
+    }
   })
 
    useEffect(()=> {

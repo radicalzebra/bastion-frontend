@@ -3,16 +3,16 @@ import ProductCarosal from '../components/UI/ProductCarosal'
 import ProductDescription from './../components/UI/ProductDescription';
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import useHomeProducts from '../Hooks/home-products'
 import loadingUi from "../assets/navlogos/loading2.gif"
 import CarousalShow from '../components/UI/CarousalShow';
+import { useSelector } from 'react-redux';
 
 
 
 const Product = () => {
 
 const {id} = useParams()
-const {products} = useHomeProducts()
+const mostRated = useSelector(state => state.home.mostRated)
 
 const { data:productData , isFetching } = useQuery({
   queryKey:["product",id],
@@ -20,8 +20,7 @@ const { data:productData , isFetching } = useQuery({
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products/${id}`)
     const resData = await response.json()
     return resData.data.product
-  },
-  staleTime:3000
+  }
 })
   
 
@@ -35,7 +34,7 @@ return (
               <ProductDescription className="w-1/2 justify-self-center" data={productData}/>
             </Card>
 
-            <CarousalShow heading={"You might like"} linkToMore={`/products/all`} arr={products} />
+            <CarousalShow heading={"You might like"} linkToMore={`/products/all`} arr={mostRated} />
           
       </Card>}
   </div>

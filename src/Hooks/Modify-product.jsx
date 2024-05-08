@@ -74,13 +74,13 @@ export default function useModifyProduct() {
       setButtonStatus("Done")
       setTimeout(()=> {
         navigate("/")
-      },1500)
+      },1000)
 
      } else {
         setButtonStatus("Invalid")
         setTimeout(()=> {
            setButtonStatus("Submit")
-        },2000)
+        },1000)
      }
 
 

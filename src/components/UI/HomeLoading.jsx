@@ -10,7 +10,7 @@ export default function HomeLoading() {
 
   const dispatch = useDispatch()
   const fetched =  useSelector(state => state.home.fetched)
-  const [loading,setLoading] = useState(" Loading...")
+  const [loading,setLoading] = useState("")
 
 
   useEffect(()=> {
@@ -18,19 +18,19 @@ export default function HomeLoading() {
        dispatch(fetchProducts())
        disableScroll.on()
        setTimeout(()=> {
-         setLoading("Preparing, be patient for 2-3 min! 😊")
-       },7777)     
+         setLoading("Preparing, be patient! 😊")
+       },17000)     
 
        setTimeout(()=> {
          setLoading("Something went wrong!, please refresh the site")
-       },200000)  
+       },100000)  
     }
   },[fetched]) 
 
   return (
     <div className='w-full h-full flex items-center justify-center bg-gray-50 fixed top-1 right-0 z-10  '>
-         <figure className=' w-1/2 flex flex-col items-center justify-center'>
-            <img src={homeload} alt="home loader" className='w-20 h-20' />
+         <figure className=' w-1/2 flex flex-col items-center justify-center gap-4'>
+            <img src={homeload} alt="home loader" className='w-24 h-24' />
             <p className='text-black text-sm font-bold'>{loading}</p>
          </figure>
     </div>

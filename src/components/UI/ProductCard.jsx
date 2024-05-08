@@ -37,7 +37,7 @@ export const ProdCard = (props) =>{
 
         {!props.ranking && <section className='flex flex-col h-1/4 px-2 gap-4 rounded-lg'>
           <div className='flex flex-col gap-1'>
-             <ProductCardRating rating={props.rating || "4.8"} numReviews={props.ratingQuantity || "0"}/>
+             <ProductCardRating rating={props.rating || "0"} numReviews={props.ratingQuantity || "0"}/>
              <p onClick={()=> navigate(`/product/${props.id}`)} className='text-sm font-semibold hover:cursor-pointer hover:text-gray-400'>{props.name || "Men AIR MAX SOLO Sneakers"}</p>
           </div>
 

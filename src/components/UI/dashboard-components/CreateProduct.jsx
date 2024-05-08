@@ -21,9 +21,9 @@ export default function CreateProduct() {
 
   return (
 
-   <form ref={parentRef}  onSubmit={onFormSubmit} className='flex flex-col gap-8 pr-8 h-full relative'>
-      {buttonStatus === "Invalid" && <p className='bg-red-500 p-3 rounded-md font-semibold mx-14 absolute -top-8 right-1/2 translate-x-1/2  transition-all'>Please fill all the details carefully</p>}
-      {buttonStatus === "Done" && <p className='bg-green-500 p-5 rounded-md font-semibold mx-14 absolute -top-8 right-1/2 translate-x-1/2 transition-all'> Product Successfully Created ✌🏻</p>} 
+   <form ref={parentRef}  onSubmit={onFormSubmit} className='flex flex-col gap-8 pr-8 mb-8 h-full relative'>
+      {buttonStatus === "Invalid" && <p className='bg-red-500 p-3 rounded-md font-semibold mx-14 absolute top-10 right-1/2 translate-x-1/2 z-10  transition-all'>Please fill all the details carefully</p>}
+      {buttonStatus === "Done" && <p className='bg-green-500 p-5 rounded-md font-semibold mx-14 absolute top-10 right-1/2 translate-x-1/2 z-10 transition-all'> Product Successfully Created ✌🏻</p>} 
  
       {loading && <img className='h-16 w-16 absolute top-1/2 right-1/2 -translate-x-1/2 ' src={loadingUi}/>}
 

@@ -19,11 +19,11 @@ export default function CreateProductInfo({className,obj,onChangeHandler}) {
 
          <div className='flex gap-2 bg-yellow-90 w-2/3 '>
                <GeneralHeading  name={"productType"} heading="Product Type" className={"w-2/3"}>
-                  <SelectInputArray value={obj.productType} name={"productType"} onChangeHandler={onChangeHandler} className={"bg-white border-2 rounded-md p-1 outline-none"} arr={["sneakers", "casuals", "sportshoes", "flipflops", "others"]}/>
+                  <SelectInputArray value={obj.productType} name={"productType"} onChangeHandler={onChangeHandler} className={"bg-white border-2 rounded-md p-1 outline-none"} arr={["sneakers", "casuals", "sportshoes", "flipflops"]}/>
                </GeneralHeading>
 
                <GeneralHeading  name={"brand"} heading="Brand" className={"w-1/3"}>
-                  <SelectInputArray value={obj.brand} name={"brand"} onChangeHandler={onChangeHandler} className={"bg-white border-2 rounded-md p-1 outline-none"} arr={["nike", "adidas", "puma", "reebok", "fila", "others"]}/>
+                  <SelectInputArray value={obj.brand} name={"brand"} onChangeHandler={onChangeHandler} className={"bg-white border-2 rounded-md p-1 outline-none"} arr={["nike", "adidas", "puma", "reebok", "fila"]}/>
                </GeneralHeading>
          </div>
 
@@ -40,8 +40,8 @@ export default function CreateProductInfo({className,obj,onChangeHandler}) {
 
             
          <GeneralHeading name={"sizes"} heading="Sizes" className={"w-2/3"} >
-               <div className='flex justify-between'>
-                  {[7,8,9,10,11,12].map((el,i) =>  <CreateProductButtonSizes onChangeHandler={onChangeHandler} name={"sizes"} className={"rounded-lg border-2 w-16 h-12 "}  sizes={obj.sizes} text={el} key={i+1}/>)}
+               <div className='flex flex-wrap gap-3'>
+                  {[3,4,5,6,7,8,9,10,11,12].map((el,i) =>  <CreateProductButtonSizes onChangeHandler={onChangeHandler} name={"sizes"} className={"rounded-lg border-2 w-16 h-12 "}  sizes={obj.sizes} text={el} key={i+1}/>)}
                </div>
           </GeneralHeading>
     </section>

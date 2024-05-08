@@ -96,7 +96,7 @@ const ProductDescription = ({data,className}) => {
 
            <section className='flex flex-col gap-4'>
                 <h2 className='text-xl'>select size <span className='text-lg text-gray-500 font-mono'>(UK)</span></h2>
-                <div ref={sizesRef} onClick={onClickSizes} className='flex gap-2 w-96 flex-wrap'>
+                <div ref={sizesRef} onClick={onClickSizes} className='flex gap-2 w-80 flex-wrap'>
                       {data.sizes.map((el , i) => {
                         return (
                               <button  className={`bg-white  w-16 text-lg font-medium border-2  hover:brightness-95 h-10 rounded-md shadow-sm text-black transition-all `}>{el}</button>

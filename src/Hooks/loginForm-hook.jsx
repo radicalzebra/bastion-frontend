@@ -25,7 +25,7 @@ const useLoginHook = () =>  {
     setLoading(true)
     setTimeout(()=>{
       setLoading(false)
-    },5000)
+    },11000)
     
   }
 
