@@ -23,6 +23,7 @@ const useLoginHook = () =>  {
     setLoading(false)
     dispatch(loginUser({email:email,password:pass}))
     setLoading(true)
+    
     setTimeout(()=>{
       setLoading(false)
     },11000)

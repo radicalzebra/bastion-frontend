@@ -18,7 +18,7 @@ export default function HomeLoading() {
        dispatch(fetchProducts())
        disableScroll.on()
        setTimeout(()=> {
-         setLoading("Preparing, be patient! 😊")
+         setLoading("Fetching from server! 🔥")
        },17000)     
 
        setTimeout(()=> {

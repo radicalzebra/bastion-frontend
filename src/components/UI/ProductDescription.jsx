@@ -4,7 +4,7 @@ import down from "../../assets/navlogos/down.svg"
 import { gsap } from 'gsap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch} from 'react-redux';
-import { loginActions, loginUser } from '../../Store/LoginSlice';
+import { loginActions } from '../../Store/LoginSlice';
 import useMutateCart from '../../Hooks/mutate-cart';
 import Comment from './Comment';
 import useBuyProduct from '../../Hooks/buy-product';
@@ -12,11 +12,9 @@ import useBuyProduct from '../../Hooks/buy-product';
 
 
 
-
 const ProductDescription = ({data,className}) => {
 
    const { cartTouched , onCartBtnClick} = useMutateCart(data.id)
-   // const sess = useStripeCheckout(data)
    const {purchaseFunction} = useBuyProduct(data.id)
   
 
@@ -42,10 +40,9 @@ const ProductDescription = ({data,className}) => {
 
    const onClickSizes = (e) => {
       setSize(e.target.innerText)
-      console.log(sizesRef.current.children)
+     
       for(let i = 0;i<sizesRef.current.children.length;i++){
          if(e.target===sizesRef.current.children[i]){
-            console.log(true)
             gsap.to(sizesRef.current.children[i],{color:"red",ease:"bounce",backgroundColor:"black",color:"white",ease:"elastic"})
          } else {
              gsap.to(sizesRef.current.children[i],{backgroundColor:"#e6e8e6",color:"black"})
@@ -62,9 +59,13 @@ const ProductDescription = ({data,className}) => {
          navigate(`/dashboard/create/${data.id}`)
       } else {
          purchaseFunction(size)
+         const {coverImage,id,rating} = data
+         const product = {coverImage,rating}
+         const date = new Date().toISOString()
+         dispatch(loginActions.setUpdatePurchase({createdAt:date,id,product}))
       }
    }
-
+   
 
    useEffect(()=>{
 
@@ -110,7 +111,7 @@ const ProductDescription = ({data,className}) => {
             <section className='flex flex-col  gap-6'>
                   {/* buy */}     
                   <div className='flex  gap-10 relative items-center'>
-                     {user.id === data.seller.id ? <button ref={buttonRef} onClick={buttonHandler} className={`text-xl text-white bg-black rounded-md w-80 p-3 tracking-wider`}>Edit</button> : <button disabled={size===null} ref={buttonRef} onClick = {buttonHandler} className={`text-xl bg-black disabled:bg-gray-500  disabled:cursor-not-allowed text-white rounded-md w-72 p-3`}>BUY</button>}
+                     {user.id === data.seller.id ? <button ref={buttonRef} onClick={buttonHandler} className={`text-xl text-white bg-black rounded-md w-80 p-3  tracking-wider`}>Edit</button> : <button disabled={size===null} ref={buttonRef} onClick = {buttonHandler} className={`text-xl bg-black disabled:bg-gray-500  disabled:cursor-not-allowed text-white focus:bg-red-600  rounded-md w-72 p-3`}>{btnTouched ? "Loading.." : "BUY"}</button>}
                         
 
                      {/* cart  */}

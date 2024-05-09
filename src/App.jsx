@@ -9,12 +9,12 @@ import Product from './pages/Product';
 import { DashboardLayout } from './pages/DashboardLayout';
 import Overview from './components/UI/dashboard-components/Overview';
 import DashboardAction from './components/UI/dashboard-components/DashboardAction';
-
+import Error from './components/UI/Error';
 
 const router = createBrowserRouter([
   {path:"/",
    element:<PageLayout/>,
-   errorElement:<h1 className='text-black'>error hogya bro</h1>,
+   errorElement:<Error message={"Something went wrong!"} code={500}/>,
    children :[
     {index:true,element:<Home/>},
     {path:"products/:type",element:<Products/>},
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
 
  {path:"/dashboard",
   element:<DashboardLayout/>,
+  errorElement:<Error message={"Something went wrong!"} code={500}/>,
   children: [
     {index:true,element:<Overview/>},
     {path:":action/:specify?",element:<DashboardAction/>},

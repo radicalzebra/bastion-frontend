@@ -12,7 +12,7 @@ const useProductsFetch = () => {
 
   const [searchQuery , setSearchQuery] = useState("")
   const [formObj , setFormObj] = useState( {
-    sort:"ratingQuantity",
+    sort:"-rating",
     rating:undefined,
     brand:undefined,
     productType:undefined,

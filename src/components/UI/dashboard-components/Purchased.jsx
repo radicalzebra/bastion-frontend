@@ -1,24 +1,29 @@
-import { Card } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useSelector} from 'react-redux'
 import PurchasedProduct from './PurchasedProduct'
 import dateFormat from '../../Utilities/DateFomat'
 import React, { useEffect, useRef } from 'react'
 import PageTransition from '../../Utilities/PageTransition';
+import Card from '../../Utilities/Card'
+
+
 
 function Purchased(props) {
   const purchased = useSelector(state => state.login.purchased)
-
   const parentRef = useRef(null)
 
   useEffect(()=> {
-    if(parentRef.current !== null) PageTransition(parentRef.current)
+    if(parentRef.current !== null) {
+       PageTransition(parentRef.current)
+    } 
   },[parentRef])
 
+
+
   return (
-     <main ref={parentRef}  className={`flex   gap-10 ${props.className} overflow-x-hidden`}>
+     <main ref={parentRef}  className={`flex gap-10 mb-8 ${props.className}  overflow-x-hidden`}>
       
            <Card className={`flex flex-col  gap-10 w-full pr-8 relative `}>
-                  <div className='flex flex-col gap-4 mb-20  py-6'>
+                  <div className='flex flex-col gap-4 mb-20 border-0 py-6'>
                         <h1 className='text-3xl font-semibold text-black'>My Purchases 🛍️</h1>
                         <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to your purchase page, where every click brings you closer to owning your desires. Shop with ease, knowing each selection is a step toward fulfillment. Indulge in a seamless shopping experience tailored to your preferences.</p>
                   </div>
@@ -38,7 +43,7 @@ function Purchased(props) {
                         <section className='flex  flex-wrap gap-9 pr-10'>
                         {purchased?.map((el,i)=> {
                               const purchasedDate = dateFormat(el.createdAt)
-                              return <PurchasedProduct key={el.id} img={el.product.coverImage} name={el.product.name} purchasedAt={purchasedDate} id={el.product.id} price={el.price}  size={el.size} rating={el.product.rating} seller={el.product.seller.username} sellerEmail={el.product.seller.email} />
+                              return <PurchasedProduct key={el.id} img={el.product.coverImage} purchasedAt={purchasedDate} id={el.product.id} rating={el.product.rating} />
                         })}
                         </section>
                   }
