@@ -19,7 +19,7 @@ export default function HomeLoading() {
        disableScroll.on()
        setTimeout(()=> {
          setLoading("Fetching from server! 🔥")
-       },17000)     
+       },12000)     
 
        setTimeout(()=> {
          setLoading("Something went wrong!, please refresh the site")

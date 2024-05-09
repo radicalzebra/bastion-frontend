@@ -41,7 +41,7 @@ const Login = createSlice({
       },
 
       setUpdatePurchase(state,action) {
-         state.purchased.push(action.payload) 
+         state.purchased.unshift(action.payload) 
       },
 
       setSoldProducts(state,action) {

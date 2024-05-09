@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../Store/LoginSlice';
-import disableScroll from 'disable-scroll';
 
 
 const useLoginHook = () =>  {
 
-  const [email , setEmail] = useState("")
-  const [pass , setPass] = useState("")
+  const [email , setEmail] = useState("johndoe@gmail.com")
+  const [pass , setPass] = useState("user123")
+  
   const [lookpwd , setLookPwd] = useState(false)
   const [isDisabled , setIsDisabled] = useState(false)
   const [loading,setLoading] = useState(false)
@@ -23,7 +23,7 @@ const useLoginHook = () =>  {
     setLoading(false)
     dispatch(loginUser({email:email,password:pass}))
     setLoading(true)
-    
+
     setTimeout(()=>{
       setLoading(false)
     },11000)

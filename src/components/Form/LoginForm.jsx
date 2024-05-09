@@ -6,6 +6,8 @@ import { loginActions } from "../../Store/LoginSlice";
 
 
 
+
+
 function LoginForm({className}) {
 
   const dispatch =  useDispatch()
@@ -27,7 +29,8 @@ function LoginForm({className}) {
 
 
   return (
-    <Card className={`text-black rounded-lg flex flex-col  transition-all gap-12 ${className}`}>
+    <Card className={`text-black rounded-lg flex flex-col  transition-all gap-12  ${className}`}>
+
        <div onClick={()=> dispatch(loginActions.showLogin(false))} className='p-1 bg-gray-900 rounded-full  top-2 right-2 hover:cursor-pointer w-max absolute'>  
          <img className='w-2 h-2' src={cross}  />
        </div>
@@ -35,10 +38,6 @@ function LoginForm({className}) {
        <header className='text-3xl flex flex-col gap-1'>
          <h1 className='font-showcase'>Log In</h1>
          <p className='text-xs font-secondary text-gray-700'>Enter your email & password to login to our website</p>
-         <div className='flex-col flex text-xs font-medium text-gray-500'>
-            <p>test-email : johndoe@gmail.com</p>
-            <p>test-password : user123</p>
-         </div>
          {errorMessage && !loading  && <span className='text-xs font-secondary text-red-700 mt-2'>{`! ${errorMessage} `}</span>}
        </header>
 
@@ -55,7 +54,6 @@ function LoginForm({className}) {
 
          <label className='w-full flex flex-col gap-2'>
             <button disabled={isDisabled} onClick={onBtnClick} className={`  w-full rounded-md h-12 font-poppins  font-semibold text-white ${isDisabled ? "cursor-not-allowed bg-gray-500" :" hover:scale-105 hover:bg-black  cursor-pointer bg-rose-700" }  transition-all `}>{loading ? "Logging in..." : "Login"}</button>
-            {/* <span className='text-xs font-medium   font-secondary tracking-wider'>Don't have an account? <a className='text-fuchsia-600 hover:underline hover:cursor-pointer'>Register</a></span> */}
          </label>
 
        </form>
