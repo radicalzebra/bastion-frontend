@@ -35,7 +35,7 @@ const SearchLinks = ({el,setSearch}) => {
    const [hoverItem,setHoverItem] = useState(false)
 
    return (
-      <Link to={`/product/${el._id}`} onClick={()=> setSearch(el.name)} onMouseEnter={()=> setHoverItem(true)}  onMouseLeave={()=> setHoverItem(false)} id="search-item" className='  px-4 py-2 flex gap-4 items-center '>
+      <Link to={`/product/${el._id}`} onClick={()=> setSearch(el.name)} onMouseEnter={()=> setHoverItem(true)}  onMouseLeave={()=> setHoverItem(false)} id="search-item" className='  px-4 py-2 flex gap-4 items-center hover:border-l-red-500 hover:border-2 border-gray-50 '>
                                       
           <Link to={`/product/${el._id}`} className={`rounded-full ${hoverItem && "scale-125"}  cursor-pointer transition-all`}>
               <svg width="12" height="12" viewBox="0 0 37 39" className='rotate-270 ' fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -131,7 +131,7 @@ export const Nav = (props) => {
                            </svg>
                            <input value={search} onChange={onSearchChange} onBlur={onBlurHandler} type="search"  className='h-full text-xs font-medium caret-red-400 w-full bg-gray-100  outline-none text-black' placeholder='Search all categories' />
                            {inputTouched && filteredData && 
-                            <ul className="bg-white shadow-sm shadow-gray-500 backdrop-blur-sm w-4/6  rounded-md absolute top-1/2 -translate-x-4 mt-3 z-10 flex flex-col ">
+                            <ul className="bg-white max-h-80 overflow-y-scroll shadow-sm shadow-gray-500 backdrop-blur-sm w-4/6  rounded-md absolute top-1/2 -translate-x-4 mt-3 z-10 flex flex-col ">
                                  {filteredData.map((el,i)=>{
                                     return <SearchLinks el={el} setSearch={setSearch} index={i}/>
                                  })}

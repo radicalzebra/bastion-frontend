@@ -10,7 +10,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 0px;
 }
   
 /* Track */
@@ -18,7 +18,7 @@
   
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #dd1313;
     border-radius: 50px;
 }
   

@@ -1,6 +1,5 @@
 import { gsap } from "gsap";Card
 import Card from '../Utilities/Card';
-import Icons from "../Utilities/Icons";
 import searchLogo from "../../assets/navlogos/search.svg";;
 import cross from "../../assets/navlogos/cross.svg";;
 import { useState, useEffect,useRef } from "react";
@@ -30,7 +29,7 @@ const Search = (props) => {
 
   
    return (
-     <Card className={`flex gap-1  ${props.className} text-black`}>
+     <Card className={`flex gap-1  ${props.className} text-black `}>
          {clicked &&<input ref={input} placeholder="search..." className="rounded-xl bg-gray-50 border-2 w-48  border-gray-800 outline-none pl-1 " id="search" type="search"/>}
          <label ref={label} onClick={clickHandler} htmlFor="search" className="rounded-full inline-block p-2  bg-red-600 hover:cursor-pointer hover:bg-gray-900  z-10">
             <img  src={clicked===true ? cross:searchLogo} onClick={clickHandler} alt="search" className="w-full"/>
