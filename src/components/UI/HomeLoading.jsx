@@ -17,13 +17,21 @@ export default function HomeLoading() {
     if(!fetched) {
        dispatch(fetchProducts())
        disableScroll.on()
+        setTimeout(()=> {
+         setLoading("Getting server ready..")
+       },15000) 
+
        setTimeout(()=> {
          setLoading("Fetching from server! 🔥")
-       },12000)     
+       },30000)  
+       
+       setTimeout(()=> {
+         setLoading("Gathering resources 📦")
+       },50000) 
 
        setTimeout(()=> {
          setLoading("Something went wrong!, please refresh the site")
-       },100000)  
+       },110000)  
     }
   },[fetched]) 
 

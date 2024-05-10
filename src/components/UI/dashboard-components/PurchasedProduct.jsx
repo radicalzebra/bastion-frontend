@@ -6,6 +6,7 @@ import gsap from 'gsap/all';
 export default function PurchasedProduct({img,purchasedAt,id,rating}) {  
    
   const [hover,setHover] = useState(false) 
+
   return (
     <section className='flex bg-red-90 gap-2 relative'>
      
@@ -16,7 +17,7 @@ export default function PurchasedProduct({img,purchasedAt,id,rating}) {
      </NavLink>
      <div className={`absolute flex items-center justify-between w-full px-1 opacity-0 text-xs font-showcase transition-all -top-0  ${hover && " -translate-y-full opacity-100"} `}>
        <ProductCardRating rating={rating} />
-       <p>{purchasedAt}</p>
+       <p className='text-black'>{purchasedAt}</p>
      </div>
 
     </section>
