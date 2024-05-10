@@ -72,7 +72,7 @@ export default function Comment({userId,productSellerId, productId,setPseudoRevi
             </div>
 
             <div onChange={(e)=> setRating(e.target.value)} className='flex  text-xs items-center justify-between w-10 bg-red-90  p-1'>
-               <LimitedNumInput ref={ratingRef} className={`w-1/3 bg-transparent focus:outline-none`} max={5}  placeholder={0}/>
+               <LimitedNumInput ref={ratingRef} className={`w-1/3 bg-transparent focus:outline-none`} maxVal={5}  placeholder={0}/>
                <span className='w-1/3 text-gray-200'>/</span>
                <p className='text-start bg-gray-30 w-1/3'>5</p>
             </div>

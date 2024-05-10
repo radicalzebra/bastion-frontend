@@ -31,7 +31,7 @@ function Products(props) {
         
        <main ref={parentRef}  className={`flex gap-10 ${props.className} overflow-x-hidden`}>
       
-           <Card className={`flex flex-col  gap-5 w-full pr-8 relative `}>
+           <Card className={`flex flex-col  gap-5 w-full pr-8 relative bg-red-90 `}>
 
                   
 

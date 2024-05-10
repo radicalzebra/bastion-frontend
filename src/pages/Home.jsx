@@ -27,7 +27,7 @@ const Home = (props) => {
 
   return (
     <Card className={`flex flex-col gap-28 overflow-hidden  relative`}>
-
+     
       
       <section className='flex flex-col gap-6 '>
          <HeroCarosal fetched={fetched}  src={hero2} className={`h-100 relative rounded-lg z-40`}/>

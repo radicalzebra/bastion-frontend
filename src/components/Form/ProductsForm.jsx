@@ -24,9 +24,7 @@ export const SortForm = ({setFormObj, clear}) => {
                   <option value="-name">Name Z-A</option>
                   <option value="price">Price ascending</option>
                   <option value="-price">Price descending</option>
-                  <option value="releaseDate">Date of Release</option>
                   <option value="-ratingQuantity">Most Sold</option>
-                  <option value="inStock">Availibility</option>
       </select>
    )
 }

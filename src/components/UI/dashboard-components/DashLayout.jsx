@@ -24,7 +24,7 @@ export default function DashLayout({logged,user}) {
            
           <section className='flex flex-col bg-gray-00  w-24 py-8 gap-8 items-center h-screen  rounded-md sticky top-0 '>
 
-            <Card className="flex flex-col gap-8 bg-blue-90 h-2/3 ">
+            <Card className="flex flex-col gap-8 bg-blue-90 h-2/3 px-8">
 
                 {/* Overview */}
                <NavLink className={({isActive}) => isActive ? ` brightness-100`: "brightness-0 hover:brightness-100"} to={"/dashboard/overview"}>
@@ -64,7 +64,7 @@ export default function DashLayout({logged,user}) {
 
 
 
-            <Card className="flex flex-col justify-between items-center h-1/4">
+            <Card className="flex flex-col justify-between items-center h-1/4 px-8">
                   {/* User */}
                   <NavLink to="/dashboard/settings/general" className="bg-gray-100 border-red-500 border-2 overflow-hidden w-12 h-12 rounded-full">
                     <img src={logged ? user.photo : defaultUser} alt="user"  className='w-full h-full'/>

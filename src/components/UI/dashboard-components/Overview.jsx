@@ -52,18 +52,18 @@ function Overview (props) {
 
 
   return (
-        <main ref={parentRef} className={`flex gap-10 ${props.className}`}>
+        <main ref={parentRef} className={`flex gap-10 pr-32 ${props.className}`}>
 
            <Card className={`py-6  flex flex-col gap-8 w-full pr-8 `}>
                   
-                  <div className='flex bg-red-90 h-44 '>
+                  <div className='flex bg-red-90 h-44  '>
                            <RevenueCard heading={"Total Sales"} className="text-black shadow-sm  shadow-lime-300 rounded-l-md basis-1/4 from-lime-400 to-lime-300 via-lime-300 bg-gradient-to-r " figureClass="bg-green-"  src={shopper}  number={dashInfo.sales} />
                            <RevenueCard heading={"Visitors"} className="text-black shadow-md border-l-2 basis-1/4 bg-gray-50"  src={users}  number={dashInfo.visitors}  />
                            <RevenueCard heading={"Total Orders"} className="text-black shadow-md border-l-2 basis-1/4 bg-gray-50"  src={star}  number={dashInfo.orders}  />
                            <RevenueCard heading={"Products"} className="text-black shadow-md border-l-2 rounded-r-md basis-1/4 bg-gray-50"  src={product}  number={dashInfo.numProducts}  />
                   </div>
 
-                  <Card className="flex justify-between gap-3">
+                  <Card className="flex justify-between gap-3 ">
                      <Linechart data={lineData}/>
                      <Piechart data = {pieData}/>
                   </Card> 
