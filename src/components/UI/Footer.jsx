@@ -49,46 +49,46 @@ function Footer(props) {
       <section className="flex bg-red-90">
 
         <section className='w-1/3 bg-yellow-60 text-black flex flex-col gap-8'>
-            <p className='uppercase  text-3xl font-extrabold  w-3/4 '>stay up to date with news, events and more!</p>
+            <p className='uppercase  md:text-3xl xs:text-xl font-extrabold  w-3/4 '>stay up to date with news, events and more!</p>
             <NavLink to="" className="text-lg w-2/3  font-semibold uppercase flex justify-between px-2 pl-5  py-2 bg-white rounded-full items-center border-2 border-black outline-none">
-              <p className='font-showcase font-extrabold tracking-wider'>newsletter</p>
-              <svg className='bg-black rounded-full p-2 w-8 h-8' width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <p className='font-showcase font-extrabold md:text-xl sm:text-sm xs:text-xs tracking-wider'>newsletter</p>
+              <svg className='bg-black rounded-full md:p-2 md:w-8 md:h-8 sm:p-1 xs:w-4 xs:h-4'  viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M18.0375 7.4126L25.625 15.0001L18.0375 22.5876M4.375 15.0001H25.4125" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </NavLink>
         </section>
 
-          <section className='h-96 text-sm  w-2/3 font-medium text-gray-500 flex  justify-evenly'>
+          <section className='h-96 sm:text-md xs:text-sm  w-2/3 font-medium text-gray-500 flex  justify-between'>
             <ul className='flex flex-col gap-2'>
-                <h2 className='text-lg  font-bold tracking-widest mb-3 text-black uppercase font-showcase'>customer service</h2>
+                <h2 className='md:text-lg xs:text-xs  font-bold tracking-widest mb-3 text-black uppercase font-showcase'>service</h2>
                   <Link className='hover:underline'>Help centre</Link>
                   <Link className='hover:underline'>Complaints</Link>
-                  <Link className='hover:underline'>Payment methods</Link>
+                  <Link className='hover:underline'>Payment</Link>
                   <Link className='hover:underline'>Contact</Link>
-                  <Link className='hover:underline'>Shipping information</Link>
+                  <Link className='hover:underline'>Shipping info</Link>
             </ul>
 
             <ul className='flex flex-col gap-2'>
-                <h2 className='text-lg tracking-widest mb-3 font-bold text-black uppercase font-showcase'>business</h2>
-                <Link className='hover:underline'>Bastion for business</Link>
-                <Link className='hover:underline'>sponsoring & Collaborationss</Link>
+                <h2 className='md:text-lg xs:text-xs tracking-widest mb-3 font-bold text-black uppercase font-showcase'>business</h2>
+                <Link className='hover:underline'>Bastion for bizz</Link>
+                <Link className='hover:underline'>sponsoring</Link>
                 <Link className='hover:underline'>Bastion source</Link>
             </ul>
 
             <ul className='flex flex-col gap-2 '>
-                <h2 className='text-lg tracking-widest font-bold mb-3 text-black uppercase font-showcase'>legal</h2>
+                <h2 className='md:text-lg xs:text-xs tracking-widest font-bold mb-3 text-black uppercase font-showcase'>legal</h2>
                 <Link className='hover:underline'>Imprint</Link>
                 <Link className='hover:underline'>Cancellation</Link>
                 <Link className='hover:underline'>Privacy Policy</Link>
                 <Link className='hover:underline'>Cookie settings</Link>
-                <Link className='hover:underline'>Terms & Conditions</Link>
+                <Link className='hover:underline'>Terms</Link>
                 
             </ul>
 
-            <ul className='flex flex-col gap-2 '>
-                <h2 className='text-lg tracking-widest font-bold mb-3 text-black uppercase font-showcase'>Bastion</h2>
+            <ul className='flex flex-col gap-2 md:flex xs:hidden '>
+                <h2 className='md:text-lg xs:text-xs tracking-widest font-bold mb-3 text-black uppercase font-showcase'>Bastion</h2>
                 <Link className='hover:underline'>Our team</Link>
-                <Link className='hover:underline'>Sustainibility at Bastion</Link>
+                <Link className='hover:underline'>Sustainibility</Link>
                 <Link className='hover:underline'>About Us</Link>
                 <Link className='hover:underline'>Newsetter</Link>
             </ul>
@@ -98,9 +98,9 @@ function Footer(props) {
         
       </section>
 
-      <section className='flex justify-between text-black'>
+      <section className='flex md:justify-between xs:justify-center text-black'>
           <div className=' flex items-center gap-2'>
-              <svg width="65" height="50" className='bg-red-90' viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="65" height="50" className='bg-red-90 ' viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.41584 13C1.25584 13 1.11984 12.948 1.00784 12.844C0.895844 12.74 0.839844 12.616 0.839844 12.472V5.12798C0.839844 4.97598 0.895844 4.85198 1.00784 4.75598C1.11984 4.65198 1.25584 4.59998 1.41584 4.59998H4.75184C5.44784 4.59998 5.99984 4.80798 6.40784 5.22398C6.82384 5.63998 7.03184 6.19998 7.03184 6.90398C7.03184 7.27998 6.93184 7.63198 6.73184 7.95998C6.53184 8.28798 6.27184 8.53198 5.95184 8.69198V8.71598C6.40784 8.85198 6.75984 9.08798 7.00784 9.42398C7.25584 9.75198 7.37984 10.152 7.37984 10.624C7.37984 11.088 7.27984 11.5 7.07984 11.86C6.88784 12.22 6.61584 12.5 6.26384 12.7C5.91184 12.9 5.50784 13 5.05184 13H1.41584ZM4.72784 8.30798C5.05584 8.30798 5.33584 8.17598 5.56784 7.91198C5.80784 7.63998 5.92784 7.31198 5.92784 6.92798C5.92784 6.50398 5.81984 6.17198 5.60384 5.93198C5.39584 5.69198 5.10384 5.57198 4.72784 5.57198H1.95584V8.30798H4.72784ZM4.96784 12.028C5.37584 12.028 5.69584 11.908 5.92784 11.668C6.15984 11.42 6.27584 11.076 6.27584 10.636C6.27584 10.212 6.15984 9.87998 5.92784 9.63998C5.70384 9.39998 5.38384 9.27998 4.96784 9.27998H1.95584V12.028H4.96784Z" fill="#20201E"/>
                     <path d="M10.449 13.108C9.76103 13.108 9.20503 12.924 8.78103 12.556C8.36503 12.188 8.15703 11.704 8.15703 11.104C8.15703 10.496 8.37703 10.008 8.81703 9.63998C9.25703 9.26398 9.83703 9.07598 10.557 9.07598C11.325 9.07598 11.957 9.34798 12.453 9.89198L12.501 9.84398C12.413 9.74798 12.313 9.64798 12.201 9.54398V9.03998C12.201 8.63198 12.073 8.31598 11.817 8.09198C11.561 7.86798 11.197 7.75598 10.725 7.75598C9.88503 7.75598 9.28503 8.08798 8.92503 8.75198C8.79703 8.68798 8.68903 8.60398 8.60103 8.49998C8.52103 8.38798 8.48103 8.27598 8.48103 8.16398C8.48103 7.94798 8.58903 7.74398 8.80503 7.55198C9.02103 7.35198 9.30503 7.19198 9.65703 7.07198C10.017 6.95198 10.393 6.89198 10.785 6.89198C11.545 6.89198 12.141 7.07998 12.573 7.45598C13.013 7.83198 13.233 8.35198 13.233 9.01598V12.304C13.233 12.584 13.153 12.788 12.993 12.916C12.833 13.044 12.581 13.108 12.237 13.108V12.544C12.405 12.368 12.497 12.264 12.513 12.232L12.465 12.184C11.945 12.8 11.273 13.108 10.449 13.108ZM10.629 12.28C11.125 12.28 11.513 12.176 11.793 11.968C12.081 11.76 12.225 11.472 12.225 11.104C12.225 10.736 12.085 10.444 11.805 10.228C11.525 10.012 11.141 9.90398 10.653 9.90398C10.197 9.90398 9.83703 10.012 9.57303 10.228C9.31703 10.436 9.18903 10.728 9.18903 11.104C9.18903 11.48 9.31303 11.772 9.56103 11.98C9.81703 12.18 10.173 12.28 10.629 12.28Z" fill="#20201E"/>
                     <path d="M16.8517 13.108C16.4437 13.108 16.0597 13.048 15.6997 12.928C15.3397 12.8 15.0477 12.62 14.8237 12.388C14.6077 12.156 14.4997 11.884 14.4997 11.572C14.4997 11.188 14.7317 10.98 15.1957 10.948C15.2757 11.396 15.4637 11.728 15.7597 11.944C16.0637 12.152 16.4477 12.256 16.9117 12.256C17.3757 12.256 17.7357 12.188 17.9917 12.052C18.2477 11.916 18.3757 11.708 18.3757 11.428C18.3757 11.228 18.3237 11.068 18.2197 10.948C18.1157 10.82 17.9477 10.712 17.7157 10.624C17.4917 10.528 17.1677 10.436 16.7437 10.348C16.2157 10.228 15.7957 10.1 15.4837 9.96398C15.1717 9.82798 14.9317 9.64798 14.7637 9.42398C14.6037 9.19998 14.5237 8.90398 14.5237 8.53598C14.5237 8.22398 14.6197 7.94398 14.8117 7.69598C15.0037 7.43998 15.2677 7.24398 15.6037 7.10798C15.9477 6.96398 16.3357 6.89198 16.7677 6.89198C17.1677 6.89198 17.5437 6.94798 17.8957 7.05998C18.2557 7.17198 18.5437 7.33198 18.7597 7.53998C18.9837 7.74798 19.0957 7.98798 19.0957 8.25998C19.0957 8.44398 19.0237 8.59198 18.8797 8.70398C18.7357 8.80798 18.5357 8.86798 18.2797 8.88398C18.2557 8.53198 18.1117 8.25598 17.8477 8.05598C17.5917 7.84798 17.2317 7.74398 16.7677 7.74398C16.3837 7.74398 16.0797 7.81598 15.8557 7.95998C15.6317 8.10398 15.5197 8.29598 15.5197 8.53598C15.5197 8.79198 15.6237 8.98398 15.8317 9.11198C16.0477 9.23198 16.4117 9.34798 16.9237 9.45998C17.7637 9.62798 18.3797 9.85998 18.7717 10.156C19.1717 10.444 19.3717 10.856 19.3717 11.392C19.3717 11.936 19.1517 12.36 18.7117 12.664C18.2717 12.96 17.6517 13.108 16.8517 13.108Z" fill="#20201E"/>
@@ -113,7 +113,7 @@ function Footer(props) {
               <p className='bg-red-90 text-lg '>is made with 🔥 by <Link  className='font-showcase hover:text-red-500 hover:underline' to="" >Arshad Faiyaz</Link></p>
           </div>
 
-          <div className='flex gap-8'>
+          <div className='flex gap-8 md:flex xs:hidden'>
             <Link className='w-8 brightness-0 hover:brightness-100'>
               <svg fill="#d51a1a" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Gmail</title> <path d="M30.996 7.824v17.381c0 0 0 0 0 0.001 0 1.129-0.915 2.044-2.044 2.044-0 0-0 0-0.001 0h-4.772v-11.587l-8.179 6.136-8.179-6.136v11.588h-4.772c0 0 0 0-0 0-1.129 0-2.044-0.915-2.044-2.044 0-0 0-0.001 0-0.001v0-17.381c0-0 0-0.001 0-0.001 0-1.694 1.373-3.067 3.067-3.067 0.694 0 1.334 0.231 1.848 0.619l-0.008-0.006 10.088 7.567 10.088-7.567c0.506-0.383 1.146-0.613 1.84-0.613 1.694 0 3.067 1.373 3.067 3.067v0z"></path> </g></svg>
             </Link>

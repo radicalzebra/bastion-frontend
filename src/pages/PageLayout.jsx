@@ -35,7 +35,7 @@ const PageLayout = (props) => {
    return (
          
       
-         <div onClick={(e) => onClickHandler(e)}  className="flex flex-col gap-8 pt-2 px-4 relative z-0">
+         <div onClick={(e) => onClickHandler(e)}  className="flex flex-col gap-8 pt-2 sm:px-4 relative z-0 overflow-hidden">
 
             <ScrollRestoration/>
 

@@ -26,6 +26,10 @@ export default {
         '100':'40.5rem'
       },
 
+      screens:{
+        'xs':"350px"
+      }
+
       // scale:{
       //   "200":"transform-scale-x: 10 transform-scale-y: 10"
       // }

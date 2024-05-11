@@ -27,11 +27,11 @@ const Home = (props) => {
 
   return (
     <Card className={`flex flex-col gap-28 overflow-hidden  relative`}>
-     
-      
+
+
       <section className='flex flex-col gap-6 '>
-         <HeroCarosal fetched={fetched}  src={hero2} className={`h-100 relative rounded-lg z-40`}/>
-         <section className='flex pl-10 gap-10 text-black'>
+         <HeroCarosal fetched={fetched}  src={hero2} className={`h-100 relative md:rounded-lg z-40`}/>
+         <section className='flex pl-10 gap-10 text-black xl:flex xs:hidden'>
             <Card className="font-semibold text-sm"><span className='text-2xl'>🚚 </span> Short supply chain</Card>
             <Card className="font-semibold text-sm"><span className='text-2xl'>⚖️ </span> Fair prices</Card>
             <Card className="font-semibold text-sm"><span className='text-2xl'>🏅 </span> High quality</Card>
@@ -55,10 +55,10 @@ const Home = (props) => {
       <CarousalShow  heading={"Most Bought"} linkToMore={`/products/all`} arr={mostBought}/>
 
 
-      <Card className="text-black px-20 my-5 w-fit tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-90 ">
+      <Card className="text-black md:px-20 xs:px-7  my-5 w-fit tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-90 ">
          <div ref={brandsRef} className={`flex w-full translate-x-1/2 opacity-0 justify-between items-center`}>
-               <p className='text-3xl font-extrabold uppercase'>Brands</p>
-               <NavLink to="/products/all" className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
+               <p className='md:text-3xl xs:text-2xl font-extrabold uppercase'>Brands</p>
+               <NavLink to="/products/all" className={"sm:text-sm xs:text-xs hover:underline text-gray-500 font-semibold"}>View all</NavLink>
          </div>
 
          <Brands/>

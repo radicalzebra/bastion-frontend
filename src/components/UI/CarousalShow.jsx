@@ -17,11 +17,11 @@ function CarousalShow({heading,linkToMore,arr,animateClass},ref) {
 
   
   return (
-     <Card className="text-black my-5 px-20 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 overflow-hidden ">
+     <Card className="text-black my-5 md:px-20 xs:px-7 tracking-wide font-medium text-2xl flex flex-col gap-3 bg-red-40 overflow-hidden ">
 
             <div ref={headerRef} className={`flex w-full translate-x-2/3 opacity-0  justify-between items-center`}>
-               <p className='text-3xl font-extrabold uppercase'>{heading}</p>
-               <NavLink to={linkToMore} className={"text-sm hover:underline text-gray-500 font-semibold"}>View all</NavLink>
+               <p className='md:text-3xl xs:text-2xl font-extrabold uppercase'>{heading}</p>
+               <NavLink to={linkToMore} className={"sm:text-sm xs:text-xs hover:underline text-gray-500 font-semibold"}>View all</NavLink>
             </div>
 
             <section  className='relative'>

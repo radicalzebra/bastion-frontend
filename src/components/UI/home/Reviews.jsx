@@ -58,12 +58,13 @@ function Reviews(props) {
 
 
   return (
-    <section  className={`flex gap-4 text-black bg-gray-100 mx-12 rounded-lg  justify-between p-8`}>
+    <section  className={`flex gap-4 text-black bg-gray-100 sm:mx-12 sm:rounded-lg justify-between p-8 xl:flex-row xs:flex-col xs:gap-20`}>
 
-      <section  ref={sectionRef} className='flex flex-col -translate-x-full opacity-0 justify-between '>
-         <div className='flex flex-col gap-6'>
+      <section  ref={sectionRef} className='flex flex-col lg:-translate-x-full lg:opacity-0 justify-between xl:items-start xl:gap-0 xs:items-center xs:gap-8  '>
+
+         <div className='flex xl:flex-col xl:items-start xs:items-center md:flex-row xs:flex-col gap-6 '>
             <p className='uppercase text-5xl font-bold w-72 bg-blue-60'>Reviews with love</p>
-            <div className='flex flex-col gap-2 bg-white p-2 rounded-md w-fit'>
+            <div className='flex flex-col gap-2 bg-white p-2 rounded-md w-fit h-fit'>
                <figure className='flex'>
                   <img src={star} alt="star" />
                   <img src={star} alt="star" />
@@ -80,8 +81,8 @@ function Reviews(props) {
 
       </section>
 
-      <section ref={carousalRef} className='relative translate-x-full opacity-0'>
-         <Carousal className="w-100 bg-red-90 h-80">
+      <section ref={carousalRef} className='relative lg:translate-x-full lg:opacity-0'>
+         <Carousal className="xl:w-100 bg-red-90 xs:w-full  ">
             {reviews.map((el,i)=> {
                return <ReviewBlock name={el.name} src={el.src} rating={el.rating} title={el.title} review={el.review} />
 
