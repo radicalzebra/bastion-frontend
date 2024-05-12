@@ -11,11 +11,9 @@ const useLoginHook = () =>  {
   const [lookpwd , setLookPwd] = useState(false)
   const [isDisabled , setIsDisabled] = useState(false)
   const [loading,setLoading] = useState(false)
-  const errMsg = useSelector(state => state.login.errMsg)
+  const errMsg = useSelector(state => state.login.errMsg) 
 
-  
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()  
   
   const onBtnClick = (e) => {
     e.preventDefault()

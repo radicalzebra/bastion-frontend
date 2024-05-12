@@ -16,10 +16,10 @@ const Products = (props) => {
   const [setFormObj,products,isFetching] = useProductsFetch()
 
   return (
-    <section className="flex flex-col my-20 gap-3 px-16 bg-red-90">
+    <section className="flex flex-col my-20 md:gap-3 xs:gap-8 md:px-16 xs:px-2 bg-red-90">
 
 
-           <form className='flex gap-2 bg-yellow-90 w-11/12'>
+           <form className='flex flex-wrap gap-2 bg-yellow-90 md:w-11/12 xs:w-full'>
             
               <SortForm setFormObj = {setFormObj} />
               <RatingForm setFormObj = {setFormObj} />
@@ -31,7 +31,7 @@ const Products = (props) => {
            </form>
 
 
-            <Card className="flex gap-6 flex-wrap relative min-h-screen  ">
+            <Card className="flex gap-6 flex-wrap relative xs:justify-center sm:justify-start min-h-screen bg-red-90  ">
 
               {isFetching && <img className='h-14 w-14 absolute top-1/3 right-1/2 translate-x-1/2' src={loadingUi}/>}
 
@@ -47,7 +47,7 @@ const Products = (props) => {
 
 
               {!isFetching && products.length !== 0 && products.map((el,i)=> {
-                return <ProdCard className="shadow-sm  p-1 " seller={el.seller.id} id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
+                return <ProdCard className="shadow-sm  lg:p-1  " seller={el.seller.id} id={el._id} coverImage={el.coverImage} key={i+1} rating={el.rating} price={el.price} ratingQuantity={el.ratingQuantity} name={el.name}/>
               })}
             
             </Card>

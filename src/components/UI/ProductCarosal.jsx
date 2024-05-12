@@ -19,7 +19,7 @@ const ProductCarosal = (props) => {
   return (
     <section  ref={sectionRef} className={`flex gap-2  ${props.className}`}>
 
-        <figure className='flex flex-col gap-2'>
+        <figure className='flex flex-col gap-2 xs:hidden md:flex'>
             {props.images.map((el,i) => {
 
                if(i>5) return null;
@@ -34,7 +34,7 @@ const ProductCarosal = (props) => {
         </figure>
 
 
-        <figure className='w-5/6 h-screen rounded-md relative'>
+      <figure className='lg:w-5/6 lg:h-screen xs:w-80 xs:h-97 rounded-md relative'>
             <img ref={imgRef} src={props.images[imgNum]}  className="rounded-md h-full transition-all"  alt="Product Image"/>
            <figure className='absolute top-4 right-4 gap-2 flex'>
                <img onClick={() => imgHandler(false)} src={sliderArrow} alt="arrow" className='p-2 hover:cursor-pointer bg-black rounded-full rotate-180'  />

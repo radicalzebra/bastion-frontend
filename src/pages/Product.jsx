@@ -25,11 +25,11 @@ const { data:productData , isFetching } = useQuery({
   
 
 return (
-  <div className='relative  h-screen'>
+  <div className={`relative ${isFetching && " h-screen"}`}>
     {isFetching && <img className='h-16 w-16 absolute top-1/3 right-1/2 translate-x-1/2' src={loadingUi}/> }
     {productData && !isFetching && 
       <Card className="flex flex-col gap-32 mb-8">
-            <Card className="flex gap-16  mt-32 mb-8 mx-16">
+            <Card className="flex gap-16  mt-32 mb-8 md:mx-16 xs:mx-3">
               <ProductCarosal className="w-1/2" images={[...productData.images]}/>
               <ProductDescription className="w-1/2 justify-self-center" data={productData}/>
             </Card>

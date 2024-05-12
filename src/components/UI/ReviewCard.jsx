@@ -10,15 +10,15 @@ const ReviewCard = ({className,review}) =>  {
     <Card className={`flex p-2 gap-4   text-black rounded-sm transition-all ${className}`}> 
 
         <section>
-            <figure className="w-8 h-8 rounded-full overflow-hidden">
-              <img  className="w-full h-full" src={review.user.photo || hero2} alt="user" />
+            <figure className="md:w-8 md:h-8 xs:w-6 xs:h-6 rounded-full overflow-hidden">
+              <img  className="w-full h-full" src={review.user.photo} alt="user" />
             </figure>
         </section>
 
         <main className="font-bold leading-tight  text-md  flex flex-col gap-3">
 
           <section className="flex">
-            <span className="font-normal text-xs text-gray-500">{review.user.username || "user-name"}</span>
+            <span className="font-normal text-xs xs:hidden sm:inline-block  text-gray-500">{review.user.username}</span>
             
 
             <div className="flex scale-75">
@@ -26,7 +26,7 @@ const ReviewCard = ({className,review}) =>  {
             </div>
           </section>
 
-          <p className="font-secondary font-normal text-sm ">{ review.review || "Lovely product, very comfortable to wear and is moderately priced"}</p>
+          <p className="font-secondary font-normal sm:text-sm xs:text-xs ">{ review.review}</p>
         </main>
     </Card>
   )
