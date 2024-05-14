@@ -1,5 +1,5 @@
-import { Outlet, json } from 'react-router-dom';
-import {  Nav } from '../components/UI/Navigations';;
+import { Outlet } from 'react-router-dom';
+import {  Nav} from '../components/UI/Navigations';;
 
 import {cartActions} from '../Store/CartSlice';
 import {notifyActions} from '../Store/NotifySlice';
@@ -10,6 +10,8 @@ import {Login} from '../components/UI/AuthModal';
 import { ScrollRestoration } from "react-router-dom";
 import HomeLoading from '../components/UI/HomeLoading';
 import { createPortal } from 'react-dom';
+
+
 
 
 
@@ -43,7 +45,6 @@ const PageLayout = (props) => {
 
            
             <header  className='z-20'>
-               {/* <OneLineBanner className="font-medium text- tracking-wider" string="Discover your perfect pair & walk with ease 👟"/> */}
                <Nav links={["all","men", "women" , "kids" ]}  cart={cart}/>
             </header>
 

@@ -20,7 +20,7 @@ export function Login({className}) {
   return (
    <div className="relative">
      {createPortal(<Backdrop className={"bg-transparent backdrop-blur-lg grayscale- fixed z-30"} onClick={()=> {dispatch(loginActions.showLogin(false))}} />,document.getElementById("backdrop"))}
-     {createPortal(<LoginForm className={`bg-white scale-105 flex bg-red-90 w-97 bg-login p-10 fixed top-1/3  left-1/3  -translate-y-1/4 z-40  shadow-2xl  border-2 border-rose-200 shadow-rose-400 rounded-md ${className}`}/>,document.getElementById("overlay"))}
+     {createPortal(<LoginForm className={`bg-white scale-105 flex bg-red-90 w-97 bg-login p-10 fixed top-1/4  left-1/2 -translate-x-1/2    z-40  shadow-2xl  border-2 border-rose-200 shadow-rose-400 rounded-md ${className}`}/>,document.getElementById("overlay"))}
      
    </div>
   )
