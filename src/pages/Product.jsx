@@ -20,7 +20,8 @@ const { data:productData , isFetching } = useQuery({
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/bastion/api/products/${id}`)
     const resData = await response.json()
     return resData.data.product
-  }
+  },
+  staleTime:100000
 })
   
 

@@ -111,7 +111,7 @@ const ProductDescription = ({data,className}) => {
             <section className='flex flex-col  gap-6'>
                   {/* buy */}     
                   <div className='flex xs:flex-col md:flex-row md:gap-10 x:gap-4 relative items-center'>
-                     {user.id === data.seller.id ? <button ref={buttonRef} onClick={buttonHandler} className={`text-xl text-white bg-black rounded-md xs:w-full md:w-80 p-3  tracking-wider`}>Edit</button> : <button disabled={size===null} ref={buttonRef} onClick = {buttonHandler} className={`text-xl bg-black disabled:bg-gray-500  disabled:cursor-not-allowed text-white focus:bg-red-600  rounded-md md:w-72 xs:w-full p-3`}>{btnTouched && logged ? "checkout.." : "BUY"}</button>}
+                     {user.id === data.seller.id ? <button ref={buttonRef} onClick={buttonHandler} className={`text-md text-white bg-black rounded-md xs:w-full md:w-80 p-3  tracking-wider`}>Edit</button> : <button disabled={size===null} ref={buttonRef} onClick = {buttonHandler} className={`text-md bg-black disabled:bg-gray-500  disabled:cursor-not-allowed text-white focus:bg-gray-50 focus:border-2 focus:border-gray-700 focus:text-black  rounded-md md:w-72 xs:w-full p-3`}>{btnTouched && logged ? "redirecting to checkout.." : "BUY"}</button>}
                         
 
                      {/* cart  */}
