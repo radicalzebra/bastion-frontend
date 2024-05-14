@@ -44,7 +44,7 @@ const SearchLinks = ({el,setSearch}) => {
 
            </Link>
 
-            <Link  className={`text-md font-secondary font-medium ${hoverItem && "text-gray-500"} `} to={`/product/${el._id}`}>{el.name}</Link>
+            <Link  className={`text-sm font-secondary lowercase font-medium ${hoverItem && "text-gray-500"} `} to={`/product/${el._id}`}>{el.name}</Link>
       </Link>
    )
 }

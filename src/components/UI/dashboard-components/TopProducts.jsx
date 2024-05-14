@@ -13,10 +13,10 @@ function TopProducts({products}) {
   }
 
   return (
-    <div className='h-  mt-6  px-8 py-5 pb-8 bg-gradient-to-b  shadow-md border-2 border-gray-100   mb-20 rounded-lg flex flex-col gap-12 h-fit relative '>
+    <div className='md:w-5/6 lg:w-full xs:w-11/12  mt-6  px-8 py-5 pb-8 bg-gradient-to-b  shadow-md border-2 border-gray-100   mb-20 rounded-lg flex flex-col gap-12 h-fit relative '>
 
       <section className='flex items-center  gap-8'>
-        <h3 className='text-3xl font-semibold tracking-wide text-black'>Top Products</h3>             
+        <h3 className='md:text-3xl xs:text-xl font-semibold tracking-wide text-black'>Top Products</h3>             
       </section>
 
       {productsCopy == false && 

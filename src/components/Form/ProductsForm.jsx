@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Select from 'react-select'
 
 export const SortForm = ({setFormObj, clear}) => {
 
@@ -34,7 +35,7 @@ export const SortForm = ({setFormObj, clear}) => {
 
 export const RatingForm = ({setFormObj}) => {
 
-   const [selected, setSelected] = useState()
+   const [selected, setSelected] = useState(null)
 
 
   const onChangeHandler = (e) => {
@@ -47,18 +48,19 @@ export const RatingForm = ({setFormObj}) => {
       })
 
       setSelected(e.target.value)
+
    }
 
-
    return (
-      <select name="rating" value={selected} onChange={onChangeHandler} className='p-1 px-1 rounded-lg bg-gray-50 border-2 hover:border-black shadow-m text-black outline-none'>
+      <select name="rating" value={selected} onChange={onChangeHandler} className={`pr-5 pl-1 rounded-lg bg-white border-2 focus:border-gray-700 shadow- text-center text-black outline-none`}>
                   <option value="" hidden selected>Stars</option>
-                  <option value="5">⭐⭐⭐⭐⭐</option>
-                  <option value="4">⭐⭐⭐⭐</option>
-                  <option value="3">⭐⭐⭐</option>
-                  <option value="2">⭐⭐</option>
-                  <option value="1">⭐</option>
+                  <option value="5" className="hover:bg-black">5  🌟</option>
+                  <option value="4">4  🌟</option>
+                  <option value="3">3  🌟</option>
+                  <option value="2">2  🌟</option>
+                  <option value="1">1  🌟</option>
       </select>
+
    )
 }
 
@@ -172,12 +174,12 @@ export const PriceForm = ({setFormObj}) => {
    return (
        <select name="price" value={selected} onChange={onChangeHandler} className='p-1 px-2 rounded-lg bg-gray-50 border-2 hover:border-black shadow-m text-black outline-none'>
                     <option hidden selected>Price</option>
-                    <option value="100" className='text-green-700'>~ $100</option>
-                    <option value="300" className='text-green-700'>~ $300</option>
-                    <option value="7000" className='text-green-700'>~ $700</option>
-                    <option value="1500" className='text-green-700'>~ $1500</option>
-                    <option value="2300" className='text-green-700'>~ $2300</option>
-                    <option value="3000" className='text-green-700'>{">"} $2300</option>
+                    <option value="100" className=''>~ $100</option>
+                    <option value="300" className=''>~ $300</option>
+                    <option value="7000" className=''>~ $700</option>
+                    <option value="1500" className=''>~ $1500</option>
+                    <option value="2300" className=''>~ $2300</option>
+                    <option value="3000" className=''>{">"} $2300</option>
       </select> 
    )
 }

@@ -31,7 +31,7 @@ const Products = (props) => {
            </form>
 
 
-            <Card className="flex gap-6 flex-wrap relative xs:justify-center sm:justify-start min-h-screen bg-red-90  ">
+            <Card className="flex gap-7 flex-wrap relative xs:justify-center sm:justify-around lg:justify-start min-h-screen">
 
               {isFetching && <img className='h-14 w-14 absolute top-1/3 right-1/2 translate-x-1/2' src={loadingUi}/>}
 

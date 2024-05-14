@@ -45,7 +45,7 @@ function Linechart(props) {
 
 
    return (
-      <main className="flex flex-col w-5/6 rounded-xl shadow-md shadow-gray-300 gap-2 ">
+      <main className="flex flex-col md:w-5/6 xs:w-11/12 rounded-xl shadow-md shadow-gray-300 gap-2 ">
 
          <section className="flex items-end  justify-between p-4  ">
                <p className="text-lg font-semibold text-gray-500">Revenue vs Orders</p>

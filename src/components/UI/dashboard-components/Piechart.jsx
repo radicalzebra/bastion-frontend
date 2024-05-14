@@ -31,7 +31,7 @@ function Piechart(props) {
 
 
    return (
-      <main className='w-1/4 bg-gray-800   font-sans rounded-md shadow-md'>
+      <main className='lg:w-1/4 md:w-5/6 xs:w-11/12   bg-gray-800   font-sans rounded-md shadow-md'>
          <p className='text-white text-xl p-3 font-semibold font-sans'>Sales by category</p>
          <ResponsiveContainer width="100%" height={300}>
                <PieChart  className=''>

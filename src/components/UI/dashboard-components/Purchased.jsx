@@ -20,12 +20,12 @@ function Purchased(props) {
 
 
   return (
-     <main ref={parentRef}  className={`flex gap-10 mb-8 ${props.className}  overflow-x-hidden`}>
+     <main ref={parentRef}  className={`flex md:gap-10 xs:gap-2 md:mb-8 xs:mb-2 ${props.className}  overflow-x-hidden`}>
       
-           <Card className={`flex flex-col  gap-10 w-full pr-8 relative `}>
+           <Card className={`flex flex-col  gap-10 w-full lg:pr-8 md:pr-3 relative `}>
                   <div className='flex flex-col gap-4 mb-20 border-0 py-6'>
-                        <h1 className='text-3xl font-semibold text-black'>My Purchases 🛍️</h1>
-                        <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to your purchase page, where every click brings you closer to owning your desires. Shop with ease, knowing each selection is a step toward fulfillment. Indulge in a seamless shopping experience tailored to your preferences.</p>
+                        <h1 className='md:text-3xl xs:text-xl font-semibold text-black'>My Purchases 🛍️</h1>
+                        <p className='font-medium md:text-sm xs:text-xs text-gray-500 w-5/6'>Welcome to your purchase page, where every click brings you closer to owning your desires. Shop with ease, knowing each selection is a step toward fulfillment. Indulge in a seamless shopping experience tailored to your preferences.</p>
                   </div>
 
                   {purchased == false && 
@@ -40,7 +40,7 @@ function Purchased(props) {
                   }
 
                   {purchased != false && 
-                        <section className='flex  flex-wrap gap-9 pr-10'>
+                        <section className='flex lg:bg-red-90 md:bg-blac flex-wrap  gap-3 '>
                         {purchased?.map((el,i)=> {
                               const purchasedDate = dateFormat(el.createdAt)
                               return <PurchasedProduct key={el.id} img={el.product.coverImage} purchasedAt={purchasedDate} id={el.product.id} rating={el.product.rating} />

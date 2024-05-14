@@ -42,11 +42,11 @@ function Orders(props) {
   return (
     <main ref={parentRef} className={`flex gap-10  text-black ${props.className}`}>
 
-           <Card className={`py-6  flex flex-col gap-16 w-full pr-8 mb-20 bg-red-9 `}>
+           <Card className={`py-6  flex flex-col gap-16 w-full pr-8 mb-20 bg-red-9 xs:scale-90 md:scale-100 `}>
 
                <div className='flex flex-col gap-4 mb-20'>
-                  <h1 className='text-3xl font-semibold'>Orders 💰</h1>
-                  <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to the Orders Page, where the rhythm of your business transactions comes to life. Seamlessly manage the entire lifecycle of orders, from their initial placement to their successful fulfillment. </p>
+                  <h1 className='md:text-3xl xs:text-xl font-semibold'>Orders 💰</h1>
+                  <p className='font-medium md:text-sm xs:text-xs text-gray-500 w-5/6'>Welcome to the Orders Page, where the rhythm of your business transactions comes to life. Seamlessly manage the entire lifecycle of orders, from their initial placement to their successful fulfillment. </p>
                </div>
 
                <section className='flex  gap-4 justify-center bg-red-90 relative'>
@@ -76,7 +76,7 @@ function Orders(props) {
 
 
 
-               {modifiedOrdered.length !== 0 && <section className='flex justify-between rounded-md shadow-sm shadow-purple-300 px-12 py-5 bg-red-90 relative '>
+               {modifiedOrdered.length !== 0 && <section className='flex justify-between rounded-md shadow-sm shadow-purple-300 px-12 gap- py-5 bg-red-90 relative  '>
 
                        <Card className="flex flex-col gap-4 basis-1/12">
                           <h2 className='font-semibold text-sm border-b-2 border-gray-200'>Order ID</h2>
@@ -84,7 +84,7 @@ function Orders(props) {
                           <div className='flex flex-col gap-4 font-medium text-xs text-gray-400'>
                                {modifiedOrdered?.map((el,i)=>{
                                    return (
-                                      <p  key={el._id} >{"#"}{el._id.slice(0,12)}</p>
+                                      <p  key={el._id} >{"#"}{el._id.slice(0,8)}</p>
                                    )
                                  })}
                           </div>
@@ -97,7 +97,7 @@ function Orders(props) {
                           <div className='flex flex-col gap-4 font-medium text-xs '>
                                  {modifiedOrdered?.map((el,i)=>{
                                     return (
-                                       <p key={el._id}  >{el.user.username}</p>
+                                       <p className='truncate w-11/12' key={el._id}  >{el.user.username}</p>
                                     )
                                  })}
                           </div>
@@ -108,13 +108,13 @@ function Orders(props) {
                           <div className='flex flex-col gap-4 font-medium text-xs '>
                                 {modifiedOrdered?.map((el,i)=>{
                                     return (
-                                       <NavLink key={el._id} className="hover:underline" to={`/product/${el.product._id}`}>{el.product.name}</NavLink>
+                                       <NavLink key={el._id} className="hover:underline w-11/12 truncate" to={`/product/${el.product._id}`}>{el.product.name}</NavLink>
                                     )
                                  })}
                           </div>
                        </Card>
 
-                       <Card className="flex flex-col gap-4">
+                       <Card className="flex flex-col gap-4 xl:flex xs:hidden">
                           <h2 className='font-semibold text-sm border-b-2 border-gray-200'>Date</h2>
                           <div className='flex flex-col gap-4 font-medium text-xs text-gray-400 '>
                                  {modifiedOrdered?.map((el,i)=>{
@@ -130,15 +130,15 @@ function Orders(props) {
                           <div className='flex flex-col gap-4 font-medium text-xs text-gray-400 '>
                                  {modifiedOrdered?.map((el,i)=>{
                                     return (
-                                       <p key={el._id} >{el.user.email}</p>
+                                       <p className='truncate w-11/12' key={el._id} >{el.user.email}</p>
                                     )
                                  })}
                           </div>
                        </Card>
 
-                       <Card className="flex flex-col gap-4">
+                       <Card className="flex flex-col gap-4 lg:flex xs:hidden">
                           <h2 className='font-semibold text-sm border-b-2 border-gray-200'>Amount Payable</h2>
-                          <div className='flex flex-col gap-4 font-medium text-xs '>
+                          <div className='flex flex-col gap-4  font-medium text-xs '>
                                 {modifiedOrdered?.map((el,i)=>{
                                     return (
                                        <p key={el._id} >{'$ '}{el.price}</p>
@@ -159,7 +159,7 @@ function Orders(props) {
                           </div>
                        </Card>
 
-                      <Card className="flex flex-col gap-4">
+                      <Card className="flex flex-col gap-4 lg:flex xs:hidden">
                           <h2 className='font-semibold text-sm border-b-2 border-gray-200'>Payment Method</h2>
                           <div className='flex flex-col gap-4 font-medium text-xs text-gray-400 '>
                                  {modifiedOrdered?.map((el,i)=>{

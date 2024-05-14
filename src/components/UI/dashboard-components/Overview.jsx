@@ -52,18 +52,18 @@ function Overview (props) {
 
 
   return (
-        <main ref={parentRef} className={`flex gap-10 pr-32 ${props.className}`}>
+        <main ref={parentRef} className={`flex gap-10 lg:pr-32 md:pr-0 xs:pr-8 ${props.className}`}>
 
-           <Card className={`py-6  flex flex-col gap-8 w-full pr-8 `}>
+           <Card className={`py-6  flex flex-col gap-8  w-full pr-8 `}>
                   
-                  <div className='flex bg-red-90 h-44  '>
-                           <RevenueCard heading={"Total Sales"} className="text-black shadow-sm  shadow-lime-300 rounded-l-md basis-1/4 from-lime-400 to-lime-300 via-lime-300 bg-gradient-to-r " figureClass="bg-green-"  src={shopper}  number={dashInfo.sales} />
-                           <RevenueCard heading={"Visitors"} className="text-black shadow-md border-l-2 basis-1/4 bg-gray-50"  src={users}  number={dashInfo.visitors}  />
-                           <RevenueCard heading={"Total Orders"} className="text-black shadow-md border-l-2 basis-1/4 bg-gray-50"  src={star}  number={dashInfo.orders}  />
-                           <RevenueCard heading={"Products"} className="text-black shadow-md border-l-2 rounded-r-md basis-1/4 bg-gray-50"  src={product}  number={dashInfo.numProducts}  />
+                  <div className='flex flex-wrap md:w-5/6 lg:w-full xs:w-11/12 bg-red-90 h-44 gap-y-1 lg:mb-0 xs:mb-72 md:bg-red-90 '>
+                           <RevenueCard heading={"Total Sales"} className="text-black shadow-sm  shadow-lime-300 sm:rounded-l-md sm:rounded-none  xs:rounded-md lg:basis-1/4 lg:h-full sm:h-36  sm:basis-1/2 xs:w-full xs:h-28 from-lime-400 to-lime-300 via-lime-300 bg-gradient-to-r " figureClass="bg-green-"  src={shopper}  number={dashInfo.sales} />
+                           <RevenueCard heading={"Visitors"} className="text-black shadow-md sm:rounded-none xs:rounded-md sm:border-l-2 lg:basis-1/4 lg:h-full sm:h-36 sm:basis-1/2 xs:w-full xs:h-28 bg-gray-50"  src={users}  number={dashInfo.visitors}  />
+                           <RevenueCard heading={"Total Orders"} className="text-black shadow-md lg:rounded-none xs:rounded-md  lg:border-l-2 lg:basis-1/4 lg:h-full sm:h-36 sm:basis-1/2 xs:w-full xs:h-28 bg-gray-50"  src={star}  number={dashInfo.orders}  />
+                           <RevenueCard heading={"Products"} className="text-black shadow-md sm:rounded-none xs:rounded-md sm:border-l-2 rounded-r-md lg:basis-1/4 lg:h-full sm:h-36 sm:basis-1/2 xs:w-full xs:h-28 bg-gray-50"  src={product}  number={dashInfo.numProducts}  />
                   </div>
 
-                  <Card className="flex justify-between gap-3 ">
+                  <Card className="flex lg:flex-row xs:flex-col justify-between gap-3 ">
                      <Linechart data={lineData}/>
                      <Piechart data = {pieData}/>
                   </Card> 

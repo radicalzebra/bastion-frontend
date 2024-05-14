@@ -28,19 +28,19 @@ function GeneralSettings({user , logged , className}) {
 
 
   return (
-    <form onSubmit={onSubmitHandler}  className={`flex flex-col w-6/6  bg-red-90 gap-12 mb-10 p-16 ${className}`}>
+    <form onSubmit={onSubmitHandler}  className={`flex flex-col w-full bg-red-90 lg:gap-12 xs:gap-4 mb-10 lg:p-16 xs:p-8 ${className}`}>
 
-        <section className='flex flex-col gap-20 mb-20 px-20 '>
-          <ProfilePhotoSetting ref={DataRef} name={"photo"} setChanged={setChanged} logged={logged} data={user.photo} />
+        <section className='flex flex-col gap-20 lg:mb-20 xs:mb-6 lg:px-20 xs:px-0 '>
+          <ProfilePhotoSetting className={"md:scale-75 xs:scale-50 lg:scale-100"} ref={DataRef} name={"photo"} setChanged={setChanged} logged={logged} data={user.photo} />
         </section>
 
-        <div className='flex bg-red-90 justify-between  gap-9'>
+        <div className='flex xs:flex-col lg:flex-row bg-red-90 justify-between  gap-9'>
             <GenericInput ref={DataRef} name={"email"} setChanged={setChanged} inputType={"email"} data={user.email} placeholder={'me@gmail.com'} label={"Email"} maxLen={70}/>
-            <GenericInput ref={DataRef} name={"gender"} setChanged={setChanged} data={user.gender}  label={"Gender"} className={" w-1/3"} />
-            <GenericInput ref={DataRef} name={"birthday"} setChanged={setChanged} inputType={"date"} data={dateFormat(user.birthday)}  label={"Birthday"}  className={"w-1/3"}/>
+            <GenericInput className={"md:w-full lg:w-1/3"} ref={DataRef} name={"gender"} setChanged={setChanged} data={user.gender}  label={"Gender"}  />
+            <GenericInput className={"md:w-full lg:w-1/3"} ref={DataRef} name={"birthday"} setChanged={setChanged} inputType={"date"} data={dateFormat(user.birthday)}  label={"Birthday"} />
         </div>
 
-        <div className='flex bg-red-90 justify-between  gap-9'>
+        <div className='flex xs:flex-col lg:flex-row bg-red-90 justify-between  gap-9'>
              <GenericInput ref={DataRef} name={"username"} setChanged={setChanged} inputType={"text"} data={user.username} placeholder={'Enter your username'} label={"Username"} maxLen={20}/>
              <GenericInput ref={DataRef} name={"phone"} setChanged={setChanged} inputType={"number"}  data={user.phone || ""} placeholder={'+91'} label={"Phone"} max={9999999999}/>
         </div>

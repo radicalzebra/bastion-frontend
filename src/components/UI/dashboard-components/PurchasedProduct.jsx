@@ -11,7 +11,7 @@ export default function PurchasedProduct({img,purchasedAt,id,rating}) {
     <section className='flex bg-red-90 gap-2 relative'>
      
      <NavLink to={`/product/${id}`}>
-         <figure  onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className='w-52 h-60 rounded-md z-10'>
+         <figure  onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className='lg:w-52 xs:w-40 lg:h-60 xs:h-56  rounded-md z-10'>
             <img className='w-full h-full rounded-md' src={img} />
          </figure>
      </NavLink>

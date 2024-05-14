@@ -26,7 +26,7 @@ function CartBox({className, name , src , price, id , key}) {
        </div>
 
        <div className='bg-red-70 flex flex-wrap items-center p-4'>
-         <NavLink to={`/product/${id}`} className="bg-blue-90 text-sm hover:underline font-poppins text-black">{name}</NavLink>
+         <NavLink to={`/product/${id}`} className="bg-blue-90 lg:text-sm xs:text-xs hover:underline font-poppins text-black">{name}</NavLink>
        </div>
 
        <div className='bg-red-5 flex flex-wrap items-center text-black pl-12'>1x</div>

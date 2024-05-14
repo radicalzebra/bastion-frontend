@@ -19,7 +19,7 @@ const GenericInput = ({inputType,data:inputData,placeholder,label,maxLen,classNa
   };
 
 
-   let genderInput = <select  defaultValue={data}  onChange={onChangeHandler} className='h-10 text-lg rounded-md bg-gray-50 shadow-sm shadow-gray-300 border-2 focus:border-black border-gray-300 px-4 outline-none'>
+   let genderInput = <select  defaultValue={data}  onChange={onChangeHandler} className='h-10  text-lg rounded-md bg-gray-50 shadow-sm shadow-gray-300 border-2 focus:border-black border-gray-300 px-4 outline-none'>
                         <option value="male">male</option>
                         <option value="female">female</option>
                     </select>

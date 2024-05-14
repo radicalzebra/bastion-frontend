@@ -52,8 +52,8 @@ function Settings({user , logged , className}) {
                   
             <section className='flex flex-col gap-24'>
                   <div className='flex flex-col gap-4'>
-                        <h1 className='text-3xl font-semibold text-black'>Settings ⚙️</h1>
-                        <p className='font-medium text-sm text-gray-500 w-5/6'>Welcome to the Settings Page, your personalized control center for tailoring your experience and managing your preferences on our platform. This page is designed to put you in command, allowing you to customize various aspects to suit your needs. </p>
+                        <h1 className='md:text-3xl xs:text-xl font-semibold text-black'>Settings ⚙️</h1>
+                        <p className='font-medium md:text-sm xs:text-xs text-gray-500 w-5/6'>Welcome to the Settings Page, your personalized control center for tailoring your experience and managing your preferences on our platform. This page is designed to put you in command, allowing you to customize various aspects to suit your needs. </p>
                   </div>
                   <header className='flex gap-4'>
                      <NavLink to="/dashboard/settings/general" onClick={() => dispatchFn("general")} className={`text-gray-400 font-medium text-sm cursor-pointer hover:text-gray-800 px-2 rounded-md ${touched.val === "general" ? " shadow-inner shadow-gray-300 text-gray-800 ":" shadow-md"}`}>General</NavLink>

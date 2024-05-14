@@ -19,7 +19,7 @@ export default function CartBoxLayout() {
 
 
   return (
-   <main  ref={parentRef}  className='flex gap-8 bg-red-60 p-4 relative my-8'>
+   <main  ref={parentRef}  className='flex gap-8 lg:flex-row xs:flex-col md:flex-col-reverse bg-red-60 p-4 relative my-8'>
 
     <section  className='flex flex-col gap-8 min-h-screen bg-red-90 basis-4/6'>
       {detailedCart.map((el,i)=> {
